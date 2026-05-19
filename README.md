@@ -3,6 +3,8 @@
 
 Transform a standard rowing machine into a competitive-grade smart ergometer. This open-source project uses an ESP32 and a 24-bit ADC to acquire real-time force data from a load cell. It transmits the data via Bluetooth Low Energy (FTMS protocol) to simulators like **EXR** or **Kinomap** while hosting a built-in Web App for standalone training.
 
+<img width="955" height="1079" alt="image" src="https://github.com/user-attachments/assets/4861fe39-2ce6-4149-9216-f343af13477b" />
+
 Unlike classic magnetic sensors that estimate power based on flywheel speed, this project measures the actual pulling force using a load cell (mechanically replacing the original handle). This results in extremely precise and highly responsive calculations of exerted power (Watts) and overall rowing metrics.
 
 > **Platform support:** Windows ✅ · macOS ✅ · Linux ✅
@@ -42,66 +44,10 @@ The ADS1220 communicates with the ESP32 via the SPI bus.
 | MISO | 0 |
 | DRDY | 5 |
 
-```mermaid
-graph LR
-    subgraph Load_Cell [1. Load Cell]
-        LC_E_PLUS[E+ / Red]
-        LC_E_MINUS[E- / Black]
-        LC_S_PLUS[S+ / Green]
-        LC_S_MINUS[S- / White]
-    end
+<img width="1500" height="1194" alt="WhatsApp Image 2026-05-19 at 12 18 15" src="https://github.com/user-attachments/assets/f34ed7ef-335b-4623-8706-5e0087e447c3" />
 
-    subgraph ADS_Module [2. ADS1220 Module]
-        ADS_AVDD[AVDD]
-        ADS_AVSS[AVSS]
-        ADS_AIN1[AIN1]
-        ADS_AIN2[AIN2]
+<img width="1500" height="1256" alt="WhatsApp Image 2026-05-19 at 12 18 15 (1)" src="https://github.com/user-attachments/assets/423e6acd-93ef-46ff-8a31-8a6f24136bc3" />
 
-        ADS_VCC[VCC]
-        ADS_GND[GND]
-        ADS_MISO[MISO]
-        ADS_MOSI[MOSI]
-        ADS_SCK[SCLK]
-        ADS_CS[CS]
-        ADS_CLK[CLK]
-        ADS_DRDY[DRDY]
-    end
-
-    subgraph ESP_MCU [3. ESP32]
-        ESP_3V3[3.3V]
-        ESP_GND[GND]
-        ESP_P0[GPIO 0]
-        ESP_P1[GPIO 1]
-        ESP_P2[GPIO 2]
-        ESP_P3[GPIO 3]
-        ESP_P4[GPIO 4]
-        ESP_P5[GPIO 5]
-    end
-
-    LC_E_PLUS -->|Excitation +| ADS_AVDD
-    LC_E_MINUS -->|Excitation -| ADS_AVSS
-    LC_S_PLUS -->|Signal +| ADS_AIN1
-    LC_S_MINUS -->|Signal -| ADS_AIN2
-
-    ADS_VCC ---|Power from ESP| ESP_3V3
-    ADS_GND ---|Ground from ESP| ESP_GND
-    ADS_MISO -->|SPI MISO| ESP_P0
-    ADS_MOSI ---|SPI MOSI| ESP_P1
-    ADS_SCK ---|SPI SCK| ESP_P2
-    ADS_CS ---|Chip Select| ESP_P3
-    ADS_CLK ---|External Clock| ESP_P4
-    ADS_DRDY -->|Data Ready| ESP_P5
-
-    classDef power fill:#fca5a5,stroke:#b91c1c,stroke-width:2px,color:black;
-    classDef gnd fill:#9ca3af,stroke:#475569,stroke-width:2px,color:black;
-    classDef signal fill:#bbf7d0,stroke:#047857,stroke-width:2px,color:black;
-    classDef spi fill:#bfdbfe,stroke:#1d4ed8,stroke-width:2px,color:black;
-
-    class LC_E_PLUS,ADS_AVDD,ADS_VCC,ESP_3V3 power;
-    class LC_E_MINUS,ADS_AVSS,ADS_GND,ESP_GND gnd;
-    class LC_S_PLUS,LC_S_MINUS,ADS_AIN1,ADS_AIN2 signal;
-    class ADS_MISO,ADS_MOSI,ADS_SCK,ADS_CS,ADS_CLK,ADS_DRDY,ESP_P0,ESP_P1,ESP_P2,ESP_P3,ESP_P4,ESP_P5 spi;
-```
 
 ---
 
@@ -194,7 +140,7 @@ After the first USB flash, all future updates can be done wirelessly:
 2. Connect to **`RP_AP`** and navigate to `http://192.168.4.1/update`.
 3. Select the `.bin` file and click **START FLASH**. The board reboots automatically when done.
 
----
+<img width="633" height="789" alt="image" src="https://github.com/user-attachments/assets/7ec5c3cf-48a3-454a-a9b2-80965ed4f2bd" />
 
 ## 📱 Using with EXR or Kinomap
 
