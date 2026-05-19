@@ -35,7 +35,6 @@ The ADS1220 communicates with the ESP32 via the SPI bus.
 | MISO | Pin 0 |
 | DRDY | Pin 5 |
 
-![Wiring Diagram](images/wiring.png) *(Insert your KiCad or Fritzing schematic here)*
 
 ## 🚀 Installation and Setup
 
@@ -56,7 +55,6 @@ The ADS1220 communicates with the ESP32 via the SPI bus.
    - Ensure the handle is at rest with no tension, then click **SET ZERO** (Tare).
    - Apply a known calibration weight to the rope/load cell (e.g., 10 Kg), type the value in the input box, and click **CALIBRATE SENSOR**.
 
-![Rowing Setup](images/rower_setup.jpg) *(Insert a picture showing how the load cell is mounted on the rower)*
 
 ## 📱 Using with EXR or Kinomap
 
