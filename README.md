@@ -44,7 +44,8 @@ The ADS1220 communicates with the ESP32 via the SPI bus.
 | MISO | 0 |
 | DRDY | 5 |
 
-<img width="823" height="749" alt="image" src="https://github.com/user-attachments/assets/81439096-38a0-45f9-9ef5-3d727407554d" />
+
+<img width="1236" height="475" alt="image" src="https://github.com/user-attachments/assets/6b5b21a4-19c3-4798-a82b-abc762fe6433" />
 
 
 <img width="300" height="270" alt="WhatsApp Image 2026-05-19 at 12 18 15" src="https://github.com/user-attachments/assets/f34ed7ef-335b-4623-8706-5e0087e447c3" />
