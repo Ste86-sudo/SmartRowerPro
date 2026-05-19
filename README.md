@@ -98,6 +98,7 @@ graph LR
     class LC_E_MINUS,ADS_AVSS,ADS_GND,ESP_GND gnd;
     class LC_S_PLUS,LC_S_MINUS,ADS_AIN1,ADS_AIN2 signal;
     class ADS_MISO,ADS_MOSI,ADS_SCK,ADS_CS,ADS_CLK,ADS_DRDY,ESP_P0,ESP_P1,ESP_P2,ESP_P3,ESP_P4,ESP_P5 spi;
+```
 
 
 ## 🚀 Installation and Setup
