@@ -35,6 +35,70 @@ The ADS1220 communicates with the ESP32 via the SPI bus.
 | MISO | Pin 0 |
 | DRDY | Pin 5 |
 
+```mermaid
+graph LR
+    subgraph Load Cell
+        LC_E_PLUS[E+ / Red]
+        LC_E_MINUS[E- / Black]
+        LC_S_PLUS[S+ / Green]
+        LC_S_MINUS[S- / White]
+    end
+
+    subgraph ADS1220 Module
+        ADS_AVDD[AVDD]
+        ADS_AVSS[AVSS]
+        ADS_AIN1[AIN1]
+        ADS_AIN2[AIN2]
+        
+        ADS_VCC[VCC]
+        ADS_GND[GND]
+        ADS_MISO[MISO]
+        ADS_MOSI[MOSI]
+        ADS_SCK[SCLK]
+        ADS_CS[CS]
+        ADS_CLK[CLK]
+        ADS_DRDY[DRDY]
+    end
+
+    subgraph ESP32
+        ESP_3V3[3.3V]
+        ESP_GND[GND]
+        ESP_P0[GPIO 0]
+        ESP_P1[GPIO 1]
+        ESP_P2[GPIO 2]
+        ESP_P3[GPIO 3]
+        ESP_P4[GPIO 4]
+        ESP_P5[GPIO 5]
+    end
+
+    %% Load Cell -> ADS1220 Connections
+    LC_E_PLUS -->|Excitation +| ADS_AVDD
+    LC_E_MINUS -->|Excitation -| ADS_AVSS
+    LC_S_PLUS -->|Signal +| ADS_AIN1
+    LC_S_MINUS -->|Signal -| ADS_AIN2
+
+    %% Power Connections
+    ESP_3V3 -->|Power| ADS_VCC
+    ESP_GND -->|Ground| ADS_GND
+
+    %% SPI & Control Connections
+    ADS_MISO -->|SPI MISO| ESP_P0
+    ADS_MOSI -->|SPI MOSI| ESP_P1
+    ADS_SCK -->|SPI SCK| ESP_P2
+    ADS_CS -->|Chip Select| ESP_P3
+    ADS_CLK -->|External Clock| ESP_P4
+    ADS_DRDY -->|Data Ready| ESP_P5
+
+    classDef power fill:#fca5a5,stroke:#b91c1c,stroke-width:2px,color:black;
+    classDef gnd fill:#9ca3af,stroke:#475569,stroke-width:2px,color:black;
+    classDef signal fill:#bbf7d0,stroke:#047857,stroke-width:2px,color:black;
+    classDef spi fill:#bfdbfe,stroke:#1d4ed8,stroke-width:2px,color:black;
+
+    class LC_E_PLUS,ADS_AVDD,ADS_VCC,ESP_3V3 power;
+    class LC_E_MINUS,ADS_AVSS,ADS_GND,ESP_GND gnd;
+    class LC_S_PLUS,LC_S_MINUS,ADS_AIN1,ADS_AIN2 signal;
+    class ADS_MISO,ADS_MOSI,ADS_SCK,ADS_CS,ADS_CLK,ADS_DRDY,ESP_P0,ESP_P1,ESP_P2,ESP_P3,ESP_P4,ESP_P5 spi;
+
 
 ## 🚀 Installation and Setup
 
