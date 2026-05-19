@@ -3,7 +3,7 @@
 
 Transform a standard rowing machine into a competitive-grade smart ergometer. This open-source project uses an ESP32 and a 24-bit ADC to acquire real-time force data from a load cell. It transmits the data via Bluetooth Low Energy (FTMS protocol) to simulators like **EXR** or **Kinomap** while hosting a built-in Web App for standalone training.
 
-<img width="955" height="1079" alt="image" src="https://github.com/user-attachments/assets/4861fe39-2ce6-4149-9216-f343af13477b" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/4861fe39-2ce6-4149-9216-f343af13477b" />
 
 Unlike classic magnetic sensors that estimate power based on flywheel speed, this project measures the actual pulling force using a load cell (mechanically replacing the original handle). This results in extremely precise and highly responsive calculations of exerted power (Watts) and overall rowing metrics.
 
@@ -44,9 +44,9 @@ The ADS1220 communicates with the ESP32 via the SPI bus.
 | MISO | 0 |
 | DRDY | 5 |
 
-<img width="1500" height="1194" alt="WhatsApp Image 2026-05-19 at 12 18 15" src="https://github.com/user-attachments/assets/f34ed7ef-335b-4623-8706-5e0087e447c3" />
+<img width="300" height="270" alt="WhatsApp Image 2026-05-19 at 12 18 15" src="https://github.com/user-attachments/assets/f34ed7ef-335b-4623-8706-5e0087e447c3" />
 
-<img width="1500" height="1256" alt="WhatsApp Image 2026-05-19 at 12 18 15 (1)" src="https://github.com/user-attachments/assets/423e6acd-93ef-46ff-8a31-8a6f24136bc3" />
+<img width="300" height="270" alt="WhatsApp Image 2026-05-19 at 12 18 15 (1)" src="https://github.com/user-attachments/assets/423e6acd-93ef-46ff-8a31-8a6f24136bc3" />
 
 
 ---
@@ -114,6 +114,8 @@ The IDE will compile and flash the firmware. This takes about 30–60 seconds on
 ---
 
 ## ⚙️ First Boot & Sensor Calibration
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/eeb6e6b2-f89a-438a-a870-9dbfb038b12d" />
 
 1. Power up the ESP32. It will broadcast a Wi-Fi network named **`RP_AP`** (password: `password`).
 2. Connect to this network from any phone, tablet, or PC, and open a browser to:
