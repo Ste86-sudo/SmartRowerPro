@@ -66,7 +66,7 @@ The firmware is designed to give absolute hardware priority to the Bluetooth ant
 
 ## 👨‍💻 Author
 
-Developed by **Stefano Farisè**.
+Developed by **Stefano Farisé**.
 Exploring the intersection of industrial automation, signal processing, and DIY fitness hardware.
 
 ---
