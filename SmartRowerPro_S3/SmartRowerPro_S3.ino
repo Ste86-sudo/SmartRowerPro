@@ -33,6 +33,8 @@ void setup() {
         Serial.print("[WIFI] Tentativo di connessione a: ");
         Serial.println(config.wifiSSID);
         
+        WiFi.disconnect();
+        delay(100);
         WiFi.begin(config.wifiSSID.c_str(), config.wifiPass.c_str());
         unsigned long startMs = millis();
         while (WiFi.status() != WL_CONNECTED && (millis() - startMs < 10000)) {

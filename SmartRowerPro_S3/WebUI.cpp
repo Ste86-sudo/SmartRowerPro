@@ -25,6 +25,10 @@ void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t, void 
                     float delta = (float)metrics.rawAdc - config.tara;
                     if (fabs(delta) > 1.0) config.saveScale(fabs(delta) / ref);
                 }
+            } else if (cmd == "SCAN") {
+                WiFi.scanNetworks(true, true); // async scan, show hidden
+            } else if (cmd == "REBOOT") {
+                delay(500); ESP.restart();
             } else if (cmd.startsWith("CFG:")) {
             // CFG:tara,scala,uHeight,uWeight,uPull,uRel,encPPR,pullCirc,laserOffset,wifiSSID,wifiPass
             int c1 = cmd.indexOf(',');
@@ -113,6 +117,17 @@ void WebUI::begin() {
 
 void WebUI::handleClients() {
     ws.cleanupClients(1);
+    
+    int16_t n = WiFi.scanComplete();
+    if (n >= 0) {
+        String res = "WIFI_LIST:";
+        for (int i = 0; i < n; ++i) {
+            if (i > 0) res += ",";
+            res += WiFi.SSID(i);
+        }
+        ws.textAll(res);
+        WiFi.scanDelete();
+    }
 }
 
 void WebUI::sendTelemetryBuffer(volatile float* readyBuffer) {

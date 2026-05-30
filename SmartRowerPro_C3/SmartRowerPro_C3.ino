@@ -81,7 +81,11 @@ void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t, void 
         AwsFrameInfo *info = (AwsFrameInfo*)a;
         if (info->final && info->index == 0 && info->len == l && info->opcode == WS_TEXT) {
             d[l] = 0; String msg = String((char*)d);
-            if (msg.startsWith("CFG:")) {
+            if (msg == "SCAN") {
+                WiFi.scanNetworks(true, true);
+            } else if (msg == "REBOOT") {
+                delay(500); ESP.restart();
+            } else if (msg.startsWith("CFG:")) {
                 // CFG:mac,ssid,pass
                 int c1 = msg.indexOf(',');
                 int c2 = msg.indexOf(',', c1+1);
@@ -139,6 +143,8 @@ void setup() {
     if (wifiSSID.length() > 0) {
         Serial.print(F("[WIFI] Tentativo connessione STA a: "));
         Serial.println(wifiSSID);
+        WiFi.disconnect();
+        delay(100);
         WiFi.begin(wifiSSID.c_str(), wifiPass.c_str());
         unsigned long startMs = millis();
         while (WiFi.status() != WL_CONNECTED && (millis() - startMs < 10000)) {
@@ -146,7 +152,8 @@ void setup() {
         }
         
         if (WiFi.status() == WL_CONNECTED) {
-            Serial.println(F("\n[WIFI] Connesso! IP: ") + WiFi.localIP().toString());
+            Serial.print(F("\n[WIFI] Connesso! IP: "));
+            Serial.println(WiFi.localIP().toString());
             Serial.printf("[WIFI] Canale (Router): %d\n", WiFi.channel());
             staConnected = true;
         } else {
@@ -243,4 +250,15 @@ void loop() {
     }
     
     ws.cleanupClients();
+    
+    int16_t n = WiFi.scanComplete();
+    if (n >= 0) {
+        String res = "WIFI_LIST:";
+        for (int i = 0; i < n; ++i) {
+            if (i > 0) res += ",";
+            res += WiFi.SSID(i);
+        }
+        ws.textAll(res);
+        WiFi.scanDelete();
+    }
 }
