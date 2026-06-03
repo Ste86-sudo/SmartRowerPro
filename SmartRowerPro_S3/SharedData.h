@@ -16,6 +16,7 @@ struct RowerMetrics {
 struct TelemetryData {
     volatile int32_t encoderTicks;
     volatile float seatPositionMeters;
+    volatile uint8_t heartRate;
     volatile unsigned long lastPacketTime;
     volatile bool active;
 };

@@ -149,9 +149,9 @@ void WebUI::sendTelemetryBuffer(volatile float* readyBuffer) {
 void WebUI::sendMetrics() {
     if(ws.count() > 0) {
         char p[150];
-        snprintf(p, 150, "METRICS:%d|%d|%d|%d|%.1f|%s|%d|%u",
+        snprintf(p, 150, "METRICS:%d|%d|%d|%d|%.1f|%s|%d|%u|%d",
                  metrics.watts, (int)metrics.totalDistance, metrics.spm, metrics.paceSeconds, 
-                 metrics.totalKcal, (telemetry.active ? "1" : "0"), metrics.rawAdc, syncPacketCounter);
+                 metrics.totalKcal, (telemetry.active ? "1" : "0"), metrics.rawAdc, syncPacketCounter, telemetry.heartRate);
         ws.textAll(p);
     }
 }

@@ -64,8 +64,8 @@ void BLE_FTMS::updateAndNotify() {
     uint16_t elap = (metrics.cumulativeStrokes > 0) ? (millis() - metrics.workoutStartMs) / 1000 : 0;
     uint16_t kH = (elap > 0) ? (uint16_t)((metrics.totalKcal / elap) * 3600.0) : 0;
     
-    uint8_t payload[19];
-    payload[0] = 0x2C; payload[1] = 0x09; 
+    uint8_t payload[20];
+    payload[0] = 0x2C; payload[1] = 0x0B; 
     payload[2] = (metrics.spm * 2) > 255 ? 255 : (uint8_t)(metrics.spm * 2);
     payload[3] = metrics.cumulativeStrokes & 0xFF; payload[4] = (metrics.cumulativeStrokes >> 8) & 0xFF;
     uint32_t d = (uint32_t)metrics.totalDistance;
@@ -77,7 +77,8 @@ void BLE_FTMS::updateAndNotify() {
     payload[14] = kH & 0xFF; payload[15] = (kH >> 8) & 0xFF;
     payload[16] = (uint8_t)(kH / 60);
     payload[17] = elap & 0xFF; payload[18] = (elap >> 8) & 0xFF;
+    payload[19] = telemetry.heartRate;
 
-    pData->setValue(payload, 19); pData->notify();
+    pData->setValue(payload, 20); pData->notify();
 }
 #endif

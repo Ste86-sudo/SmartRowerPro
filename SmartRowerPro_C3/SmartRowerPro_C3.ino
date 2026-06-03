@@ -8,6 +8,7 @@
 #include <Wire.h>
 #include <Adafruit_VL53L0X.h>
 #include "WebUI_HTML.h"
+#include <NimBLEDevice.h>
 
 // PINOUT ESP32-C3
 #define ENCODER_PIN_A 2
@@ -40,6 +41,7 @@ const int wsIntervalMs = 50;   // 20Hz WebSocket
 typedef struct {
     int32_t t;       // Ticks encoder
     uint16_t d;      // Distanza in mm
+    uint8_t hr;      // Heart Rate
 } __attribute__((packed)) PayloadData;
 
 PayloadData payload;
@@ -103,6 +105,82 @@ void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t, void 
         }
     }
 }
+
+
+// --- BLE Heart Rate Client ---
+static BLEUUID hrServiceUUID("180D");
+static BLEUUID hrCharUUID("2A37");
+static boolean doConnect = false;
+static boolean bleConnected = false;
+static NimBLEAddress* pServerAddress = nullptr;
+volatile uint8_t currentHR = 0;
+
+class MyClientCallback : public NimBLEClientCallbacks {
+    void onConnect(NimBLEClient* pclient) override {
+        Serial.println(F("[BLE] Connesso alla Fascia Cardio!"));
+    }
+    void onDisconnect(NimBLEClient* pclient) override {
+        bleConnected = false;
+        currentHR = 0;
+        Serial.println(F("[BLE] Disconnesso dalla Fascia Cardio!"));
+    }
+};
+
+void notifyCallback(NimBLERemoteCharacteristic* pBLERemoteCharacteristic, uint8_t* pData, size_t length, bool isNotify) {
+    if (length > 1) {
+        uint8_t flags = pData[0];
+        if ((flags & 0x01) == 0) { // 8-bit HR
+            currentHR = pData[1];
+        } else if (length > 2) { // 16-bit HR
+            currentHR = pData[1]; 
+        }
+    }
+}
+
+bool connectToServer() {
+    Serial.println(F("[BLE] Tentativo di connessione..."));
+    NimBLEClient* pClient = NimBLEDevice::createClient();
+    pClient->setClientCallbacks(new MyClientCallback(), false);
+    
+    if (!pClient->connect(*pServerAddress)) {
+        Serial.println(F("[BLE] Connessione fallita"));
+        return false;
+    }
+    
+    NimBLERemoteService* pRemoteService = pClient->getService(hrServiceUUID);
+    if (pRemoteService == nullptr) {
+        pClient->disconnect();
+        return false;
+    }
+    
+    NimBLERemoteCharacteristic* pRemoteCharacteristic = pRemoteService->getCharacteristic(hrCharUUID);
+    if (pRemoteCharacteristic == nullptr) {
+        pClient->disconnect();
+        return false;
+    }
+    
+    if(pRemoteCharacteristic->canNotify()) {
+        pRemoteCharacteristic->subscribe(true, notifyCallback);
+    }
+    bleConnected = true;
+    return true;
+}
+
+class MyAdvertisedDeviceCallbacks: public NimBLEAdvertisedDeviceCallbacks {
+    void onResult(NimBLEAdvertisedDevice* advertisedDevice) override {
+        if (advertisedDevice->haveServiceUUID() && advertisedDevice->isAdvertisingService(hrServiceUUID)) {
+            if(!doConnect && !bleConnected) {
+                Serial.print(F("[BLE] Trovata Fascia Cardio: "));
+                Serial.println(advertisedDevice->getAddress().toString().c_str());
+                if (pServerAddress) delete pServerAddress;
+                pServerAddress = new NimBLEAddress(advertisedDevice->getAddress());
+                NimBLEDevice::getScan()->stop();
+                doConnect = true;
+            }
+        }
+    }
+};
+// ------------------------------
 
 void setup() {
     delay(2000);
@@ -224,6 +302,23 @@ void loop() {
     if (now - lastSendTime >= sendIntervalMs) {
         lastSendTime = now;
         
+        
+    // Gestione BLE Client
+    if (doConnect) {
+        if (connectToServer()) {
+            Serial.println(F("[BLE] Sottoscrizione HR completata."));
+        } else {
+            Serial.println(F("[BLE] Connessione fallita. Ripresa scansione."));
+            NimBLEDevice::getScan()->start(0, false);
+        }
+        doConnect = false;
+    }
+    if (!bleConnected && !doConnect && !NimBLEDevice::getScan()->isScanning()) {
+         NimBLEDevice::getScan()->start(0, false);
+    }
+    
+    payload.hr = currentHR;
+
         payload.t = encoderTicks;
         
 #if ENABLE_TOF
