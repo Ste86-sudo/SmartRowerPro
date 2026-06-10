@@ -30,4 +30,5 @@ function Pack-WebUIHeader {
     Write-Host "Completato $targetFile"
 }
 
-Pack-WebUIHeader "C:\Users\stefa\OneDrive\Desktop\SmartRower\index.txt" "C:\Users\stefa\OneDrive\Desktop\SmartRower\SmartRowerPro_S3\src\WebUI_HTML.h"
+Pack-WebUIHeader "C:\Users\stefa\OneDrive\Desktop\SmartRower\index.txt" "C:\Users\stefa\OneDrive\Desktop\SmartRower\SmartRower_Telaio_S3\src\WebUI_HTML.h"
+Pack-WebUIHeader "C:\Users\stefa\OneDrive\Desktop\SmartRower\index.txt" "C:\Users\stefa\OneDrive\Desktop\SmartRower\SmartRower_Maniglia_S3\src\WebUI_HTML.h"

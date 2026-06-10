@@ -9,6 +9,7 @@
 #include <Adafruit_VL53L0X.h>
 #include "WebUI_HTML.h"
 #include <NimBLEDevice.h>
+#include "soc/gpio_reg.h"   // REG_READ / GPIO_IN_REG per lettura veloce dell'encoder in ISR
 
 #define DEBUG_LOGS 0 // Metti a 1 per log seriali a 5Hz
 
@@ -18,7 +19,7 @@
 #define I2C_SDA 8
 #define I2C_SCL 9
 
-#define ENABLE_TOF 0 // Metti a 1 quando avrai collegato fisicamente il laser VL53L0X
+#define ENABLE_TOF 1 // Laser VL53L0X attivo (I2C su SDA=8, SCL=9, con pull-up)
 
 Preferences prefs;
 AsyncWebServer server(80);
@@ -55,8 +56,11 @@ volatile uint8_t old_AB = 0;
 volatile int32_t raw_encoder_ticks_4x = 0;
 
 void IRAM_ATTR readEncoder() {
-    uint8_t a = digitalRead(ENCODER_PIN_A);
-    uint8_t b = digitalRead(ENCODER_PIN_B);
+    // Lettura simultanea di A e B con un solo accesso al registro GPIO: più veloce di
+    // due digitalRead() e senza skew tra le fasi → riduce i passi persi ad alta velocità.
+    uint32_t gpio = REG_READ(GPIO_IN_REG);
+    uint8_t a = (gpio >> ENCODER_PIN_A) & 0x1;
+    uint8_t b = (gpio >> ENCODER_PIN_B) & 0x1;
     old_AB <<= 2;
     old_AB |= (a << 1) | b;
     raw_encoder_ticks_4x += enc_states[(old_AB & 0x0F)];
@@ -239,13 +243,16 @@ void setup() {
     // 2. Inizializzazione I2C e Sensore ToF
 #if ENABLE_TOF
     Wire.begin(I2C_SDA, I2C_SCL);
-    if (!lox.begin()) {
-        Serial.println(F("[TOF] Failed to boot VL53L0X"));
+    Wire.setTimeOut(50);     // timeout I2C 50ms: evita blocchi infiniti del bus (loop single-core C3)
+    // Due tentativi di init: l'avvio I2C del VL53L0X a volte fallisce al primo colpo
+    if (!lox.begin() && !lox.begin()) {
+        Serial.println(F("[TOF] Init VL53L0X fallita — sensore disabilitato"));
         tofConnected = false;
     } else {
-        Serial.println(F("[TOF] VL53L0X Ready"));
-        lox.startRangeContinuous(20); 
+        Wire.setClock(100000);        // 100 kHz: più robusto a rumore/cablaggi lunghi della slitta
+        lox.startRangeContinuous(20); // ranging continuo ~50Hz (allineato al loop ESP-NOW)
         tofConnected = true;
+        Serial.println(F("[TOF] VL53L0X pronto"));
     }
 #else
     tofConnected = false;
@@ -379,8 +386,15 @@ void loop() {
         payload.t  = encoderTicks;
         payload.hr = currentHR;
 #if ENABLE_TOF
-        if (tofConnected && lox.isRangeComplete()) payload.d = lox.readRange();
-        else payload.d = 0;
+        // Aggiorna solo se c'è un nuovo campione valido; altrimenti mantiene l'ultimo valore
+        // (niente azzeramenti che farebbero "saltare" la posizione della slitta a 0).
+        if (tofConnected && lox.isRangeComplete()) {
+            uint16_t r = lox.readRange();
+            if (r > 0 && r < 2000) {   // scarta fuori-portata (~8190) e letture nulle
+                // EMA leggero (3:1): riduce il jitter mantenendo reattività
+                payload.d = (payload.d == 0) ? r : (uint16_t)((payload.d * 3 + r) >> 2);
+            }
+        }
 #else
         payload.d = 0;
 #endif

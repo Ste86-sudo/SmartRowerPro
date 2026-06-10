@@ -834,15 +834,15 @@ var noSleep = new NoSleep();
                 <div class="setup-grid">
                     <div class="card glass-panel">
                         <h3>Diagnostica Raw Sensori</h3>
-                        <p style="margin:0;color:#94a3b8;font-size:0.9rem;">Dati in arrivo in tempo reale dall'ESP-NOW (S3 &lt;- C3)</p>
+                        <p style="margin:0;color:#94a3b8;font-size:0.9rem;">Dati in arrivo in tempo reale</p>
                         <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;font-family:monospace;background:#0f172a;padding:1rem;border-radius:8px;">
-                            <div>Encoder Ticks (C3): <span id="diag-enc" style="color:#38bdf8;">0</span></div>
-                            <div>Distanza ToF (C3): <span id="diag-tof" style="color:#38bdf8;">0.00 m</span></div>
-                            <div>Battito Cardiaco (C3): <span id="diag-hr" style="color:#f43f5e;">0 bpm</span></div>
-                            <hr style="border-color:#1e293b;margin:0.5rem 0;">
-                            <div>Forza Cella fKg (S3): <span id="diag-fkg" style="color:#4ade80;">0.00 kg</span></div>
-                            <div>Cavo Calcolato (S3): <span id="diag-cord" style="color:#a855f7;">0.00 m</span></div>
-                            <div>Stato isPulling (S3): <span id="diag-pull" style="color:#fbbf24;">0</span></div>
+                            <div class="stat-telaio-only">Encoder Ticks: <span id="diag-enc" style="color:#38bdf8;">0</span></div>
+                            <div class="stat-telaio-only">Distanza ToF: <span id="diag-tof" style="color:#38bdf8;">0.00 m</span></div>
+                            <div class="stat-telaio-only">Battito Cardiaco: <span id="diag-hr" style="color:#f43f5e;">0 bpm</span></div>
+                            <hr class="stat-telaio-only" style="border-color:#1e293b;margin:0.5rem 0;">
+                            <div>Forza Cella fKg: <span id="diag-fkg" style="color:#4ade80;">0.00 kg</span></div>
+                            <div>Cavo Calcolato: <span id="diag-cord" style="color:#a855f7;">0.00 m</span></div>
+                            <div>Stato isPulling: <span id="diag-pull" style="color:#fbbf24;">0</span></div>
                         </div>
                     </div>
 
@@ -1043,11 +1043,13 @@ let telemetry = {
 };
 
 // Canvas & Graphing
+const SAMPLE_HZ = 100;
 let forceHistory = [];
 let cordHistory = [];
+let seatHistory = [];
 let accForce = 0, accCord = 0, accSeat = 0, accCount = 0;
 let maxHistoryMs = 3000; // 3 secs at 1000Hz (Ghost curve)
-let maxHistorySamples = 1800; // 3 secs at 600Hz (Real data from ADS1220)
+let maxHistorySamples = 3 * SAMPLE_HZ; // 3 secs at SAMPLE_HZ
 const canvas = document.getElementById('rowCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -1257,6 +1259,7 @@ function startRacePrep() {
     // START CSV LOGGING IMMEDIATELY FOR COUNTDOWN
     wState.running = true;
     wState.startTime = Date.now();
+    window.recordStartMs = wState.startTime;
     wState.elapsedSec = 0;
     wState.totalSec = 0;
     wState.sampleCount = 0;
@@ -1555,6 +1558,8 @@ function connectWS(ip) {
                     if (forceHistory.length > maxHistorySamples) forceHistory.shift();
                     cordHistory.push(cord);
                     if (cordHistory.length > maxHistorySamples) cordHistory.shift();
+                    seatHistory.push(seat);
+                    if (seatHistory.length > maxHistorySamples) seatHistory.shift();
                     
                     if (fKg > telemetry.peakForce) telemetry.peakForce = fKg;
                     
@@ -1566,9 +1571,9 @@ function connectWS(ip) {
                         accSeat += seat;
                         accCount++;
                         wState.sampleCount++;
-                        if (accCount >= 6) {
+                        if (accCount >= 1) { // Nessuna media, piena frequenza reale
                             workoutRawData.push({
-                                time: (wState.sampleCount / 330.0) * 1000.0,
+                                time: Date.now() - window.recordStartMs,
                                 tw: wState.targetWatts || 0,
                                 ts: wState.targetSpm || 0,
                                 tf: wState.targetForce || 0,
@@ -1611,6 +1616,12 @@ function connectWS(ip) {
                         elSsid.value = parts[9];
                     }
                     const elPass = document.getElementById('cfg-wifipass'); if(elPass) elPass.value = parts[10];
+                    
+                    if (parts[9] === "RP_Handle") {
+                        window.isStandaloneHandle = true;
+                        // Nascondi elementi Telaio-only
+                        document.querySelectorAll('.stat-telaio-only').forEach(el => el.style.display = 'none');
+                    }
                     
                     if(parts.length >= 12) {
                         const elFtp = document.getElementById('u-ftp'); if(elFtp) elFtp.value = parts[11];
@@ -1742,6 +1753,7 @@ function updateTelemetry(data) {
     if (forceHistory.length > maxHistorySamples) forceHistory.shift();
     cordHistory.push(telemetry.cordPos);
     if (cordHistory.length > maxHistorySamples) cordHistory.shift();
+    // Non ho telemetry.seatPos qua, ma viene giÃ  gestito in onmessage.
     
 
 }
@@ -1980,6 +1992,9 @@ function startWorkout(w) {
         startTime: Date.now()
     };
     
+    window.recordStartMs = wState.startTime;
+    wState.sampleCount = 0;
+    
     document.getElementById('workout-progress-container').style.display = 'block';
     document.getElementById('btn-stop-wo').style.display = 'block';
     workoutRawData = []; // Reset raw data
@@ -2027,7 +2042,7 @@ function workoutTick() {
     
     // Store for CSV even if WebSocket isn't updating fast enough (guarantees data exists)
     workoutRawData.push({
-        time: wState.elapsedSec * 1000,
+        time: Date.now() - window.recordStartMs,
         tw: wState.targetWatts,
         ts: wState.targetSpm,
         tf: wState.targetForce,
@@ -2277,7 +2292,7 @@ function renderGraph() {
         ctx.setLineDash([]); // Reset
     }
     
-    // Draw Real History (Solo Forza per ora, siccome non storicizziamo le altre)
+    // Draw Real History
     if (forceHistory.length > 1) {
         ctx.beginPath();
         ctx.strokeStyle = '#f59e0b';
@@ -2285,8 +2300,8 @@ function renderGraph() {
         
         for (let i=0; i<forceHistory.length; i++) {
             let dt = window.lastSyncTime ? (Date.now() - window.lastSyncTime) / 1000.0 : 0;
-            if (dt > 0.6) dt = 0.6; // Clamp at 600ms (packet interval)
-            let shiftIdxSamples = dt / 0.020; // 50Hz = 20ms per sample
+            if (dt > 0.13) dt = 0.13; // Clamp at 130ms
+            let shiftIdxSamples = dt / (1.0 / SAMPLE_HZ);
             let idxOffset = (maxHistorySamples - forceHistory.length) + i;
             let px = ((idxOffset - shiftIdxSamples) / (maxHistorySamples-1)) * w;
             let py = chartH - (forceHistory[i] / maxF) * chartH;
@@ -2303,11 +2318,29 @@ function renderGraph() {
         
         for (let i=0; i<cordHistory.length; i++) {
             let dt = window.lastSyncTime ? (Date.now() - window.lastSyncTime) / 1000.0 : 0;
-            if (dt > 0.6) dt = 0.6;
-            let shiftIdxSamples = dt / 0.020;
+            if (dt > 0.13) dt = 0.13;
+            let shiftIdxSamples = dt / (1.0 / SAMPLE_HZ);
             let idxOffset = (maxHistorySamples - cordHistory.length) + i;
             let px = ((idxOffset - shiftIdxSamples) / (maxHistorySamples-1)) * w;
             let py = chartH - (cordHistory[i] / maxD) * chartH;
+            if (i===0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+    }
+    
+    // Draw Real History per Sellino (Laser)
+    if (seatHistory.length > 1) {
+        ctx.beginPath();
+        ctx.strokeStyle = '#10b981'; // Green per Sellino
+        ctx.lineWidth = 3;
+        
+        for (let i=0; i<seatHistory.length; i++) {
+            let dt = window.lastSyncTime ? (Date.now() - window.lastSyncTime) / 1000.0 : 0;
+            if (dt > 0.13) dt = 0.13;
+            let shiftIdxSamples = dt / (1.0 / SAMPLE_HZ);
+            let idxOffset = (maxHistorySamples - seatHistory.length) + i;
+            let px = ((idxOffset - shiftIdxSamples) / (maxHistorySamples-1)) * w;
+            let py = chartH - (seatHistory[i] / maxD) * chartH;
             if (i===0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
         }
         ctx.stroke();
