@@ -66,7 +66,5 @@ float LoadCellManager::getKg(bool &isNew) {
     float scale = calibStore.getScale();
     if (fabsf(scale) < 1e-3f) return 0.0f;          // protezione divisione per zero (vedi F5)
     float kg = (float)(raw - calibStore.getTare()) / scale;
-    // La cella misura solo trazione: i valori sotto-tara (negativi) sono rumore → clamp a 0.
-    // Così si conserva il segno reale invece di rettificarlo con fabs().
-    return (kg > 0.0f) ? kg : 0.0f;
+    return fabsf(kg);
 }
