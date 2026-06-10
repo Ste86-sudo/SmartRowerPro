@@ -35,8 +35,7 @@ void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t, void 
     AwsFrameInfo *info = (AwsFrameInfo*)a;
     if (!(info->final && info->index == 0 && info->len == l && info->opcode == WS_TEXT)) return;
 
-    d[l] = 0;
-    String cmd = String((char*)d);
+    String cmd((char*)d, l);
     cmd.trim();
 
     if (cmd == "GET_CFG") {
@@ -76,19 +75,25 @@ void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t, void 
         }
 
     } else if (cmd.startsWith("CFG:")) {
-        char* body = (char*)d + 4;
-        char* sTara = strsep(&body, ",");
-        char* sScala = strsep(&body, ",");
-        char* sUh = strsep(&body, ",");
-        char* sUw = strsep(&body, ",");
-        char* sUp = strsep(&body, ",");
-        char* sUr = strsep(&body, ",");
-        char* sEppr = strsep(&body, ",");
-        char* sPcirc = strsep(&body, ",");
-        char* sLoff = strsep(&body, ",");
-        char* sSSID = strsep(&body, ",");
-        char* sPass = strsep(&body, ",");
-        char* sFtp = strsep(&body, ",");
+        char body[256];
+        size_t n = l - 4;
+        if (n >= sizeof(body)) n = sizeof(body) - 1;
+        memcpy(body, d + 4, n);
+        body[n] = 0;
+
+        char* pPtr = body;
+        char* sTara = strsep(&pPtr, ",");
+        char* sScala = strsep(&pPtr, ",");
+        char* sUh = strsep(&pPtr, ",");
+        char* sUw = strsep(&pPtr, ",");
+        char* sUp = strsep(&pPtr, ",");
+        char* sUr = strsep(&pPtr, ",");
+        char* sEppr = strsep(&pPtr, ",");
+        char* sPcirc = strsep(&pPtr, ",");
+        char* sLoff = strsep(&pPtr, ",");
+        char* sSSID = strsep(&pPtr, ",");
+        char* sPass = strsep(&pPtr, ",");
+        char* sFtp = strsep(&pPtr, ",");
 
         if (!sTara || !sEppr) return;
         
@@ -101,11 +106,7 @@ void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t, void 
         config.saveMechanics(atof(sEppr), fPcirc, fLoff);
 
         if (sFtp && *sFtp) {
-            config.uFtp = atof(sFtp);
-            Preferences prefs;
-            prefs.begin("rower", false);
-            prefs.putFloat("uFtp", config.uFtp);
-            prefs.end();
+            config.saveFtp(atof(sFtp));
         }
 
         if (sSSID && *sSSID) {
@@ -194,12 +195,12 @@ void WebUI::sendMetrics() {
     localSync = syncPacketCounter;
     portEXIT_CRITICAL(&telemetryMux);
 
-    char p[200];
-    snprintf(p, sizeof(p), "METRICS:%d|%d|%d|%d|%.1f|%s|%d|%u|%d|%d|%.2f|%.2f|%d|%.3f",
+    char p[250];
+    snprintf(p, sizeof(p), "METRICS:%d|%d|%d|%d|%.1f|%s|%d|%u|%d|%d|%.2f|%.2f|%d|%.3f|%u",
              localM.watts, (int)localM.totalDistance, localM.spm, localM.paceSeconds,
              localM.totalKcal, (localT.active ? "1" : "0"),
              localM.rawAdc, localSync, localT.heartRate,
              localT.encoderTicks, localT.seatPositionMeters, localT.currentForce, localT.isPulling ? 1 : 0,
-             localT.currentCablePosition);
+             localT.currentCablePosition, localT.droppedPackets);
     ws.textAll(p);
 }

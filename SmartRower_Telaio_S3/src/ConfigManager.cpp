@@ -32,6 +32,8 @@ void ConfigManager::saveScale(float s) {
     scala = s; prefs.putFloat("scale", s); 
 }
 void ConfigManager::saveMechanics(float ppr, float circ, float lOffset) { 
+    if (isnan(ppr) || ppr <= 0.001f) ppr = 600.0f;
+    if (isnan(circ) || circ <= 0.001f) circ = 100.0f;
     encPPR = ppr; pullCirc = circ; laserOffset = lOffset;
     prefs.putFloat("encPPR", ppr); prefs.putFloat("pullCirc", circ); prefs.putFloat("lOffset", lOffset);
     updateCache();
@@ -41,9 +43,19 @@ void ConfigManager::saveWiFi(String ssid, String pass) {
     prefs.putString("wifiSsid", ssid); prefs.putString("wifiPass", pass);
 }
 void ConfigManager::saveProfile(float h, float w, float p, float r) {
+    if (isnan(p) || p <= 0.5f || p > 50.0f) p = 3.0f;
+    if (isnan(r) || r <= 0.1f || r > 50.0f) r = 1.5f;
+    if (r >= p) r = p * 0.5f;
+
     uHeight = h; uWeight = w; pullThresh = p; relThresh = r;
     prefs.putFloat("uHeight", h); prefs.putFloat("uWeight", w); 
     prefs.putFloat("uPull", p); prefs.putFloat("uRel", r);
+}
+
+void ConfigManager::saveFtp(float f) {
+    if (isnan(f) || f <= 0.0f) f = 200.0f;
+    uFtp = f;
+    prefs.putFloat("uFtp", f);
 }
 
 void ConfigManager::savePB(uint16_t dist, uint32_t time) {

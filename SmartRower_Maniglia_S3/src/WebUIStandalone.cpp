@@ -13,8 +13,8 @@ static AsyncWebSocket ws("/ws");
 static String buildCfgMsg() {
     char buf[256];
     // CFG: tara, scala, uHeight, uWeight, pullThresh, relThresh, encPPR, pullCirc, laserOffset, wifiSSID, wifiPass, uFtp, macAddress
-    snprintf(buf, sizeof(buf), "CFG:%d,%.4f,180.0,80.0,4.0,2.0,1.0,1.0,0.0,RP_Handle,password,150.0|%s",
-        calibStore.getTare(), calibStore.getScale(), WiFi.softAPmacAddress().c_str());
+    snprintf(buf, sizeof(buf), "CFG:%d,%.4f,180.0,80.0,%.1f,%.1f,1.0,1.0,0.0,RP_Handle,password,150.0|%s",
+        calibStore.getTare(), calibStore.getScale(), calibStore.getPullThresh(), calibStore.getRelThresh(), WiFi.softAPmacAddress().c_str());
     return String(buf);
 }
 
@@ -24,8 +24,7 @@ static void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t
     AwsFrameInfo *info = (AwsFrameInfo*)a;
     if (!(info->final && info->index == 0 && info->len == l && info->opcode == WS_TEXT)) return;
 
-    d[l] = 0;
-    String cmd = String((char*)d);
+    String cmd((char*)d, l);
     cmd.trim();
 
     if (cmd == "GET_CFG") {
@@ -47,6 +46,27 @@ static void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t
         delay(500); ESP.restart();
     } else if (cmd == "GET_PBS") {
         c->text("PBS:100=0,200=0,500=0,1000=0,2000=0,5000=0,6000=0,10000=0,21097=0,42195=0");
+    } else if (cmd.startsWith("CFG:")) {
+        char bodyCopy[256];
+        size_t n = l - 4;
+        if (n >= sizeof(bodyCopy)) n = sizeof(bodyCopy) - 1;
+        memcpy(bodyCopy, d + 4, n);
+        bodyCopy[n] = 0;
+
+        char* p = bodyCopy;
+        strsep(&p, ","); // tara
+        strsep(&p, ","); // scala
+        strsep(&p, ","); // uHeight
+        strsep(&p, ","); // uWeight
+        char* sUp = strsep(&p, ","); // pullThresh
+        char* sUr = strsep(&p, ","); // relThresh
+
+        if (sUp && sUr) {
+            calibStore.saveThresholds(atof(sUp), atof(sUr));
+        }
+        
+        c->text(buildCfgMsg());
+        ws.textAll(buildCfgMsg());
     }
 }
 

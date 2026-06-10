@@ -3,25 +3,21 @@
 #include <esp_wifi.h>
 #include <esp_now.h>
 #include "Config.h"
+#include "RowerProtocol.h"
 #include "LoadCell.h"
+
 #include "CalibStore.h"
 #include "PhysicsLite.h"
 #include "WebUIStandalone.h"
 
-// Pacchetto FORZA (maniglia -> telaio), 100 Hz
-typedef struct __attribute__((packed)) {
-    uint8_t  magic;       
-    uint32_t seq;         
-    int32_t  rawAdc;      
-    int16_t  forceCenti;  
-    int16_t  peakCenti;   
-    uint8_t  flags;       
-} ForcePacket;
-
 ForcePacket currentPacket;
 int16_t currentPeakCenti = 0;
-uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+uint8_t pairedMac[6] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+bool isPaired = false;
 esp_now_peer_info_t peerInfo;
+
+volatile uint8_t pendingCmd = 0;
+volatile float pendingParam = 0;
 
 bool standaloneMode = false;
 bool heartbeatReceived = false;
@@ -30,28 +26,26 @@ bool modeSelected = false;
 
 #if ESP_ARDUINO_VERSION_MAJOR >= 3
 void onEspNowRecv(const esp_now_recv_info_t *info, const uint8_t *data, int len) {
+    const uint8_t* mac = info->src_addr;
 #else
 void onEspNowRecv(const uint8_t *mac, const uint8_t *data, int len) {
 #endif
-    if (len == 1 && data[0] == 0x48) {
+    if (len == 1 && data[0] == PKT_HEARTBEAT) {
         heartbeatReceived = true;
-    } else if (len == 6 && data[0] == 0xC1) {
+        if (!isPaired) {
+            isPaired = true;
+            memcpy(pairedMac, mac, 6);
+            memcpy(peerInfo.peer_addr, pairedMac, 6);
+            esp_now_add_peer(&peerInfo);
+            Serial.printf("[ESP-NOW] Pairing con Telaio: %02X:%02X:%02X:%02X:%02X:%02X\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+        }
+    } else if (len == 6 && data[0] == PKT_MAGIC_CMD) {
+        if (isPaired && memcmp(mac, pairedMac, 6) != 0) return;
         uint8_t cmd = data[1];
         float param;
         memcpy(&param, &data[2], 4);
-        if (cmd == 1) { // TARE
-            calibStore.saveCalibration(loadCell.getLastRaw(), calibStore.getScale());
-            Serial.println("[ESP-NOW] Ricevuto TARE da Telaio");
-        } else if (cmd == 2) { // CALIB
-            if (param > 0.01f) {
-                float delta = (float)loadCell.getLastRaw() - (float)calibStore.getTare();
-                float newScale = delta / param;
-                if (fabsf(newScale) > 0.001f) {
-                    calibStore.saveCalibration(calibStore.getTare(), newScale);
-                    Serial.println("[ESP-NOW] Ricevuto CALIB da Telaio");
-                }
-            }
-        }
+        pendingCmd = cmd;
+        pendingParam = param;
     }
 }
 
@@ -81,7 +75,7 @@ void setup() {
     
     esp_wifi_set_channel(RP_CHANNEL, WIFI_SECOND_CHAN_NONE); // Canale 6 fisso (brief §5.4)
 
-    memcpy(peerInfo.peer_addr, broadcastAddress, 6);
+    memcpy(peerInfo.peer_addr, pairedMac, 6);
     peerInfo.channel = RP_CHANNEL;
     peerInfo.encrypt = false;
     peerInfo.ifidx = WIFI_IF_STA;
@@ -91,7 +85,7 @@ void setup() {
         return;
     }
 
-    currentPacket.magic = 0xA1;
+    currentPacket.magic = PKT_MAGIC_FORCE;
     currentPacket.seq = 0;
     currentPacket.flags = 0;
 
@@ -107,7 +101,7 @@ void loop() {
         if (heartbeatReceived && !forceStandalone) {
             standaloneMode = false;
             modeSelected = true;
-            Serial.println("[MANIGLIA] Heartbeat ricevuto! ModalitÃ : TRASMETTITORE");
+            Serial.println("[MANIGLIA] Heartbeat ricevuto! Modalità: TRASMETTITORE");
             WiFi.mode(WIFI_STA); // Disattiva AP
             esp_wifi_set_channel(RP_CHANNEL, WIFI_SECOND_CHAN_NONE); // Ri-forza il canale 6
         } else if (forceStandalone || now - bootTime > 3000) {
@@ -123,6 +117,27 @@ void loop() {
             loadCell.getKg(isNew);
             delay(10);
             return;
+        }
+    }
+
+    // Esecuzione pending command
+    if (pendingCmd != 0) {
+        uint8_t cmd = pendingCmd;
+        float param = pendingParam;
+        pendingCmd = 0;
+
+        if (cmd == CMD_TARE) {
+            calibStore.saveCalibration(loadCell.getLastRaw(), calibStore.getScale());
+            Serial.println("[ESP-NOW] Ricevuto TARE da Telaio (eseguito)");
+        } else if (cmd == CMD_CALIB) {
+            if (param > 0.01f) {
+                float delta = (float)loadCell.getLastRaw() - (float)calibStore.getTare();
+                float newScale = delta / param;
+                if (fabsf(newScale) > 0.001f) {
+                    calibStore.saveCalibration(calibStore.getTare(), newScale);
+                    Serial.println("[ESP-NOW] Ricevuto CALIB da Telaio (eseguito)");
+                }
+            }
         }
     }
 
@@ -163,7 +178,7 @@ void loop() {
             currentPacket.forceCenti = centiKg;
             currentPacket.peakCenti = currentPeakCenti;
             
-            esp_err_t res = esp_now_send(broadcastAddress, (uint8_t *) &currentPacket, sizeof(ForcePacket));
+            esp_err_t res = esp_now_send(pairedMac, (uint8_t *) &currentPacket, sizeof(ForcePacket));
             if (res != ESP_OK) Serial.printf("[ESP-NOW] send err: %d\n", res);
             
             currentPacket.seq++;

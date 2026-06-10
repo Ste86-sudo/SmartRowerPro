@@ -25,7 +25,8 @@ struct TelemetryData {
     volatile bool isPulling;
     volatile float currentCablePosition;
     volatile float remotePeakForce;   // picco forza ricevuto dalla maniglia (kg)
-    volatile uint32_t lastSeq;        // ultimo seq ricevuto (per drop-detection futura, Fase 5)
+    volatile uint32_t lastSeq;        // ultimo seq ricevuto
+    volatile uint32_t droppedPackets;
 };
 
 extern RowerMetrics metrics;

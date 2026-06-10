@@ -11,7 +11,13 @@ void CalibStore::begin() {
 void CalibStore::loadCalibration() {
     currentTare = preferences.getLong("tare", 0);
     currentScale = preferences.getFloat("scale", 10000.0f);
-    Serial.printf("[CalibStore] Caricato: Tara=%ld, Scala=%.2f\n", currentTare, currentScale);
+    pullThresh = preferences.getFloat("uPull", 4.0f);
+    relThresh = preferences.getFloat("uRel", 2.0f);
+    
+    if (isnan(pullThresh) || pullThresh <= 0.0f || pullThresh > 50.0f) pullThresh = 4.0f;
+    if (isnan(relThresh) || relThresh <= 0.0f || relThresh > 50.0f) relThresh = 2.0f;
+
+    Serial.printf("[CalibStore] Caricato: Tara=%ld, Scala=%.2f, Soglie=%.1f/%.1f\n", currentTare, currentScale, pullThresh, relThresh);
 }
 
 void CalibStore::saveCalibration(int32_t tare, float scale) {
@@ -24,4 +30,16 @@ void CalibStore::saveCalibration(int32_t tare, float scale) {
     preferences.putLong("tare", tare);
     preferences.putFloat("scale", scale);
     Serial.printf("[CalibStore] Salvato: Tara=%ld, Scala=%.2f\n", tare, scale);
+}
+
+void CalibStore::saveThresholds(float pull, float rel) {
+    if (pull <= 0.5f || pull > 50.0f) pull = 4.0f;
+    if (rel <= 0.1f || rel > 50.0f) rel = 2.0f;
+    if (rel >= pull) rel = pull * 0.5f;
+
+    pullThresh = pull;
+    relThresh = rel;
+    preferences.putFloat("uPull", pull);
+    preferences.putFloat("uRel", rel);
+    Serial.printf("[CalibStore] Soglie salvate: Pull=%.1f, Rel=%.1f\n", pull, rel);
 }

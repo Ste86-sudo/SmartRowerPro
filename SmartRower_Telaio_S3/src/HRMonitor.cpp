@@ -18,6 +18,7 @@ class MyClientCallback : public NimBLEClientCallbacks {
         bleConnected = false;
         telemetry.heartRate = 0;
         Serial.println("[BLE] Disconnesso dalla Fascia Cardio!");
+        NimBLEDevice::deleteClient(pclient);
     }
 };
 
@@ -43,11 +44,13 @@ bool connectToServer() {
     }
     if (!NimBLEDevice::getClientListSize() || !pClient) {
         pClient = NimBLEDevice::createClient();
-        pClient->setClientCallbacks(new MyClientCallback(), false);
+        pClient->setClientCallbacks(new MyClientCallback(), true);
     }
 
     if (!pClient->connect(*pServerAddress)) {
         Serial.println("[BLE] Connessione fallita");
+        NimBLEDevice::deleteClient(pClient);
+        pClient = nullptr;
         return false;
     }
 

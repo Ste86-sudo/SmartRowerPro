@@ -4,8 +4,9 @@
 #include "ConfigManager.h"
 #include "Telemetry.h"
 #include "Encoder.h"
+#include "StrokeEngine.h"
 
-#define DEBUG_LOGS 0 // DIAG temporaneo: disabilitato post-test stabilità
+static StrokeEngine engine;
 
 // Ping-Pong buffer per il grafico
 static float bufferA[TELEMETRY_BUFFER_SIZE];
@@ -18,6 +19,7 @@ float* Physics::getReadyBuffer() { return readyReadBuffer.load(std::memory_order
 void Physics::clearReadyBuffer() { readyReadBuffer.store(nullptr, std::memory_order_release); }
 
 void Physics::begin() {
+    engine.begin();
     xTaskCreatePinnedToCore(taskLoop, "PhysicsTask", 8192, NULL, 2, NULL, 1);
 }
 
@@ -27,47 +29,50 @@ void Physics::processStrokeComplete(float workJoules, float peakForce) {
     // Variabili d'appoggio per calcoli fuori dal lock
     uint16_t newSpm = 0, newWatts = 0, newPace = 0;
     float dKcal = 0.0f, dDist = 0.0f;
-    unsigned long workoutStartUpdate = 0;
+    bool valid = false;
 
     if (metrics.lastStrokeTime > 0) {
         float dt = (now - metrics.lastStrokeTime) / 1000.0f;
-        if (dt < 0.001f) { 
-            metrics.lastStrokeTime = now;
-            return; 
+        if (dt < 0.7f) { 
+            return; // Fix 8: Debounce, scarta il colpo
         }
 
         newSpm = (uint16_t)(60.0f / dt);
-        newWatts = (uint16_t)(workJoules / dt);
+        if (newSpm > 60) newSpm = 60;
+        
+        uint32_t w = (uint32_t)(workJoules / dt);
+        if (w > 1500) w = 1500;
+        newWatts = w;
         dKcal = ((workJoules / 4184.0f) * 4.0f);
         
         float s = (newWatts > 0) ? powf((float)newWatts / 2.8f, 1.0f/3.0f) : 0.0f;
         dDist = (s * dt);
         newPace = (s > 0.0f) ? (uint16_t)(500.0f / s) : 0;
+        valid = true;
     }
 
-    // Pubblicazione atomica di tutte le metriche
-    if (metrics.lastStrokeTime > 0) {
-        portENTER_CRITICAL(&telemetryMux);
-        if (metrics.cumulativeStrokes == 0) {
-            metrics.workoutStartMs = now;
-        }
+    portENTER_CRITICAL(&telemetryMux);
+    if (metrics.cumulativeStrokes == 0) {
+        metrics.workoutStartMs = now;
+    }
+    if (valid) {
         metrics.spm = newSpm;
         metrics.watts = newWatts;
         metrics.totalKcal += dKcal;
         metrics.totalDistance += dDist;
         metrics.paceSeconds = newPace;
-        metrics.cumulativeStrokes++;
-        portEXIT_CRITICAL(&telemetryMux);
     }
+    metrics.cumulativeStrokes++;
     metrics.lastStrokeTime = now;
+    portEXIT_CRITICAL(&telemetryMux);
 }
 
 void Physics::taskLoop(void * pvParameters) {
     TickType_t xLastWakeTime = xTaskGetTickCount();
-    bool isPulling = false;
     float accumulatedWorkJoules = 0.0;
     float currentPeakForce = 0.0;
     float previousCablePosition = 0.0;
+    bool isPulling = false;
     
     int64_t lastExtTicks = 0;
     int64_t virtualTicks = 0;
@@ -152,16 +157,27 @@ void Physics::taskLoop(void * pvParameters) {
             }
         }
         else {
-            if (fKg > config.pullThresh) {
-                if (!isPulling) { isPulling = true; currentPeakForce = 0.0f; }
-                if (fKg > currentPeakForce) currentPeakForce = fKg;
+            float strokeLengthMeters = config.uHeight * 0.007f;
+            portENTER_CRITICAL(&telemetryMux);
+            float remotePeak = telemetry.remotePeakForce;
+            portEXIT_CRITICAL(&telemetryMux);
+            
+            StrokeResult res;
+            if (engine.update(fKg, config.pullThresh, config.relThresh, strokeLengthMeters, millis(), res, remotePeak)) {
+                portENTER_CRITICAL(&telemetryMux);
+                if (metrics.cumulativeStrokes == 0) {
+                    metrics.workoutStartMs = millis();
+                }
+                metrics.spm = res.spm;
+                metrics.watts = res.watts;
+                metrics.paceSeconds = res.paceSeconds;
+                metrics.totalDistance += res.dDist;
+                metrics.totalKcal += res.dKcal;
+                metrics.cumulativeStrokes++;
+                metrics.lastStrokeTime = millis();
+                portEXIT_CRITICAL(&telemetryMux);
             }
-            else if (fKg < config.relThresh && isPulling) {
-                isPulling = false;
-                float strokeLengthMeters = config.uHeight * 0.007f;
-                float workJoules = (currentPeakForce * 0.6f * 9.81f) * strokeLengthMeters;
-                processStrokeComplete(workJoules, currentPeakForce);
-            }
+            isPulling = engine.getIsPulling();
         }
 
         // --- INVIO RETE: popola il buffer SOLO se abbiamo un nuovo dato dalla cella di carico ---

@@ -22,6 +22,7 @@ public:
     void saveMechanics(float ppr, float circ, float lOffset);
     void saveProfile(float h, float w, float p, float r);
     void saveWiFi(String ssid, String pass);
+    void saveFtp(float f);
 
     void savePB(uint16_t dist, uint32_t time);
     uint32_t getPB(uint16_t dist);
