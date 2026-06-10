@@ -16,6 +16,8 @@ public:
         isPulling = false;
         currentPeakForce = 0.0f;
         lastStrokeTime = 0;
+        spmIdx = 0;
+        spmCount = 0;
     }
     
     // Ritorna true se il colpo è completato
@@ -47,8 +49,16 @@ public:
             float peakToUse = (overridePeakForce > 0.0f) ? overridePeakForce : currentPeakForce;
             float workJoules = (peakToUse * 0.6f * 9.81f) * strokeLength;
 
-            out.spm = (uint16_t)(60.0f / dt);
-            if (out.spm > 60) out.spm = 60;
+            uint16_t rawSpm = (uint16_t)(60.0f / dt);
+            if (rawSpm > 60) rawSpm = 60;
+            
+            spmHistory[spmIdx] = rawSpm;
+            spmIdx = (spmIdx + 1) % 3;
+            if (spmCount < 3) spmCount++;
+            
+            uint32_t sumSpm = 0;
+            for(uint8_t i=0; i<spmCount; i++) sumSpm += spmHistory[i];
+            out.spm = (uint16_t)(sumSpm / spmCount);
             
             uint32_t w = (uint32_t)(workJoules / dt);
             if (w > 1500) w = 1500;
@@ -73,4 +83,8 @@ private:
     bool isPulling = false;
     float currentPeakForce = 0.0f;
     unsigned long lastStrokeTime = 0;
+    
+    uint16_t spmHistory[3] = {0, 0, 0};
+    uint8_t spmIdx = 0;
+    uint8_t spmCount = 0;
 };

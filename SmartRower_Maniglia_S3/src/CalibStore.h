@@ -13,6 +13,10 @@ public:
     float getScale() const { return currentScale; }
     float getPullThresh() const { return pullThresh; }
     float getRelThresh() const { return relThresh; }
+    float getUHeight() const { return uHeight; }
+    float getUWeight() const { return uWeight; }
+    
+    void saveProfile(float h, float w);
 
 private:
     Preferences preferences;
@@ -20,5 +24,7 @@ private:
     float currentScale = 10000.0f;
     float pullThresh = 4.0f;
     float relThresh = 2.0f;
+    float uHeight = 180.0f;
+    float uWeight = 80.0f;
 };
 extern CalibStore calibStore;

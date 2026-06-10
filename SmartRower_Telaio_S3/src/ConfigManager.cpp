@@ -15,8 +15,8 @@ void ConfigManager::begin() {
     laserOffset = prefs.getFloat("lOffset", 0.0f);
     uFtp = prefs.getFloat("uFtp", 200.0f);
 
-    if (isnan(pullThresh) || pullThresh <= 0.5f || pullThresh > 50.0f) pullThresh = 3.0f;
-    if (isnan(relThresh) || relThresh <= 0.1f || relThresh > 50.0f) relThresh = 1.5f;
+    if (isnan(pullThresh) || pullThresh <= 0.01f || pullThresh > 200.0f) pullThresh = 3.0f;
+    if (isnan(relThresh) || relThresh <= 0.01f || relThresh > 200.0f) relThresh = 1.5f;
     if (relThresh >= pullThresh) relThresh = pullThresh * 0.5f;
     if (isnan(encPPR) || encPPR <= 0.001f) encPPR = 600.0f;
     if (isnan(pullCirc) || pullCirc <= 0.001f) pullCirc = 100.0f;
@@ -44,8 +44,8 @@ void ConfigManager::saveWiFi(String ssid, String pass) {
     prefs.putString("wifiSsid", ssid); prefs.putString("wifiPass", pass);
 }
 void ConfigManager::saveProfile(float h, float w, float p, float r) {
-    if (isnan(p) || p <= 0.5f || p > 50.0f) p = 3.0f;
-    if (isnan(r) || r <= 0.1f || r > 50.0f) r = 1.5f;
+    if (isnan(p) || p <= 0.01f || p > 200.0f) p = 3.0f;
+    if (isnan(r) || r <= 0.01f || r > 200.0f) r = 1.5f;
     if (r >= p) r = p * 0.5f;
 
     uHeight = h; uWeight = w; pullThresh = p; relThresh = r;
@@ -78,5 +78,8 @@ void ConfigManager::updateCache() {
     float ePPR = encPPR;
     if (pCirc <= 0.001f || isnan(pCirc) || isinf(pCirc)) pCirc = 100.0f;
     if (ePPR <= 0.001f || isnan(ePPR) || isinf(ePPR)) ePPR = 600.0f;
-    cachedMetersPerTick = (pCirc / 1000.0f) / ePPR;
+    
+    // Il valore a UI (pullCirc)  il diametro in mm.
+    // La circonferenza della puleggia  (diametro * PI).
+    cachedMetersPerTick = ((pCirc * 3.14159265f) / 1000.0f) / ePPR;
 }

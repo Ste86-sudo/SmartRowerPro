@@ -13,8 +13,8 @@ static AsyncWebSocket ws("/ws");
 static String buildCfgMsg() {
     char buf[256];
     // CFG: tara, scala, uHeight, uWeight, pullThresh, relThresh, encPPR, pullCirc, laserOffset, wifiSSID, wifiPass, uFtp, macAddress
-    snprintf(buf, sizeof(buf), "CFG:%d,%.4f,180.0,80.0,%.1f,%.1f,1.0,1.0,0.0,RP_Handle,password,150.0|%s",
-        calibStore.getTare(), calibStore.getScale(), calibStore.getPullThresh(), calibStore.getRelThresh(), WiFi.softAPmacAddress().c_str());
+    snprintf(buf, sizeof(buf), "CFG:%d,%.4f,%.1f,%.1f,%.1f,%.1f,1.0,1.0,0.0,RP_Handle,password,150.0|%s",
+        calibStore.getTare(), calibStore.getScale(), calibStore.getUHeight(), calibStore.getUWeight(), calibStore.getPullThresh(), calibStore.getRelThresh(), WiFi.softAPmacAddress().c_str());
     return String(buf);
 }
 
@@ -56,13 +56,16 @@ static void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t
         char* p = bodyCopy;
         strsep(&p, ","); // tara
         strsep(&p, ","); // scala
-        strsep(&p, ","); // uHeight
-        strsep(&p, ","); // uWeight
+        char* sUh = strsep(&p, ","); // uHeight
+        char* sUw = strsep(&p, ","); // uWeight
         char* sUp = strsep(&p, ","); // pullThresh
         char* sUr = strsep(&p, ","); // relThresh
 
         if (sUp && sUr) {
             calibStore.saveThresholds(atof(sUp), atof(sUr));
+        }
+        if (sUh && sUw) {
+            calibStore.saveProfile(atof(sUh), atof(sUw));
         }
         
         c->text(buildCfgMsg());
