@@ -54,13 +54,16 @@ static void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t
         bodyCopy[n] = 0;
 
         char* p = bodyCopy;
-        strsep(&p, ","); // tara
-        strsep(&p, ","); // scala
+        char* sTara = strsep(&p, ","); // tara
+        char* sScala = strsep(&p, ","); // scala
         char* sUh = strsep(&p, ","); // uHeight
         char* sUw = strsep(&p, ","); // uWeight
         char* sUp = strsep(&p, ","); // pullThresh
         char* sUr = strsep(&p, ","); // relThresh
 
+        if (sTara && sScala) {
+            calibStore.saveCalibration(atoi(sTara), atof(sScala));
+        }
         if (sUp && sUr) {
             calibStore.saveThresholds(atof(sUp), atof(sUr));
         }

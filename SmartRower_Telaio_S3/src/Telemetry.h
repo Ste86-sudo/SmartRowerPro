@@ -6,5 +6,7 @@ public:
     static void checkTimeout();
     static void sendHeartbeat();
     static void sendTare();
-    static void sendCalib(float refWeight);
+    static void sendCalib(float refWeightKg);
+    static void sendSetTare(int32_t t);
+    static void sendSetScale(float s);
 };

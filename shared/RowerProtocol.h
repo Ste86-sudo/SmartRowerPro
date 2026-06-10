@@ -9,6 +9,8 @@
 
 #define CMD_TARE        1
 #define CMD_CALIB       2
+#define CMD_SET_TARE    3
+#define CMD_SET_SCALE   4
 
 typedef struct __attribute__((packed)) {
     uint8_t  magic;       

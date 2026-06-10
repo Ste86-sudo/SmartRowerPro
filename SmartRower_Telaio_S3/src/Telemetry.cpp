@@ -89,6 +89,23 @@ void TelemetryRadio::sendCalib(float refWeight) {
     esp_now_send(targetMac, buf, 6);
 }
 
+void TelemetryRadio::sendSetTare(int32_t t) {
+    uint8_t buf[6];
+    buf[0] = PKT_MAGIC_CMD;
+    buf[1] = CMD_SET_TARE;
+    uint32_t param = (uint32_t)t;
+    memcpy(&buf[2], &param, 4);
+    esp_now_send(targetMac, buf, 6);
+}
+
+void TelemetryRadio::sendSetScale(float s) {
+    uint8_t buf[6];
+    buf[0] = PKT_MAGIC_CMD;
+    buf[1] = CMD_SET_SCALE;
+    memcpy(&buf[2], &s, 4);
+    esp_now_send(targetMac, buf, 6);
+}
+
 void TelemetryRadio::checkTimeout() {
     if (telemetry.active && (millis() - telemetry.lastPacketTime > 500)) {
         telemetry.active = false;

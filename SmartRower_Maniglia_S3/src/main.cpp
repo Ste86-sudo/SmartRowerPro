@@ -138,6 +138,14 @@ void loop() {
                     Serial.println("[ESP-NOW] Ricevuto CALIB da Telaio (eseguito)");
                 }
             }
+        } else if (cmd == CMD_SET_TARE) {
+            uint32_t tRaw;
+            memcpy(&tRaw, &param, 4);
+            calibStore.saveCalibration((int32_t)tRaw, calibStore.getScale());
+            Serial.printf("[ESP-NOW] Ricevuto SET_TARE da Telaio: %d\n", (int32_t)tRaw);
+        } else if (cmd == CMD_SET_SCALE) {
+            calibStore.saveCalibration(calibStore.getTare(), param);
+            Serial.printf("[ESP-NOW] Ricevuto SET_SCALE da Telaio: %.4f\n", param);
         }
     }
 

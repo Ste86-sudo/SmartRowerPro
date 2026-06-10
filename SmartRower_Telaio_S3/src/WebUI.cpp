@@ -101,6 +101,9 @@ void onWsEvent(AsyncWebSocket *s, AsyncWebSocketClient *c, AwsEventType t, void 
         config.saveScale(atof(sScala));
         config.saveProfile(atof(sUh), atof(sUw), atof(sUp), atof(sUr));
         
+        TelemetryRadio::sendSetTare(atoi(sTara));
+        TelemetryRadio::sendSetScale(atof(sScala));
+        
         float fPcirc = (sPcirc && *sPcirc) ? atof(sPcirc) : config.pullCirc;
         float fLoff  = (sLoff && *sLoff) ? atof(sLoff) : config.laserOffset;
         config.saveMechanics(atof(sEppr), fPcirc, fLoff);
