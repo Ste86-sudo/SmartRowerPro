@@ -6,6 +6,8 @@
 #include "Encoder.h"
 #include "StrokeEngine.h"
 
+#define DEBUG_LOGS 0 // Disabilitato di default
+
 static StrokeEngine engine;
 
 // Ping-Pong buffer per il grafico

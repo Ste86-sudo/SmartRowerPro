@@ -9,6 +9,7 @@ static BLEUUID hrCharUUID("2A37");
 static boolean doConnect = false;
 static boolean bleConnected = false;
 static NimBLEAddress* pServerAddress = nullptr;
+static NimBLEClient* pClient = nullptr;
 
 class MyClientCallback : public NimBLEClientCallbacks {
     void onConnect(NimBLEClient* pclient) override {
@@ -19,6 +20,7 @@ class MyClientCallback : public NimBLEClientCallbacks {
         telemetry.heartRate = 0;
         Serial.println("[BLE] Disconnesso dalla Fascia Cardio!");
         NimBLEDevice::deleteClient(pclient);
+        pClient = nullptr;
     }
 };
 
@@ -34,7 +36,6 @@ void notifyCallback(NimBLERemoteCharacteristic* pBLERemoteCharacteristic, uint8_
     }
 }
 
-static NimBLEClient* pClient = nullptr;
 
 bool connectToServer() {
     Serial.println("[BLE] Tentativo di connessione...");

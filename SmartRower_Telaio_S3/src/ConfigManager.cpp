@@ -15,8 +15,9 @@ void ConfigManager::begin() {
     laserOffset = prefs.getFloat("lOffset", 0.0f);
     uFtp = prefs.getFloat("uFtp", 200.0f);
 
-    if (isnan(pullThresh) || pullThresh <= 0.0f || pullThresh > 50.0f) pullThresh = 3.0f;
-    if (isnan(relThresh) || relThresh <= 0.0f || relThresh > 50.0f) relThresh = 1.5f;
+    if (isnan(pullThresh) || pullThresh <= 0.5f || pullThresh > 50.0f) pullThresh = 3.0f;
+    if (isnan(relThresh) || relThresh <= 0.1f || relThresh > 50.0f) relThresh = 1.5f;
+    if (relThresh >= pullThresh) relThresh = pullThresh * 0.5f;
     if (isnan(encPPR) || encPPR <= 0.001f) encPPR = 600.0f;
     if (isnan(pullCirc) || pullCirc <= 0.001f) pullCirc = 100.0f;
     if (isnan(uFtp) || uFtp <= 0.0f) uFtp = 200.0f;
