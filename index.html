@@ -65,6 +65,17 @@ canvas{width:100%;height:auto;display:block;border-radius:6px;background:var(--p
 .legend i{display:inline-block;width:18px;height:0;border-top:2px solid var(--trace);vertical-align:middle;margin-right:6px}
 .legend i.g{border-top:2px dashed var(--ghost)}
 
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.navrow{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 24px;flex-wrap:wrap;max-width:1060px;margin:0 auto}
+.brand{font-family:var(--serif);font-size:17px;color:var(--paper)}
+.brand:hover{text-decoration:none;color:var(--trace)}
+.navlinks{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em}
+.navlinks a{color:var(--fog)}
+.navlinks a:hover{color:var(--trace);text-decoration:none}
+.appframe{width:100%;height:760px;border:1px solid var(--line);border-radius:10px;background:#020617;margin-top:26px}
+.res-extract{font-family:var(--serif);font-style:italic;color:var(--paper);font-size:15px;margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+
 /* ---------- app replica ---------- */
 .appbar{display:flex;justify-content:space-between;align-items:center;background:#020617;border:1px solid var(--line);border-bottom:none;border-radius:8px 8px 0 0;padding:9px 14px}
 .apptitle{font-weight:700;font-size:15px;background:linear-gradient(to right,#22d3ee,#a855f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -114,6 +125,13 @@ blockquote{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:va
 footer{padding:56px 0 72px;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
 footer .wrap{display:flex;flex-direction:column;gap:10px}
 </style>
+
+<nav class="nav"><div class="navrow">
+  <a class="brand" href="#">SmartRower Pro</a>
+  <div class="navlinks">
+    <a href="#story">Story</a><a href="#electronics">Hardware</a><a href="#physics">Physics</a><a href="#coach">Coach</a><a href="#tryapp">Try the app</a><a href="#resources">Resources</a>
+  </div>
+</div></nav>
 
 <header class="hero">
   <div class="wrap hero-grid">
@@ -233,6 +251,16 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
   </div>
 </section>
 
+<section id="tryapp">
+  <div class="wrap">
+    <span class="eyebrow">Hands on</span>
+    <h2>This is the actual onboard app</h2>
+    <p>Not a mockup: the frame below runs the very <code>web/index.html</code> the ESP32 serves on the rower, connected to a simulated machine instead of the real sensors. Try every mode — <strong>Dashboard</strong> with live force, cable and seat traces, the <strong>Coach</strong> tab with per‑stroke cues and catch factor, <strong>History</strong> with saved sessions and ghost replay, <strong>Setup</strong> with thresholds, ghost parameters and athlete profile. Every control speaks the same command protocol as the firmware.</p>
+    <iframe class="appframe" src="app/" title="SmartRower Pro onboard web app (simulated data)" loading="lazy"></iframe>
+    <p class="demo-note" style="margin-top:12px">Prefer a full window? <a href="app/">Open the app full-screen →</a> Sessions you save land in your browser's local storage, exactly as on the rower. (In the chat preview this frame is unavailable — use the GitHub Pages site.)</p>
+  </div>
+</section>
+
 <section id="game">
   <div class="wrap">
     <span class="eyebrow">Gamification</span>
@@ -242,6 +270,20 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
       <div class="card"><span class="eyebrow">W′ battery</span><h3>An anaerobic fuel gauge</h3><p>The Skiba W′‑balance model runs live: ride above critical power and the battery drains, back off and it recharges. Interval pacing stops being guesswork.</p></div>
       <div class="card"><span class="eyebrow">Load &amp; zones</span><h3>Five HR zones, TRIMP, decoupling</h3><p>A time‑in‑zone bar fills as you row; each session gets a Banister TRIMP score and three independent calorie estimates. Power‑to‑HR decoupling flags the day fatigue wins.</p></div>
       <div class="card"><span class="eyebrow">History &amp; PBs</span><h3>All of it on your phone</h3><p>Sessions, trends and personal bests live in the browser's own storage — export a CSV and the <a href="https://github.com/Ste86-sudo/smartrower-dashboard">dashboard repo</a> turns it into long‑term biomechanics via a GitHub Action. Still no cloud.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="wrap">
+    <span class="eyebrow">Resources</span>
+    <h2>White papers &amp; deep dives</h2>
+    <p>Every design choice was written down before it became code. These documents live in the repo and read as small white papers — key extracts below.</p>
+    <div class="grid c2">
+      <div class="card"><span class="eyebrow">White paper · Physics</span><h3>Ghost curve generation</h3><p>The machine model measured on the V‑Fit Tornado, minimum‑jerk segment kinematics, rhythm‑first parametrisation and the SPM scaling laws (force ∝ (R/d)², power ∝ R³/d²).</p><p class="res-extract">“Shape comes from kinematics; force amplitude from b₂; duration from rate and rhythm; watts are an output — and coordination lives in the seat and arms, not in the force.”</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/blob/master/docs/fisica_ghost_firmware_SmartRowerPro.md">Read the spec →</a></p></div>
+      <div class="card"><span class="eyebrow">White paper · Coaching model</span><h3>The virtual coach</h3><p>The Beta target family, Tier A (force only) vs Tier B (force + position), per‑stroke features, tolerance scoring, and why the RFD is a regression — not a two‑point difference — at 100 Hz.</p><p class="res-extract">“Return the cue of the FIRST group below threshold: sequence first, then loading, then shape — a coach gives one correction, not five.”</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/blob/master/docs/super_prompt_antigravity_SmartRowerPro.md">Read the spec →</a></p></div>
+      <div class="card"><span class="eyebrow">Blueprint</span><h3>Instrumented‑erg coach, in general</h3><p>The hardware‑agnostic version of the model: athlete calibration from slow strokes, CSV schema, feature extraction, and cross‑language consistency tests between firmware and analyzer.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/blob/master/docs/antigravity_rowing_coach_prompt.md">Read the spec →</a></p></div>
+      <div class="card"><span class="eyebrow">Tooling</span><h3>Session analyzer &amp; fPCA</h3><p>Post‑session Python analysis sharing the coach's scoring model, plus functional PCA: your personal modes of stroke variation instead of a population ideal — validated on synthetic sessions with injected faults.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/tree/master/tools/analyzer">Browse the analyzer →</a></p></div>
     </div>
   </div>
 </section>
