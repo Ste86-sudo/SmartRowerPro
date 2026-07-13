@@ -1,90 +1,56 @@
 #pragma once
-#include <stdint.h>
-#include <math.h>
+#include "StrokeMath.h"
 
-struct StrokeResult {
-    uint16_t spm = 0;
-    uint16_t watts = 0;
-    uint16_t paceSeconds = 0;
-    float dDist = 0.0f;
-    float dKcal = 0.0f;
-};
-
+// Macchina a stati pull/release con metriche stimate dal picco di forza.
+// Usata dalla Maniglia in standalone e dal Telaio come fallback quando
+// la telemetria ESP-NOW non è attiva.
 class StrokeEngine {
 public:
-    inline void begin() {
-        isPulling = false;
-        currentPeakForce = 0.0f;
-        lastStrokeTime = 0;
-        spmIdx = 0;
-        spmCount = 0;
+    void begin() {
+        pulling = false;
+        peak = 0.0f;
+        lastStrokeMs = 0;
+        math.reset();
     }
-    
-    // Ritorna true se il colpo è completato
-    inline bool update(float forceKg, float pullThresh, float relThresh, float strokeLength, unsigned long nowMs, StrokeResult& out, float overridePeakForce = -1.0f) {
-        bool finished = false;
 
+    // Ritorna true se un colpo valido è stato completato (out popolato).
+    // overridePeak > 0 usa quel picco al posto di quello rilevato localmente.
+    bool update(float forceKg, float pullThresh, float relThresh, float strokeLengthM,
+                uint32_t nowMs, StrokeMetrics& out, float overridePeak = -1.0f) {
         if (forceKg > pullThresh) {
-            if (!isPulling) {
-                isPulling = true;
-                currentPeakForce = 0.0f;
+            if (!pulling) {
+                pulling = true;
+                peak = 0.0f;
             }
-            if (forceKg > currentPeakForce) {
-                currentPeakForce = forceKg;
-            }
-        }
-        else if (forceKg < relThresh && isPulling) {
-            isPulling = false;
-
-            if (lastStrokeTime == 0) {
-                lastStrokeTime = nowMs;
-                return false;
-            }
-
-            float dt = (nowMs - lastStrokeTime) / 1000.0f;
-            if (dt < 0.7f) return false;
-
-            finished = true;
-
-            float peakToUse = (overridePeakForce > 0.0f) ? overridePeakForce : currentPeakForce;
-            float workJoules = (peakToUse * 0.6f * 9.81f) * strokeLength;
-
-            uint16_t rawSpm = (uint16_t)(60.0f / dt);
-            if (rawSpm > 60) rawSpm = 60;
-            
-            spmHistory[spmIdx] = rawSpm;
-            spmIdx = (spmIdx + 1) % 3;
-            if (spmCount < 3) spmCount++;
-            
-            uint32_t sumSpm = 0;
-            for(uint8_t i=0; i<spmCount; i++) sumSpm += spmHistory[i];
-            out.spm = (uint16_t)(sumSpm / spmCount);
-            
-            uint32_t w = (uint32_t)(workJoules / dt);
-            if (w > 1500) w = 1500;
-            out.watts = (uint16_t)w;
-            
-            float s = (out.watts > 0) ? powf((float)out.watts / 2.8f, 1.0f/3.0f) : 0.0f;
-            out.paceSeconds = (s > 0.0f) ? (uint16_t)(500.0f / s) : 0;
-            
-            out.dDist = s * dt;
-            out.dKcal = (workJoules / 4184.0f) * 4.0f;
-
-            lastStrokeTime = nowMs;
+            if (forceKg > peak) peak = forceKg;
+            return false;
         }
 
-        return finished;
+        if (forceKg >= relThresh || !pulling) return false;
+
+        // Rilascio: fine tirata
+        pulling = false;
+
+        if (lastStrokeMs == 0) {
+            lastStrokeMs = nowMs;
+            return false;
+        }
+
+        float dt = (nowMs - lastStrokeMs) / 1000.0f;
+        if (dt < RowerModel::kMinStrokeSec) return false;   // debounce
+
+        float peakToUse = (overridePeak > 0.0f) ? overridePeak : peak;
+        math.compute(RowerModel::estimateWork(peakToUse, strokeLengthM), dt, out);
+        lastStrokeMs = nowMs;
+        return true;
     }
 
-    inline bool getIsPulling() const { return isPulling; }
-    inline float getCurrentPeakForce() const { return currentPeakForce; }
+    bool isPulling() const { return pulling; }
+    float peakForce() const { return peak; }
 
 private:
-    bool isPulling = false;
-    float currentPeakForce = 0.0f;
-    unsigned long lastStrokeTime = 0;
-    
-    uint16_t spmHistory[3] = {0, 0, 0};
-    uint8_t spmIdx = 0;
-    uint8_t spmCount = 0;
+    StrokeMath math;
+    bool pulling = false;
+    float peak = 0.0f;
+    uint32_t lastStrokeMs = 0;
 };
