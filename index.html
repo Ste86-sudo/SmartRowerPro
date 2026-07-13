@@ -1,0 +1,308 @@
+<title>SmartRower Pro — the air rower that learned to coach</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Deliberately single-theme: the page is styled after the rower's own dark,
+   offline instrument panel — the world the product actually lives in. */
+:root{
+  --ink:#0b1220; --panel:#101a2c; --panel2:#0d1524; --line:#1e2a40;
+  --paper:#e9edf3; --fog:#9aa7ba; --dim:#66748c;
+  --trace:#3cc9ac; --trace-dk:#1e8f78; --ghost:#e0a458;
+  --mono:ui-monospace,'Cascadia Mono',Consolas,'SF Mono',monospace;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);line-height:1.6;font-size:17px}
+a{color:var(--trace);text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+:focus-visible{outline:2px solid var(--trace);outline-offset:2px;border-radius:2px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--trace)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;text-wrap:balance;line-height:1.15}
+h1{font-size:clamp(2.1rem,5.4vw,3.6rem);margin:14px 0 18px}
+h2{font-size:clamp(1.6rem,3.4vw,2.3rem);margin:10px 0 14px}
+h3{font-size:1.2rem;margin-bottom:8px;color:var(--paper)}
+p{max-width:64ch;color:var(--fog)}
+p strong,li strong{color:var(--paper);font-weight:600}
+section{padding:84px 0;border-top:1px solid var(--line)}
+em{color:var(--paper)}
+code,.k{font-family:var(--mono);font-size:.92em;color:var(--ghost)}
+.formula{font-family:var(--mono);font-size:15px;color:var(--paper);background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:14px 18px;overflow-x:auto;margin:16px 0}
+.formula small{color:var(--dim)}
+
+/* ---------- hero ---------- */
+header.hero{padding:64px 0 72px;border-top:none;background:
+  radial-gradient(1200px 500px at 70% -10%,#12233d 0%,transparent 60%),var(--ink)}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;align-items:center}}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-block;font-family:var(--mono);font-size:14px;letter-spacing:.04em;padding:11px 20px;border-radius:6px;border:1px solid var(--trace);color:var(--trace)}
+.btn.primary{background:var(--trace);color:#062018;font-weight:600}
+.btn:hover{text-decoration:none;filter:brightness(1.12)}
+
+/* ---------- demo panel ---------- */
+.demo{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.demo-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.demo-head .eyebrow{color:var(--ghost)}
+.presets{display:flex;gap:6px}
+.presets button{font-family:var(--mono);font-size:12px;letter-spacing:.06em;padding:6px 12px;border-radius:5px;border:1px solid var(--line);background:var(--panel2);color:var(--fog);cursor:pointer}
+.presets button[aria-pressed="true"]{border-color:var(--trace);color:var(--trace)}
+canvas{width:100%;height:auto;display:block;border-radius:6px;background:var(--panel2)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.tile{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.tile .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+.tile .val{font-family:var(--mono);font-size:clamp(18px,2.6vw,26px);color:var(--paper);font-variant-numeric:tabular-nums}
+.tile .val small{font-size:.55em;color:var(--dim)}
+.wbar{height:6px;background:var(--line);border-radius:3px;margin-top:8px;overflow:hidden}
+.wbar i{display:block;height:100%;background:var(--trace);border-radius:3px;transition:width .5s}
+.cue{display:flex;gap:12px;align-items:baseline;margin-top:12px;background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--ghost);border-radius:6px;padding:12px 14px}
+.cue .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--ghost);white-space:nowrap}
+.cue .txt{font-family:var(--serif);font-size:16px;color:var(--paper);font-style:italic}
+.demo-note{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-top:10px}
+.legend{display:flex;gap:18px;font-family:var(--mono);font-size:11.5px;color:var(--fog);margin-top:10px}
+.legend i{display:inline-block;width:18px;height:0;border-top:2px solid var(--trace);vertical-align:middle;margin-right:6px}
+.legend i.g{border-top:2px dashed var(--ghost)}
+
+/* ---------- timeline ---------- */
+.timeline{border-left:1px solid var(--line);margin:34px 0 0 6px;display:flex;flex-direction:column;gap:34px}
+.tl{position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:-5px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--trace)}
+.tl .when{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--dim);text-transform:uppercase}
+
+/* ---------- cards / grids ---------- */
+.grid{display:grid;gap:14px;margin-top:30px}
+.grid.c2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.grid.c3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px}
+.card .eyebrow{color:var(--ghost);display:block;margin-bottom:8px}
+.card p{font-size:15px}
+.card ul{list-style:none;margin-top:10px;font-size:14.5px;color:var(--fog)}
+.card li{padding:5px 0;border-top:1px dashed var(--line)}
+.card li:first-child{border-top:none}
+.card li code{color:var(--trace)}
+
+/* ---------- architecture ---------- */
+.arch{display:flex;align-items:stretch;gap:0;margin-top:30px;flex-wrap:wrap}
+.node{flex:1 1 200px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+.node b{font-family:var(--mono);font-size:13px;color:var(--trace);letter-spacing:.06em}
+.node span{display:block;font-size:13.5px;color:var(--fog);margin-top:6px}
+.arrow{flex:0 0 auto;align-self:center;padding:0 10px;font-family:var(--mono);font-size:12px;color:var(--ghost);text-align:center}
+@media(max-width:760px){.arch{flex-direction:column}.arrow{transform:rotate(90deg);padding:8px 0}}
+
+/* ---------- table ---------- */
+.tablewrap{overflow-x:auto;margin-top:26px;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);text-align:left}
+th,td{padding:12px 16px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+td{color:var(--fog)}td:first-child{color:var(--paper);font-weight:600}
+td code{color:var(--trace)}
+
+blockquote{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--paper);border-left:3px solid var(--ghost);padding-left:20px;margin:30px 0;max-width:56ch}
+footer{padding:56px 0 72px;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
+footer .wrap{display:flex;flex-direction:column;gap:10px}
+</style>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Open source · ESP32 · Offline-first · No subscriptions</span>
+      <h1>The cheap air rower that learned to coach.</h1>
+      <p>SmartRower Pro turns a plain V‑Fit Tornado into an instrumented ergometer: a 24‑bit load cell where the handle used to be, an encoder on the cord, a laser watching the seat — and a digital coach built from rowing literature that races you against your own ghost. No cloud. No account. The rower itself serves the app.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/Ste86-sudo/SmartRowerPro">Firmware on GitHub</a>
+        <a class="btn" href="https://github.com/Ste86-sudo/smartrower-dashboard">Data dashboard</a>
+      </div>
+    </div>
+    <div class="demo" id="demo">
+      <div class="demo-head">
+        <span class="eyebrow">Live simulation — the onboard web UI</span>
+        <div class="presets" role="group" aria-label="Stroke preset">
+          <button id="pT" aria-pressed="true">TECHNIQUE · 22 spm</button>
+          <button id="pR" aria-pressed="false">RACE · 32 spm</button>
+        </div>
+      </div>
+      <canvas id="cv" width="640" height="300" aria-label="Live force curve versus ghost target"></canvas>
+      <div class="legend"><span><i></i>your stroke</span><span><i class="g"></i>ghost target (physics model)</span></div>
+      <div class="tiles">
+        <div class="tile"><div class="lbl">Stroke rate</div><div class="val" id="tSpm">—<small> spm</small></div></div>
+        <div class="tile"><div class="lbl">Power</div><div class="val" id="tW">—<small> W</small></div></div>
+        <div class="tile"><div class="lbl">Pace</div><div class="val" id="tP">—<small> /500m</small></div></div>
+        <div class="tile"><div class="lbl">W′ balance</div><div class="val" id="tWb">100<small> %</small></div><div class="wbar"><i id="wbar" style="width:100%"></i></div></div>
+      </div>
+      <div class="cue"><span class="tag">COACH</span><span class="txt" id="cue">Settle in — analysing your first strokes…</span></div>
+      <p class="demo-note">Synthetic strokes with injected technique faults, generated by the same physics as the firmware (F = b₂·v², minimum-jerk kinematics). On the real machine this page is served by the ESP32 on the frame.</p>
+    </div>
+  </div>
+</header>
+
+<section id="story">
+  <div class="wrap">
+    <span class="eyebrow">The build story</span>
+    <h2>Gamifying a dumb machine</h2>
+    <p>An air rower is honest but mute: a fan, a cord, a seat. It never tells you whether the stroke was good — and without feedback, training decays into pulling hard. This project is the story of giving that machine a voice, in five chapters.</p>
+    <div class="timeline">
+      <div class="tl"><span class="when">Chapter 1 · The transplant</span><h3>Hang a scale where the handle was</h3><p>An S‑type load cell replaces the handle mount, read by an ADS1220 24‑bit ADC at 100 Hz. First revelation: the force curve of every stroke, live in a browser. The machine starts talking.</p></div>
+      <div class="tl"><span class="when">Chapter 2 · v1.0 — measure everything</span><h3>Two boards, one boat</h3><p>The handle node streams force over ESP‑NOW (14‑byte packets, 100 times a second) to a frame node that adds a cord encoder, a time‑of‑flight laser on the seat and a BLE heart‑rate strap. The frame serves the whole app from its own Wi‑Fi access point — the rower works in a basement with no internet, forever.</p></div>
+      <div class="tl"><span class="when">Chapter 3 · The audit</span><h3>Reading your own code like a stranger</h3><p>Before adding intelligence, a systematic review of v1.0 found twelve defects: stroke math duplicated with subtle divergence, heap allocations inside critical sections with interrupts disabled, a 1 kHz task doing 100 Hz work. Every finding is documented in the repo.</p></div>
+      <div class="tl"><span class="when">Chapter 4 · v2.0 — the rebuild</span><h3>One source of truth</h3><p>Shared stroke math used by both firmwares, the web UI gzipped at build time, wire formats preserved bit‑for‑bit so old calibrations survive. Boring on purpose — the foundation the coach stands on.</p></div>
+      <div class="tl"><span class="when">Chapter 5 · The coach</span><h3>From telemetry to gameplay</h3><p>Physics‑generated ghost curves to chase, literature‑based stroke scoring with one prioritised cue per stroke, a W′ anaerobic battery, personal bests, and ghost replay: race the recorded wattage of a past session and watch the ±metres gap live. The machine is no longer mute — it argues with you.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="electronics">
+  <div class="wrap">
+    <span class="eyebrow">Electronics &amp; sensors</span>
+    <h2>Three signals, one stroke</h2>
+    <p>Force alone is blind to coordination — it only sees the <em>sum</em> of what legs, trunk and arms do. The sensor choice follows directly from that: the handle position is the sum of the segments, the seat position is the legs alone, so their difference isolates the upper body. That decomposition powers all coordination metrics.</p>
+
+    <div class="arch">
+      <div class="node"><b>HANDLE NODE — ESP32‑S3</b><span>S‑type load cell · ADS1220 24‑bit ΔΣ ADC on SPI · 100 Hz sampling · battery powered · standalone mode with its own AP + OTA when the frame is off</span></div>
+      <div class="arrow">ESP‑NOW<br>100 Hz · 14 B</div>
+      <div class="node"><b>FRAME NODE — ESP32‑S3</b><span>Cord encoder (handle position) · ToF laser on seat rail · BLE client for HR strap · 200 Hz physics task · ghost curve engine · OTA</span></div>
+      <div class="arrow">Wi‑Fi AP<br>WebSocket</div>
+      <div class="node"><b>YOUR PHONE</b><span>Single‑file web app, canvas charts, no CDN, no internet required · sessions and PBs live in localStorage / IndexedDB</span></div>
+    </div>
+
+    <div class="grid c3">
+      <div class="card"><span class="eyebrow">Force</span><h3>Load cell + ADS1220</h3><p>A 24‑bit delta‑sigma ADC gives clean kilograms at 100 Hz over SPI — enough headroom that the firmware spends its effort on physics, not filtering.</p></div>
+      <div class="card"><span class="eyebrow">Handle position</span><h3>Cord encoder</h3><p>Signed ticks on the drive cord give position and velocity, so work is a true ∫F·dx integral, not an estimate. Direction is auto‑learned; a diagnostic watchdog falls back to force‑only metrics if the encoder dies mid‑session.</p></div>
+      <div class="card"><span class="eyebrow">Seat position</span><h3>ToF laser</h3><p>A time‑of‑flight ranger tracks the seat — the signal that unmasks <em>shooting the slide</em> and early trunk opening, invisible to force alone.</p></div>
+      <div class="card"><span class="eyebrow">Heart rate</span><h3>BLE chest strap</h3><p>The frame node is a BLE client for any standard HR strap, feeding zones, TRIMP load and the power‑to‑HR decoupling fatigue signal.</p></div>
+      <div class="card"><span class="eyebrow">Radio link</span><h3>ESP‑NOW, not Wi‑Fi</h3><p>Connectionless unicast with heartbeat pairing: 100 packets per second with millisecond latency and no association dance. If the frame vanishes, the handle notices in 500 ms and becomes a complete standalone rower.</p></div>
+      <div class="card"><span class="eyebrow">Maintenance</span><h3>OTA everywhere</h3><p>Both boards accept firmware uploads from the browser at <code>/update</code>. The web UI ships inside the firmware, gzip‑compressed at build time from one HTML source file.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="physics">
+  <div class="wrap">
+    <span class="eyebrow">The physics</span>
+    <h2>Ghost curves are computed, not drawn</h2>
+    <p>The target curve you chase is not a designer's sketch. It is the force that physics predicts when an ideal body rows <em>this</em> machine at <em>your</em> chosen rhythm.</p>
+    <div class="formula">F(t) = b₂·v(t)² + M_eff·a(t) + F_cord(x) <small>· measured on the V‑Fit Tornado: b₂ ≈ 110 N·s²/m², M_eff ≈ 0, cord ≈ 0 → air is everything</small></div>
+    <p>The <em>shape</em> comes from kinematics: each body segment follows a minimum‑jerk profile, sequenced the way rowing technique demands — legs 0–60 % of the drive, trunk 30–85 %, arms 55–100 %.</p>
+    <div class="formula">S(p) = 10p³ − 15p⁴ + 6p⁵ <small>· minimum-jerk displacement per segment;  v_handle = v_legs + v_trunk + v_arms</small></div>
+    <p>You prescribe the <strong>rhythm</strong> (stroke rate and drive:recovery ratio), never the power — power falls out of the model with the cube law <code>P ∝ R³/d²</code>. And because force is blind to coordination, the firmware generates <strong>three coupled ghosts</strong>: force (how much, what shape), seat (when the legs drive), arms (when the upper body closes). Same clock, three answers.</p>
+    <blockquote>Shape comes from kinematics; amplitude from the fan; duration from rhythm; watts are an output, not an input.</blockquote>
+  </div>
+</section>
+
+<section id="coach">
+  <div class="wrap">
+    <span class="eyebrow">The digital coach</span>
+    <h2>One cue per stroke, straight from the literature</h2>
+    <p>Every metric is judged against reference bands published in rowing biomechanics research (Kleshnev / Biorow, Holt et al. 2020, Warmenhoven et al. 2017‑18, Dudhia). And like a real coach, the system never shouts five corrections at once: faults are ranked — sequence first, then loading, then shape — and only the highest‑priority one speaks.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Metric</th><th>Reference band</th><th>What it unmasks</th></tr>
+      <tr><td>Fullness (F_mean/F_peak)</td><td>0.50 – 0.65</td><td>a spiky curve — connection lost mid‑drive</td></tr>
+      <tr><td>Peak position</td><td>32 – 40 % of drive</td><td>late effort, wasted length</td></tr>
+      <tr><td>Catch factor</td><td>−15 to −35 ms</td><td>seat must reverse <em>before</em> the handle; worse = shooting the slide</td></tr>
+      <tr><td>Rowing style factor</td><td>≈ 0.90</td><td>&gt; 1.0 bum‑shoving · &lt; 0.80 opening the back too early</td></tr>
+      <tr><td>Drive : recovery</td><td>≈ 1 : 2</td><td>rushing the slide back</td></tr>
+      <tr><td>RFD drift, CV, Pw:HR</td><td>per‑session trend</td><td>fatigue creeping into technique</td></tr>
+    </table></div>
+    <p style="margin-top:22px">The target shape itself is the <strong>Beta family</strong> <code>φ(u; p,q)</code> on normalised drive fraction — preset <em>Technique</em> (peak 33 %, Φ 0.56) for low rates, <em>Race</em> (peak 40 %, Φ 0.61) for 30+ spm. A Python analyzer replays every session offline with the same model, plus functional PCA: your stroke is compared to <em>your own</em> best modes, not to a population ideal.</p>
+  </div>
+</section>
+
+<section id="game">
+  <div class="wrap">
+    <span class="eyebrow">Gamification</span>
+    <h2>Racing yourself is the oldest game in rowing</h2>
+    <div class="grid c2">
+      <div class="card"><span class="eyebrow">Ghost replay</span><h3>Race a past session</h3><p>Pick a saved workout and hit CHALLENGE: the ghost's distance is re‑integrated live from its recorded wattage, and a ±metres chip on the dashboard tells you exactly how far ahead — or behind — you are of the rower you were last Tuesday.</p></div>
+      <div class="card"><span class="eyebrow">W′ battery</span><h3>An anaerobic fuel gauge</h3><p>The Skiba W′‑balance model runs live: ride above critical power and the battery drains, back off and it recharges. Interval pacing stops being guesswork.</p></div>
+      <div class="card"><span class="eyebrow">Load &amp; zones</span><h3>Five HR zones, TRIMP, decoupling</h3><p>A time‑in‑zone bar fills as you row; each session gets a Banister TRIMP score and three independent calorie estimates. Power‑to‑HR decoupling flags the day fatigue wins.</p></div>
+      <div class="card"><span class="eyebrow">History &amp; PBs</span><h3>All of it on your phone</h3><p>Sessions, trends and personal bests live in the browser's own storage — export a CSV and the <a href="https://github.com/Ste86-sudo/smartrower-dashboard">dashboard repo</a> turns it into long‑term biomechanics via a GitHub Action. Still no cloud.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><strong style="color:var(--paper)">SmartRower Pro</strong> — a garage build from Italy. Firmware: <a href="https://github.com/Ste86-sudo/SmartRowerPro">SmartRowerPro</a> · Analytics: <a href="https://github.com/Ste86-sudo/smartrower-dashboard">smartrower-dashboard</a></span>
+    <span>References: V. Kleshnev (Biorow) · Holt et al. 2020 · Warmenhoven et al. 2017‑18 · A. Dudhia, Physics of Ergometers · Skiba (W′bal) · Banister (TRIMP).</span>
+  </div>
+</footer>
+
+<script>
+(()=>{
+const cv=document.getElementById('cv'),x=cv.getContext('2d');
+const css=getComputedStyle(document.documentElement),C={trace:'#3cc9ac',ghost:'#e0a458',grid:'#1e2a40',dim:'#66748c'};
+const N=64;
+// minimum-jerk template (legs/trunk/arms) -> psi(tau), same model as firmware
+const seg=[[.33,0,.60],[.31,.30,.85],[.36,.55,1]];
+function Sp(p){return 30*p*p*(1-p)*(1-p)}
+const psi=[];let I1=0;
+for(let i=0;i<N;i++){const t=i/(N-1);let v=0;
+  for(const[f,a,b]of seg){const p=Math.min(1,Math.max(0,(t-a)/(b-a)));v+=f*Sp(p)/(b-a)}
+  psi.push(v);I1+=v/N}
+for(let i=0;i<N;i++)psi[i]/=I1;
+let I3=0;for(const v of psi)I3+=v*v*v/N;
+// presets: [spm, driveRatio]
+const PRE={T:[22,.345],R:[32,.42]};let pre='T';
+const b2=110,L=1.25,CP=185,W0=12000;let Wbal=W0;
+function ghostLUT(R,d){const td=d*60/R,k=L/td,out=[];let pk=0;
+  for(let i=0;i<N;i++){const F=b2*k*psi[i]*k*psi[i];out.push(F);if(F>pk)pk=F}
+  return{lut:out,pk,td,P:(R/60)*b2*L*L*L*I3/(td*td)}}
+// fault library: transform ghost shape into athlete stroke
+const faults=[
+ ['none','Good rhythm — hold this connection through the finish.'],
+ ['late','Move the effort earlier: peak force in the first half of the drive.'],
+ ['spike','Spiky curve — stay connected through the whole drive, not just the catch.'],
+ ['double','Two humps: merge the leg drive with the body swing into one push.'],
+ ['rush','Slow the recovery — set the body before the slide comes back.'],
+ ['none','Fullness 0.58, peak at 35% — right in the literature band. Keep it.'],
+ ['shoot','Shooting the slide: keep pressing with the legs until the handle follows the seat.']];
+function athlete(g,f){const a=[];
+ for(let i=0;i<N;i++){const t=i/(N-1);let v=g.lut[i];
+  if(f==='late')v=g.lut[Math.max(0,Math.min(N-1,Math.round((t*t*.75+t*.25)*(N-1))))];
+  if(f==='spike')v=g.pk*Math.pow(Math.sin(Math.PI*Math.min(1,t*1.6))||0,3)*1.12;
+  if(f==='double')v*=1+.32*Math.sin(t*Math.PI*2.6-1.1);
+  if(f==='shoot')v*=(t<.3?.72:1.08);
+  v*=1+.05*Math.sin(i*1.7+performance.now()/900);
+  a.push(Math.max(0,v))}
+ return a}
+let G=ghostLUT(...PRE[pre]),stroke=0,f='none',cur=athlete(G,f),prog=0,last=0;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=id=>document.getElementById(id);
+function pace(P){const s=Math.pow(2.8/P,1/3)*500;return`${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`}
+function newStroke(){stroke++;const fa=faults[stroke%faults.length];f=fa[0];cur=athlete(G,f);prog=0;
+ const[R]=PRE[pre],Pv=G.P*(f==='none'?1:.93)*(1+(Math.random()-.5)*.06);
+ $('tSpm').innerHTML=`${R+Math.round((Math.random()-.5)*2)}<small> spm</small>`;
+ $('tW').innerHTML=`${Math.round(Pv)}<small> W</small>`;
+ $('tP').innerHTML=`${pace(Pv)}<small> /500m</small>`;
+ Wbal=Math.max(0,Math.min(W0,Wbal-(Pv-CP)*(60/R)));
+ const w=Math.round(100*Wbal/W0);$('tWb').innerHTML=`${w}<small> %</small>`;$('wbar').style.width=w+'%';
+ $('cue').textContent=fa[1]}
+function draw(){const W=cv.width,H=cv.height,p=34;x.clearRect(0,0,W,H);
+ x.strokeStyle=C.grid;x.lineWidth=1;x.beginPath();
+ for(let i=0;i<=4;i++){const yy=p+(H-2*p)*i/4;x.moveTo(p,yy);x.lineTo(W-12,yy)}x.stroke();
+ x.fillStyle=C.dim;x.font='10px ui-monospace,monospace';
+ x.fillText('force →',8,16);x.fillText('catch',p,H-8);x.fillText('drive %',W/2-18,H-8);x.fillText('finish',W-52,H-8);
+ const sc=(H-2*p)/(G.pk*1.25),X=i=>p+(W-p-12)*i/(N-1),Y=v=>H-p-v*sc;
+ x.setLineDash([6,5]);x.strokeStyle=C.ghost;x.lineWidth=1.6;x.beginPath();
+ for(let i=0;i<N;i++)x[i?'lineTo':'moveTo'](X(i),Y(G.lut[i]));x.stroke();x.setLineDash([]);
+ const upto=reduce?N-1:Math.min(N-1,Math.floor(prog*(N-1)));
+ x.beginPath();x.moveTo(X(0),Y(0));
+ for(let i=0;i<=upto;i++)x.lineTo(X(i),Y(cur[i]));x.lineTo(X(upto),H-p);x.closePath();
+ x.fillStyle='rgba(60,201,172,.14)';x.fill();
+ x.strokeStyle=C.trace;x.lineWidth=2.4;x.beginPath();
+ for(let i=0;i<=upto;i++)x[i?'lineTo':'moveTo'](X(i),Y(cur[i]));x.stroke();
+ if(!reduce&&upto<N-1){x.fillStyle=C.trace;x.beginPath();x.arc(X(upto),Y(cur[upto]),4,0,7);x.fill()}}
+function tick(ts){const[R,d]=PRE[pre],T=60/R,td=d*T;
+ if(!last)last=ts;const dt=(ts-last)/1000;last=ts;
+ prog+=dt/(td*1.15);
+ if(prog>=1+ (T-td)/(td*1.15)){newStroke()}
+ draw();requestAnimationFrame(tick)}
+function setPre(k){pre=k;G=ghostLUT(...PRE[k]);cur=athlete(G,f);
+ $('pT').setAttribute('aria-pressed',k==='T');$('pR').setAttribute('aria-pressed',k==='R')}
+$('pT').onclick=()=>setPre('T');$('pR').onclick=()=>setPre('R');
+newStroke();
+if(reduce){draw();setInterval(()=>{newStroke();draw()},3000)}else requestAnimationFrame(tick);
+})();
+</script>
