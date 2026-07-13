@@ -65,6 +65,16 @@ canvas{width:100%;height:auto;display:block;border-radius:6px;background:var(--p
 .legend i{display:inline-block;width:18px;height:0;border-top:2px solid var(--trace);vertical-align:middle;margin-right:6px}
 .legend i.g{border-top:2px dashed var(--ghost)}
 
+/* ---------- app replica ---------- */
+.appbar{display:flex;justify-content:space-between;align-items:center;background:#020617;border:1px solid var(--line);border-bottom:none;border-radius:8px 8px 0 0;padding:9px 14px}
+.apptitle{font-weight:700;font-size:15px;background:linear-gradient(to right,#22d3ee,#a855f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.conn{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#10b981}
+.conn .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;margin-right:6px}
+#vDash canvas,#vCoach canvas{border-radius:0 0 6px 6px}
+.tiles.t6{grid-template-columns:repeat(3,1fr)}
+.val.pw{color:#f59e0b}.val.ds{color:#a855f7}.val.hr{color:#fb7185}
+.legend b{display:inline-block;width:16px;height:0;border-top:2px solid;vertical-align:middle;margin-right:6px}
+
 /* ---------- timeline ---------- */
 .timeline{border-left:1px solid var(--line);margin:34px 0 0 6px;display:flex;flex-direction:column;gap:34px}
 .tl{position:relative;padding-left:30px}
@@ -118,22 +128,36 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     </div>
     <div class="demo" id="demo">
       <div class="demo-head">
-        <span class="eyebrow">Live simulation — the onboard web UI</span>
-        <div class="presets" role="group" aria-label="Stroke preset">
-          <button id="pT" aria-pressed="true">TECHNIQUE · 22 spm</button>
-          <button id="pR" aria-pressed="false">RACE · 32 spm</button>
+        <span class="eyebrow">Live demo — the onboard web app</span>
+        <div class="presets" role="group" aria-label="App tab">
+          <button id="tabD" aria-pressed="true">DASHBOARD</button>
+          <button id="tabC" aria-pressed="false">COACH</button>
         </div>
       </div>
-      <canvas id="cv" width="640" height="300" aria-label="Live force curve versus ghost target"></canvas>
-      <div class="legend"><span><i></i>your stroke</span><span><i class="g"></i>ghost target (physics model)</span></div>
-      <div class="tiles">
-        <div class="tile"><div class="lbl">Stroke rate</div><div class="val" id="tSpm">—<small> spm</small></div></div>
-        <div class="tile"><div class="lbl">Power</div><div class="val" id="tW">—<small> W</small></div></div>
-        <div class="tile"><div class="lbl">Pace</div><div class="val" id="tP">—<small> /500m</small></div></div>
-        <div class="tile"><div class="lbl">W′ balance</div><div class="val" id="tWb">100<small> %</small></div><div class="wbar"><i id="wbar" style="width:100%"></i></div></div>
+      <div class="appbar"><span class="apptitle">SmartRower Pro</span><span class="conn"><i class="dot"></i>ESP-NOW LIVE</span></div>
+      <div id="vDash">
+        <canvas id="cv" width="640" height="230" aria-label="Scrolling live traces: force, handle cable, seat"></canvas>
+        <div class="legend"><span><b style="border-color:#22d3ee"></b>force (kg)</span><span><b style="border-color:#a855f7"></b>handle cable (m)</span><span><b style="border-color:#10b981"></b>seat (m)</span></div>
+        <div class="tiles t6">
+          <div class="tile"><div class="lbl">Stroke rate</div><div class="val" id="tSpm">—<small> spm</small></div></div>
+          <div class="tile"><div class="lbl">Power</div><div class="val pw" id="tW">—<small> W</small></div></div>
+          <div class="tile"><div class="lbl">Pace</div><div class="val" id="tP">—<small> /500m</small></div></div>
+          <div class="tile"><div class="lbl">Distance</div><div class="val ds" id="tD">0<small> m</small></div></div>
+          <div class="tile"><div class="lbl">Heart rate</div><div class="val hr" id="tH">—<small> bpm</small></div></div>
+          <div class="tile"><div class="lbl">Peak force</div><div class="val" id="tPk">—<small> kg</small></div></div>
+        </div>
+      </div>
+      <div id="vCoach" hidden>
+        <canvas id="cv2" width="640" height="230" aria-label="Last stroke force curve versus ghost target"></canvas>
+        <div class="legend"><span><b style="border-color:#22d3ee"></b>last stroke</span><span><b style="border-color:#e0a458;border-top-style:dashed"></b>ghost target</span></div>
+        <div class="tiles">
+          <div class="tile"><div class="lbl">Fullness Φ</div><div class="val" id="cPhi">—</div></div>
+          <div class="tile"><div class="lbl">Peak position</div><div class="val" id="cPos">—<small> %</small></div></div>
+          <div class="tile"><div class="lbl">Drive : recovery</div><div class="val" id="cDr">—</div></div>
+        </div>
       </div>
       <div class="cue"><span class="tag">COACH</span><span class="txt" id="cue">Settle in — analysing your first strokes…</span></div>
-      <p class="demo-note">Synthetic strokes with injected technique faults, generated by the same physics as the firmware (F = b₂·v², minimum-jerk kinematics). On the real machine this page is served by the ESP32 on the frame.</p>
+      <p class="demo-note">A faithful replica of the validation rig in <code>tools/simulator</code>: the simulator serves the real onboard UI and feeds it synthetic strokes with injected technique faults. The same generator drives this demo — Beta-shaped force at 20–24 spm, cable and seat kinematics, metrics computed exactly like the firmware (work = ∫F·dx, pace from W = 2.8·v³).</p>
     </div>
   </div>
 </header>
@@ -145,9 +169,9 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     <p>An air rower is honest but mute: a fan, a cord, a seat. It never tells you whether the stroke was good — and without feedback, training decays into pulling hard. This project is the story of giving that machine a voice, in five chapters.</p>
     <div class="timeline">
       <div class="tl"><span class="when">Chapter 1 · The transplant</span><h3>Hang a scale where the handle was</h3><p>An S‑type load cell replaces the handle mount, read by an ADS1220 24‑bit ADC at 100 Hz. First revelation: the force curve of every stroke, live in a browser. The machine starts talking.</p></div>
-      <div class="tl"><span class="when">Chapter 2 · v1.0 — measure everything</span><h3>Two boards, one boat</h3><p>The handle node streams force over ESP‑NOW (14‑byte packets, 100 times a second) to a frame node that adds a cord encoder, a time‑of‑flight laser on the seat and a BLE heart‑rate strap. The frame serves the whole app from its own Wi‑Fi access point — the rower works in a basement with no internet, forever.</p></div>
-      <div class="tl"><span class="when">Chapter 3 · The audit</span><h3>Reading your own code like a stranger</h3><p>Before adding intelligence, a systematic review of v1.0 found twelve defects: stroke math duplicated with subtle divergence, heap allocations inside critical sections with interrupts disabled, a 1 kHz task doing 100 Hz work. Every finding is documented in the repo.</p></div>
-      <div class="tl"><span class="when">Chapter 4 · v2.0 — the rebuild</span><h3>One source of truth</h3><p>Shared stroke math used by both firmwares, the web UI gzipped at build time, wire formats preserved bit‑for‑bit so old calibrations survive. Boring on purpose — the foundation the coach stands on.</p></div>
+      <div class="tl"><span class="when">Chapter 2 · Going wireless</span><h3>Two boards, one boat</h3><p>A second ESP32 moves onto the frame and the handle node streams force over ESP‑NOW — 14‑byte packets, 100 times a second, millisecond latency. The frame serves the whole app from its own Wi‑Fi access point: metric cards, adjustable stroke thresholds, firmware updates from the browser. The rower works in a basement with no internet, forever — and if the frame is off, the handle alone is still a complete rower.</p></div>
+      <div class="tl"><span class="when">Chapter 3 · Learning to see length</span><h3>An encoder on the cord, a laser on the seat</h3><p>Force tells you how hard; it can't tell you how far or in what order. A rotary encoder on the drive cord turns work into a true ∫F·dx integral, and a time‑of‑flight laser starts tracking the seat. The app grows with the hardware: live cable and seat traces next to the force curve, real stroke length, and a watchdog that quietly falls back to force‑only metrics if the encoder ever dies mid‑session.</p></div>
+      <div class="tl"><span class="when">Chapter 4 · Listening to the body</span><h3>A heart in the loop</h3><p>The frame learns to pair with any standard BLE chest strap. The app gains a five‑zone heart‑rate bar that fills as you row, a TRIMP load score per session, three independent calorie estimates and the W′ anaerobic battery — effort and recovery become visible, not just watts.</p></div>
       <div class="tl"><span class="when">Chapter 5 · The coach</span><h3>From telemetry to gameplay</h3><p>Physics‑generated ghost curves to chase, literature‑based stroke scoring with one prioritised cue per stroke, a W′ anaerobic battery, personal bests, and ghost replay: race the recorded wattage of a past session and watch the ±metres gap live. The machine is no longer mute — it argues with you.</p></div>
     </div>
   </div>
@@ -231,78 +255,104 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
 
 <script>
 (()=>{
-const cv=document.getElementById('cv'),x=cv.getContext('2d');
-const css=getComputedStyle(document.documentElement),C={trace:'#3cc9ac',ghost:'#e0a458',grid:'#1e2a40',dim:'#66748c'};
-const N=64;
-// minimum-jerk template (legs/trunk/arms) -> psi(tau), same model as firmware
-const seg=[[.33,0,.60],[.31,.30,.85],[.36,.55,1]];
-function Sp(p){return 30*p*p*(1-p)*(1-p)}
-const psi=[];let I1=0;
-for(let i=0;i<N;i++){const t=i/(N-1);let v=0;
-  for(const[f,a,b]of seg){const p=Math.min(1,Math.max(0,(t-a)/(b-a)));v+=f*Sp(p)/(b-a)}
-  psi.push(v);I1+=v/N}
-for(let i=0;i<N;i++)psi[i]/=I1;
-let I3=0;for(const v of psi)I3+=v*v*v/N;
-// presets: [spm, driveRatio]
-const PRE={T:[22,.345],R:[32,.42]};let pre='T';
-const b2=110,L=1.25,CP=185,W0=12000;let Wbal=W0;
-function ghostLUT(R,d){const td=d*60/R,k=L/td,out=[];let pk=0;
-  for(let i=0;i<N;i++){const F=b2*k*psi[i]*k*psi[i];out.push(F);if(F>pk)pk=F}
-  return{lut:out,pk,td,P:(R/60)*b2*L*L*L*I3/(td*td)}}
-// fault library: transform ghost shape into athlete stroke
-const faults=[
- ['none','Good rhythm — hold this connection through the finish.'],
- ['late','Move the effort earlier: peak force in the first half of the drive.'],
- ['spike','Spiky curve — stay connected through the whole drive, not just the catch.'],
- ['double','Two humps: merge the leg drive with the body swing into one push.'],
- ['rush','Slow the recovery — set the body before the slide comes back.'],
- ['none','Fullness 0.58, peak at 35% — right in the literature band. Keep it.'],
- ['shoot','Shooting the slide: keep pressing with the legs until the handle follows the seat.']];
-function athlete(g,f){const a=[];
- for(let i=0;i<N;i++){const t=i/(N-1);let v=g.lut[i];
-  if(f==='late')v=g.lut[Math.max(0,Math.min(N-1,Math.round((t*t*.75+t*.25)*(N-1))))];
-  if(f==='spike')v=g.pk*Math.pow(Math.sin(Math.PI*Math.min(1,t*1.6))||0,3)*1.12;
-  if(f==='double')v*=1+.32*Math.sin(t*Math.PI*2.6-1.1);
-  if(f==='shoot')v*=(t<.3?.72:1.08);
-  v*=1+.05*Math.sin(i*1.7+performance.now()/900);
-  a.push(Math.max(0,v))}
- return a}
-let G=ghostLUT(...PRE[pre]),stroke=0,f='none',cur=athlete(G,f),prog=0,last=0;
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $=id=>document.getElementById(id);
-function pace(P){const s=Math.pow(2.8/P,1/3)*500;return`${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`}
-function newStroke(){stroke++;const fa=faults[stroke%faults.length];f=fa[0];cur=athlete(G,f);prog=0;
- const[R]=PRE[pre],Pv=G.P*(f==='none'?1:.93)*(1+(Math.random()-.5)*.06);
- $('tSpm').innerHTML=`${R+Math.round((Math.random()-.5)*2)}<small> spm</small>`;
- $('tW').innerHTML=`${Math.round(Pv)}<small> W</small>`;
- $('tP').innerHTML=`${pace(Pv)}<small> /500m</small>`;
- Wbal=Math.max(0,Math.min(W0,Wbal-(Pv-CP)*(60/R)));
- const w=Math.round(100*Wbal/W0);$('tWb').innerHTML=`${w}<small> %</small>`;$('wbar').style.width=w+'%';
- $('cue').textContent=fa[1]}
-function draw(){const W=cv.width,H=cv.height,p=34;x.clearRect(0,0,W,H);
- x.strokeStyle=C.grid;x.lineWidth=1;x.beginPath();
- for(let i=0;i<=4;i++){const yy=p+(H-2*p)*i/4;x.moveTo(p,yy);x.lineTo(W-12,yy)}x.stroke();
- x.fillStyle=C.dim;x.font='10px ui-monospace,monospace';
- x.fillText('force →',8,16);x.fillText('catch',p,H-8);x.fillText('drive %',W/2-18,H-8);x.fillText('finish',W-52,H-8);
- const sc=(H-2*p)/(G.pk*1.25),X=i=>p+(W-p-12)*i/(N-1),Y=v=>H-p-v*sc;
- x.setLineDash([6,5]);x.strokeStyle=C.ghost;x.lineWidth=1.6;x.beginPath();
- for(let i=0;i<N;i++)x[i?'lineTo':'moveTo'](X(i),Y(G.lut[i]));x.stroke();x.setLineDash([]);
- const upto=reduce?N-1:Math.min(N-1,Math.floor(prog*(N-1)));
- x.beginPath();x.moveTo(X(0),Y(0));
- for(let i=0;i<=upto;i++)x.lineTo(X(i),Y(cur[i]));x.lineTo(X(upto),H-p);x.closePath();
- x.fillStyle='rgba(60,201,172,.14)';x.fill();
- x.strokeStyle=C.trace;x.lineWidth=2.4;x.beginPath();
- for(let i=0;i<=upto;i++)x[i?'lineTo':'moveTo'](X(i),Y(cur[i]));x.stroke();
- if(!reduce&&upto<N-1){x.fillStyle=C.trace;x.beginPath();x.arc(X(upto),Y(cur[upto]),4,0,7);x.fill()}}
-function tick(ts){const[R,d]=PRE[pre],T=60/R,td=d*T;
- if(!last)last=ts;const dt=(ts-last)/1000;last=ts;
- prog+=dt/(td*1.15);
- if(prog>=1+ (T-td)/(td*1.15)){newStroke()}
- draw();requestAnimationFrame(tick)}
-function setPre(k){pre=k;G=ghostLUT(...PRE[k]);cur=athlete(G,f);
- $('pT').setAttribute('aria-pressed',k==='T');$('pR').setAttribute('aria-pressed',k==='R')}
-$('pT').onclick=()=>setPre('T');$('pR').onclick=()=>setPre('R');
-newStroke();
-if(reduce){draw();setInterval(()=>{newStroke();draw()},3000)}else requestAnimationFrame(tick);
+const c1=$('cv').getContext('2d'),c2=$('cv2').getContext('2d');
+const CY='#22d3ee',PU='#a855f7',GN='#10b981',GH='#e0a458',GRID='#16233b',DIM='#64748b';
+const g=s=>(Math.random()*2-1)*s*1.2;
+const B=u=>u*(1-u)*(1-u)/0.148;   // Beta(2,3), max = 1 — la forma del simulatore
+const CUES={ok:'Good stroke — peak in the 32–40% band, hold this connection.',
+ late:'Late peak: move the effort into the first half of the drive.',
+ spiky:'Spiky curve — stay connected through the whole drive, not just the catch.',
+ double:'Two humps: merge the leg drive and the body swing into one push.',
+ shoot:'Shooting the slide: keep pressing with the legs until the handle follows the seat.',
+ slowrec:'Recovery too fast — aim for a 1:2 drive-to-recovery rhythm.'};
+const DEF=['ok','ok','late','ok','spiky','ok','double','shoot','ok','slowrec'];
+let di=0,cyc,phase=0,prev=0,dist=0,hr=118,watts=0,drive=[],buf=[],last=null,emaPk=34;
+function newCycle(){const spm=20.5+Math.random()*3.5,def=DEF[di++%DEF.length];
+ const d=def==='slowrec'?0.5:0.36,T=60/spm;
+ return{T,drv:d*T,def,peak:30+Math.random()*8,ld:1.28+Math.random()*0.12,work:0}}
+cyc=newCycle();
+function step(dt){phase+=dt;
+ if(phase>=cyc.T){phase-=cyc.T;endStroke()}
+ const{drv,def,peak,ld}=cyc;let f,cable,seat;
+ if(phase<drv){const u=phase/drv;
+  let sh=def==='late'?Math.pow(u,2.2)*(1-u)/0.105:def==='spiky'?Math.pow(B(u),2.4):B(u);
+  f=peak*sh;
+  if(def==='double')f*=1-0.38*Math.exp(-Math.pow((u-0.55)/0.09,2));
+  f=Math.max(0,f+g(0.4));
+  cable=ld*(1-Math.cos(u*Math.PI))/2;
+  const us=Math.min(1,u/(def==='shoot'?0.25:0.75));
+  seat=0.30+0.403*ld*(1-Math.cos(us*Math.PI))/2;
+  const dc=cable-prev;if(dc>0)cyc.work+=f*9.81*dc;
+  drive.push([u,f]);
+ }else{const u=(phase-drv)/(cyc.T-drv);
+  f=Math.max(0,1.2*(1-u)+g(0.15));
+  cable=ld*(1+Math.cos(u*Math.PI))/2;
+  const us=Math.max(0,(u-0.25)/0.75);
+  seat=0.30+0.403*ld*(1+Math.cos(us*Math.PI))/2}
+ prev=cable;
+ hr+=(Math.min(172,112+watts*0.22)-hr)*0.2*dt+g(0.1);
+ buf.push([f,cable,seat]);if(buf.length>480)buf.shift()}
+const p500=w=>{const v=Math.pow(w/2.8,1/3),s=500/v;
+ return`${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`};
+function endStroke(){
+ if(drive.length>8){
+  last=[];for(let k=0;k<64;k++){const u=k/63;
+   let best=drive[0][1],bd=9;for(const[du,dfv]of drive){const dd=Math.abs(du-u);if(dd<bd){bd=dd;best=dfv}}
+   last.push(best)}
+  const pk=Math.max(...last),mean=last.reduce((a,b)=>a+b)/64;
+  emaPk=emaPk*0.8+pk*0.2;
+  watts=Math.min(1500,Math.round(cyc.work/cyc.T));
+  const v=watts>0?Math.pow(watts/2.8,1/3):0;dist+=v*cyc.T;
+  $('tSpm').innerHTML=`${Math.round(60/cyc.T)}<small> spm</small>`;
+  $('tW').innerHTML=`${watts}<small> W</small>`;
+  $('tP').innerHTML=`${watts>0?p500(watts):'—'}<small> /500m</small>`;
+  $('tD').innerHTML=`${Math.round(dist)}<small> m</small>`;
+  $('tH').innerHTML=`${Math.round(hr)}<small> bpm</small>`;
+  $('tPk').innerHTML=`${pk.toFixed(1)}<small> kg</small>`;
+  $('cPhi').textContent=(mean/pk).toFixed(2);
+  $('cPos').innerHTML=`${Math.round(last.indexOf(pk)/63*100)}<small> %</small>`;
+  $('cDr').textContent=`1 : ${((cyc.T-cyc.drv)/cyc.drv).toFixed(1)}`;
+  $('cue').textContent=CUES[cyc.def];
+  drawCoach()}
+ drive=[];cyc=newCycle()}
+function drawDash(){const W=640,H=230;c1.clearRect(0,0,W,H);
+ c1.strokeStyle=GRID;c1.lineWidth=1;c1.beginPath();
+ for(let i=1;i<4;i++){const y=H*i/4;c1.moveTo(0,y);c1.lineTo(W,y)}c1.stroke();
+ c1.fillStyle=DIM;c1.font='10px ui-monospace,monospace';
+ c1.fillText('live · last 8 s',8,14);
+ if(!buf.length)return;
+ const X=i=>W*i/479,yF=f=>H-8-(f/45)*(H-30),yC=m=>H-8-(m/1.6)*(H-30),yS=m=>H-8-((m-0.2)/1.2)*(H-30);
+ c1.beginPath();c1.moveTo(X(0),H-8);
+ buf.forEach((s,i)=>c1.lineTo(X(i),yF(s[0])));c1.lineTo(X(buf.length-1),H-8);c1.closePath();
+ c1.fillStyle='rgba(34,211,238,.12)';c1.fill();
+ const line=(k,col,fn)=>{c1.strokeStyle=col;c1.lineWidth=k===0?2.2:1.5;c1.beginPath();
+  buf.forEach((s,i)=>c1[i?'lineTo':'moveTo'](X(i),fn(s[k])));c1.stroke()};
+ line(0,CY,yF);line(1,PU,yC);line(2,GN,yS)}
+function drawCoach(){const W=640,H=230,p=26;c2.clearRect(0,0,W,H);
+ c2.strokeStyle=GRID;c2.beginPath();
+ for(let i=0;i<=4;i++){const y=p+(H-2*p)*i/4;c2.moveTo(p,y);c2.lineTo(W-10,y)}c2.stroke();
+ c2.fillStyle=DIM;c2.font='10px ui-monospace,monospace';
+ c2.fillText('catch',p,H-6);c2.fillText('drive %',W/2-18,H-6);c2.fillText('finish',W-52,H-6);
+ const top=Math.max(emaPk*1.35,last?Math.max(...last)*1.1:45);
+ const X=k=>p+(W-p-10)*k/63,Y=f=>H-p-(f/top)*(H-2*p);
+ c2.setLineDash([6,5]);c2.strokeStyle=GH;c2.lineWidth=1.6;c2.beginPath();
+ for(let k=0;k<64;k++)c2[k?'lineTo':'moveTo'](X(k),Y(B(k/63)*emaPk));c2.stroke();c2.setLineDash([]);
+ if(!last)return;
+ c2.beginPath();c2.moveTo(X(0),Y(0));
+ last.forEach((f,k)=>c2.lineTo(X(k),Y(f)));c2.lineTo(X(63),H-p);c2.closePath();
+ c2.fillStyle='rgba(34,211,238,.12)';c2.fill();
+ c2.strokeStyle=CY;c2.lineWidth=2.2;c2.beginPath();
+ last.forEach((f,k)=>c2[k?'lineTo':'moveTo'](X(k),Y(f)));c2.stroke()}
+function setTab(d){$('vDash').hidden=!d;$('vCoach').hidden=d;
+ $('tabD').setAttribute('aria-pressed',d);$('tabC').setAttribute('aria-pressed',!d);
+ if(!d)drawCoach()}
+$('tabD').onclick=()=>setTab(true);$('tabC').onclick=()=>setTab(false);
+for(let t=0;t<9;t+=0.02)step(0.02);          // prefill: ~3 colpi già a schermo
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce){drawDash();drawCoach();
+ setInterval(()=>{for(let t=0;t<3;t+=0.02)step(0.02);drawDash();if(!$('vCoach').hidden)drawCoach()},3000)}
+else{let lt=0;(function loop(ts){const dt=Math.min(0.033,(ts-lt)/1000||0.016);lt=ts;
+ step(dt);if(!$('vDash').hidden)drawDash();requestAnimationFrame(loop)})(0)}
 })();
 </script>
