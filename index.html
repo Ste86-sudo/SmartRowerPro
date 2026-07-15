@@ -75,6 +75,10 @@ canvas{width:100%;height:auto;display:block;border-radius:6px;background:var(--p
 .navlinks a:hover{color:var(--trace);text-decoration:none}
 .appframe{width:100%;height:760px;border:1px solid var(--line);border-radius:10px;background:#020617;margin-top:26px}
 .res-extract{font-family:var(--serif);font-style:italic;color:var(--paper);font-size:15px;margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ref{font-family:var(--mono);font-size:.72em;vertical-align:super;color:var(--trace)}
+.refs{margin-top:18px;padding-left:22px;font-size:14px;color:var(--fog);max-width:75ch}
+.refs li{margin:7px 0}
+.refs em{color:var(--paper)}
 
 /* ---------- app replica ---------- */
 .appbar{display:flex;justify-content:space-between;align-items:center;background:#020617;border:1px solid var(--line);border-bottom:none;border-radius:8px 8px 0 0;padding:9px 14px}
@@ -226,7 +230,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     <h2>Ghost curves are computed, not drawn</h2>
     <p>The target curve you chase is not a designer's sketch. It is the force that physics predicts when an ideal body rows <em>this</em> machine at <em>your</em> chosen rhythm.</p>
     <div class="formula">F(t) = b₂·v(t)² + M_eff·a(t) + F_cord(x) <small>· measured on the V‑Fit Tornado: b₂ ≈ 110 N·s²/m², M_eff ≈ 0, cord ≈ 0 → air is everything</small></div>
-    <p>The <em>shape</em> comes from kinematics: each body segment follows a minimum‑jerk profile, sequenced the way rowing technique demands — legs 0–60 % of the drive, trunk 30–85 %, arms 55–100 %.</p>
+    <p>The quadratic air-drag model and the cube law it implies are the standard physics of ergometers<a class="ref" href="#refs">[4]</a>. The <em>shape</em> comes from kinematics: each body segment follows a minimum‑jerk profile — the velocity profile experimentally confirmed for skilled human movement<a class="ref" href="#refs">[5]</a> — sequenced the way rowing technique demands: legs 0–60 % of the drive, trunk 30–85 %, arms 55–100 %<a class="ref" href="#refs">[1]</a>.</p>
     <div class="formula">S(p) = 10p³ − 15p⁴ + 6p⁵ <small>· minimum-jerk displacement per segment;  v_handle = v_legs + v_trunk + v_arms</small></div>
     <p>You prescribe the <strong>rhythm</strong> (stroke rate and drive:recovery ratio), never the power — power falls out of the model with the cube law <code>P ∝ R³/d²</code>. And because force is blind to coordination, the firmware generates <strong>three coupled ghosts</strong>: force (how much, what shape), seat (when the legs drive), arms (when the upper body closes). Same clock, three answers.</p>
     <blockquote>Shape comes from kinematics; amplitude from the fan; duration from rhythm; watts are an output, not an input.</blockquote>
@@ -237,7 +241,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
   <div class="wrap">
     <span class="eyebrow">The digital coach</span>
     <h2>One cue per stroke, straight from the literature</h2>
-    <p>Every metric is judged against reference bands published in rowing biomechanics research (Kleshnev / Biorow, Holt et al. 2020, Warmenhoven et al. 2017‑18, Dudhia). And like a real coach, the system never shouts five corrections at once: faults are ranked — sequence first, then loading, then shape — and only the highest‑priority one speaks.</p>
+    <p>Every metric is judged against reference bands published in rowing biomechanics research: the force‑curve shape bands and catch‑factor/RSF optima come from Kleshnev's Biorow work<a class="ref" href="#refs">[1]</a>, the link between stroke technique and performance from Holt et al.<a class="ref" href="#refs">[2]</a>, and the phase‑normalised curve analysis from Warmenhoven's functional data studies<a class="ref" href="#refs">[3]</a>. And like a real coach, the system never shouts five corrections at once: faults are ranked — sequence first, then loading, then shape — and only the highest‑priority one speaks.</p>
     <div class="tablewrap"><table>
       <tr><th>Metric</th><th>Reference band</th><th>What it unmasks</th></tr>
       <tr><td>Fullness (F_mean/F_peak)</td><td>0.50 – 0.65</td><td>a spiky curve — connection lost mid‑drive</td></tr>
@@ -267,8 +271,8 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     <h2>Racing yourself is the oldest game in rowing</h2>
     <div class="grid c2">
       <div class="card"><span class="eyebrow">Ghost replay</span><h3>Race a past session</h3><p>Pick a saved workout and hit CHALLENGE: the ghost's distance is re‑integrated live from its recorded wattage, and a ±metres chip on the dashboard tells you exactly how far ahead — or behind — you are of the rower you were last Tuesday.</p></div>
-      <div class="card"><span class="eyebrow">W′ battery</span><h3>An anaerobic fuel gauge</h3><p>The Skiba W′‑balance model runs live: ride above critical power and the battery drains, back off and it recharges. Interval pacing stops being guesswork.</p></div>
-      <div class="card"><span class="eyebrow">Load &amp; zones</span><h3>Five HR zones, TRIMP, decoupling</h3><p>A time‑in‑zone bar fills as you row; each session gets a Banister TRIMP score and three independent calorie estimates. Power‑to‑HR decoupling flags the day fatigue wins.</p></div>
+      <div class="card"><span class="eyebrow">W′ battery</span><h3>An anaerobic fuel gauge</h3><p>The Skiba W′‑balance model<a class="ref" href="#refs">[6]</a> built on the critical‑power framework<a class="ref" href="#refs">[7]</a> runs live: ride above critical power and the battery drains, back off and it recharges. Interval pacing stops being guesswork.</p></div>
+      <div class="card"><span class="eyebrow">Load &amp; zones</span><h3>Five HR zones, TRIMP, decoupling</h3><p>A time‑in‑zone bar fills as you row; each session gets a Banister TRIMP score<a class="ref" href="#refs">[8]</a> and three independent calorie estimates — the Concept2 convention<a class="ref" href="#refs">[10]</a> and the Keytel heart‑rate regression<a class="ref" href="#refs">[9]</a> beside the firmware's own. Power‑to‑HR decoupling flags the day fatigue wins.</p></div>
       <div class="card"><span class="eyebrow">History &amp; PBs</span><h3>All of it on your phone</h3><p>Sessions, trends and personal bests live in the browser's own storage — export a CSV and the <a href="https://github.com/Ste86-sudo/smartrower-dashboard">dashboard repo</a> turns it into long‑term biomechanics via a GitHub Action. Still no cloud.</p></div>
     </div>
   </div>
@@ -284,14 +288,29 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
       <div class="card"><span class="eyebrow">White paper · Coaching model</span><h3>The virtual coach</h3><p>The Beta target family, Tier A (force only) vs Tier B (force + position), per‑stroke features, tolerance scoring, and why the RFD is a regression — not a two‑point difference — at 100 Hz.</p><p class="res-extract">“Return the cue of the FIRST group below threshold: sequence first, then loading, then shape — a coach gives one correction, not five.”</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/blob/master/docs/super_prompt_antigravity_SmartRowerPro.md">Read the spec →</a></p></div>
       <div class="card"><span class="eyebrow">Blueprint</span><h3>Instrumented‑erg coach, in general</h3><p>The hardware‑agnostic version of the model: athlete calibration from slow strokes, CSV schema, feature extraction, and cross‑language consistency tests between firmware and analyzer.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/blob/master/docs/antigravity_rowing_coach_prompt.md">Read the spec →</a></p></div>
       <div class="card"><span class="eyebrow">Tooling</span><h3>Session analyzer &amp; fPCA</h3><p>Post‑session Python analysis sharing the coach's scoring model, plus functional PCA: your personal modes of stroke variation instead of a population ideal — validated on synthetic sessions with injected faults.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/tree/master/tools/analyzer">Browse the analyzer →</a></p></div>
+      <div class="card"><span class="eyebrow">Training</span><h3>Workout library</h3><p>150+ structured workouts generated from the models on this page: intervals engineered on the W′‑balance equations, rate ladders built on the cube law, technique sessions at the Beta “technique” preset, threshold and race‑prep pieces. Exported in EXR (.xsr) and Zwift (.zwo) formats.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/tree/master/workouts">Browse the workouts →</a></p></div>
     </div>
+
+    <h3 style="margin-top:44px" id="refs">Scientific references</h3>
+    <ol class="refs">
+      <li>Kleshnev, V. — <em>The Biomechanics of Rowing</em>, Crowood Press, 2016; and the Biorow technical newsletters (force‑curve shape, peak position 32–40 %, catch factor, Rowing Style Factor). <a href="https://biorow.com">biorow.com</a></li>
+      <li>Holt, A. C., Aughey, R. J., Ball, K., Hopkins, W. G., Siegel, R. — “Technical Determinants of On‑Water Rowing Performance”, <em>Frontiers in Sports and Active Living</em>, 2020.</li>
+      <li>Warmenhoven, J., et al. — functional data analysis of rowing force–angle profiles: <em>Journal of Science and Medicine in Sport</em> (2018) and <em>Sports Biomechanics</em> (2017‑19); basis of the phase‑normalised ensemble curves used here.</li>
+      <li>Dudhia, A. — <em>The Physics of Ergometers</em>, Oxford University (online monograph): quadratic air drag F = k·v², drag‑factor independence, the power–pace cube law.</li>
+      <li>Flash, T., Hogan, N. — “The Coordination of Arm Movements: An Experimentally Confirmed Mathematical Model”, <em>Journal of Neuroscience</em>, 5(7), 1985 (minimum‑jerk velocity profiles).</li>
+      <li>Skiba, P. F., Chidnok, W., Vanhatalo, A., Jones, A. M. — “Modeling the Expenditure and Reconstitution of Work Capacity above Critical Power”, <em>Medicine &amp; Science in Sports &amp; Exercise</em>, 44(8), 2012 (W′‑balance).</li>
+      <li>Monod, H., Scherrer, J. — “The Work Capacity of a Synergic Muscular Group”, <em>Ergonomics</em>, 8(3), 1965 (the critical‑power / W′ framework).</li>
+      <li>Banister, E. W. — “Modeling Elite Athletic Performance”, in <em>Physiological Testing of the High‑Performance Athlete</em>, Human Kinetics, 1991 (TRIMP training impulse).</li>
+      <li>Keytel, L. R., et al. — “Prediction of Energy Expenditure from Heart Rate Monitoring during Submaximal Exercise”, <em>Journal of Sports Sciences</em>, 23(3), 2005.</li>
+      <li>Concept2 — “Watts Calculator / How Calories Are Calculated” (technical documentation): the pace–power convention W = 2.80 / pace³ used by all ergometer displays.</li>
+    </ol>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span><strong style="color:var(--paper)">SmartRower Pro</strong> — a garage build from Italy. Firmware: <a href="https://github.com/Ste86-sudo/SmartRowerPro">SmartRowerPro</a> · Analytics: <a href="https://github.com/Ste86-sudo/smartrower-dashboard">smartrower-dashboard</a></span>
-    <span>References: V. Kleshnev (Biorow) · Holt et al. 2020 · Warmenhoven et al. 2017‑18 · A. Dudhia, Physics of Ergometers · Skiba (W′bal) · Banister (TRIMP).</span>
+    <span>Full bibliography in the <a href="#refs">Scientific references</a> section — Kleshnev, Holt, Warmenhoven, Dudhia, Flash &amp; Hogan, Monod &amp; Scherrer, Skiba, Banister, Keytel, Concept2.</span>
   </div>
 </footer>
 
