@@ -11,3 +11,17 @@ preset bands for form and race sessions.
 Categories: Technique & Form, Endurance, Threshold, W-Prime Intervals,
 Rate Ladders, Race Prep, HIIT, Recovery. Reference athlete for the W'
 predictions in the descriptions: CP = FTP = 200 W, W' = 12 kJ.
+
+### From physics to training
+
+The library is not folklore — the models wrote it:
+
+| Model | Predicts | Workout family it wrote |
+|---|---|---|
+| Cube law `P ∝ R³/d²` (Dudhia) | power cost of rating up at constant stroke | **Rate Ladders** — step targets computed from R³ |
+| W′-balance (Skiba; Monod & Scherrer) | interval depletion and recharge | **W-Prime Intervals & HIIT** — simulated segment by segment; predicted W′ floor in each description |
+| Beta target curve (Kleshnev bands) | the shape of a good stroke per rate | **Technique & Form** — 18–26 spm on the "technique" ghost, catch/RSF drills |
+| TRIMP & Pw:HR decoupling (Banister) | session load and aerobic base quality | **Endurance** — UT2/UT1 volume, decoupling as pass/fail; plans periodised on TRIMP |
+| Critical-power framework | personal CP/W′ from two time trials | **Race Prep** — 1k/5k tests feed the athlete card; 2k on the "race" ghost |
+
+The loop closes on the machine: the coach grading your strokes uses the same models that wrote the workout you are doing.
