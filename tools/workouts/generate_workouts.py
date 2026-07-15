@@ -13,6 +13,7 @@ Segments: (seconds, FTP fraction [-1 = free/rest], spm [0 = free]).
 import json, math, os, re, uuid
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
+NL = chr(10)
 CP, W0 = 200.0, 12000.0          # reference athlete for W' predictions
 
 def wprime_floor(segs, ftp=CP):
@@ -33,7 +34,7 @@ def cd(mins=5):          return [(mins * 60, -1.0, 0)]
 
 def xsr(title, desc, diff, tags, segs):
     return json.dumps({
-        "MetaData": {"FileVersionNumber": 2, "Guid": str(uuid.uuid4()),
+        "MetaData": {"FileVersionNumber": 2, "Guid": wguid(title),
                      "IsC2Verified": False, "Tags": tags},
         "TrainingData": {"Category": "", "Title": title, "UnitType": 1,
             "Difficulty": diff, "Description": desc,
@@ -57,6 +58,9 @@ def zwo(title, desc, tags, segs):
             L.append(f'    <SteadyState Duration="{s}" Power="{f:.2f}"{cad}/>')
     L += ["  </workout>", "</workout_file>", ""]
     return "\n".join(L)
+
+def wguid(title):
+    return str(uuid.uuid5(uuid.NAMESPACE_URL, "smartrowerpro:" + title))
 
 LIB = []   # (category, title, desc, difficulty, tags, segs)
 def add(cat, title, desc, diff, tags, segs):
@@ -135,7 +139,7 @@ for reps, on, rest in ((2, 20, 5), (3, 15, 4), (4, 10, 3), (5, 8, 2), (3, 12, 3)
                      for _ in range(reps)], []) + cd())
 for reps, over, under in ((4, 1.08, 0.92), (5, 1.05, 0.90), (6, 1.10, 0.88), (4, 1.06, 0.94), (3, 1.12, 0.85)):
     segs = wu(8) + sum([[(120, over, 26), (180, under, 22)] for _ in range(reps)], []) + cd()
-    add("Threshold", f"Over-Under {reps}x(2+3)",
+    add("Threshold", f"Over-Under {reps}x(2+3) {int(over*100)}/{int(under*100)}",
         f"{reps} rounds of 2min @{int(over*100)}% / 3min @{int(under*100)}% FTP. "
         f"Teaches lactate shuttling; predicted W' floor ≈ {wprime_floor(segs)}% "
         "(CP=FTP=200W, W'=12kJ).",
@@ -200,7 +204,7 @@ for r0, steps, hold in ((18, (18, 20, 22, 24), 180), (18, (18, 20, 22, 24, 26), 
                         (16, (16, 18, 20, 22), 210), (20, (20, 23, 26, 29), 150),
                         (24, (24, 27, 30), 150), (18, (18, 21, 24, 27, 30), 120)):
     segs = wu() + [(hold, round(CUBE(r, r0, 0.60), 2), r) for r in steps] + cd()
-    add("Rate Ladders", f"Cube Ladder {steps[0]}-{steps[-1]}spm",
+    add("Rate Ladders", f"Cube Ladder {steps[0]}-{steps[-1]}spm x{len(steps)}",
         f"Rate ladder {'-'.join(map(str, steps))} spm holding the SAME stroke: "
         "power targets follow the cube law P∝R³ — at constant drive length, "
         "rating up alone nearly doubles the watts. Do not let the shape change.",
@@ -233,7 +237,7 @@ add("Race Prep", "2k Race Simulation",
     "even splits, sprint the last 250m.",
     5, ["RACE", "2K"], wu(10) + [(420, 1.05, 32)] + cd(8))
 for reps, dist_s in ((4, 105), (6, 105), (8, 52), (5, 105), (10, 52), (3, 160), (2, 210)):
-    label = "500m" if dist_s > 60 else "250m"
+    label = {105: "500m", 52: "250m", 160: "750m", 210: "1000m"}[dist_s]
     add("Race Prep", f"Race Pieces {reps}x{label}",
         f"{reps}x{label} at 2k pace +2%, full recovery. Quality over volume: "
         "every piece at 30-34 spm on the race ghost, identical splits.",
@@ -323,6 +327,61 @@ for km, mins in ((5, 24), (6, 28), (8, 37), (10, 47), (12, 56)):
         "build the aerobic base — and the History tab's trend line.",
         2, ["ENDURANCE", "DISTANCE"], wu() + [(mins * 60, 0.65, 20)] + cd())
 
+
+# ── Multi-week plans (EXR Plans schema, GUID refs by title) ─────────────────
+PLANS = [
+ ("Foundation - Learn the Stroke",
+  "Four weeks, three short sessions a week, to build the stroke before the engine: "
+  "Beta 'technique' ghost, catch and sequence drills, easy aerobic volume. "
+  "Graduate when the Coach tab stays quiet for ten strokes in a row.",
+  1, ["TECHNIQUE", "BEGINNER"],
+  [["Beta Shape 20min @18spm", "Regeneration 20min", "Connection Row 16min"],
+   ["Beta Shape 25min @18spm", "Sequence Drill 1", "Recovery Flow 1"],
+   ["Catch Sharpener 6x3min", "Beta Shape 20min @20spm", "UT2 Steady 30min"],
+   ["Pause Drill Finish 16min", "Beta Shape 25min @20spm", "Regeneration 25min"]]),
+ ("Aerobic Engine",
+  "Six weeks of progressive aerobic volume periodised on TRIMP: steady UT2/UT1, "
+  "sweet spot and distance monuments, with the Pw:HR decoupling metric as the "
+  "weekly pass/fail. Four sessions a week.",
+  2, ["ENDURANCE", "AEROBIC", "BASE"],
+  [["UT2 Steady 40min", "Sweet Spot 20min", "Regeneration 20min", "Distance Row 5k"],
+   ["UT2 Steady 50min", "Aerobic Waves 3x10min", "Recovery Flow 2", "Distance Row 6k"],
+   ["UT2+ Steady 40min", "Sweet Spot 30min", "Regeneration 25min", "Negative Split 40min"],
+   ["UT2 Steady 60min", "Aerobic Waves 4x10min", "Recovery Flow 1", "Distance Row 8k"],
+   ["UT1 Steady 40min", "Sweet Spot 40min", "Regeneration 30min", "Negative Split 50min"],
+   ["Distance Row 10k", "UT1 Steady 30min", "Recovery Flow 3", "UT2 Steady 40min"]]),
+ ("2k Breakthrough - SmartRower Edition",
+  "Six weeks from benchmark to race: threshold and W'-engineered intervals whose "
+  "depletion floors are computed with the Skiba model, race pieces on the 'race' "
+  "ghost, and a proper taper into the 2k simulation. Four sessions a week.",
+  4, ["RACE", "2K", "WPRIME", "THRESHOLD"],
+  [["5k Tempo Test", "Threshold 4x10min", "Regeneration 25min", "UT2 Steady 40min"],
+   ["Over-Under 4x(2+3) 108/92", "W' Burn 8x60s @130%", "Recovery Flow 2", "UT2 Steady 40min"],
+   ["Threshold 3x15min", "HIIT 10x40/20s", "Regeneration 25min", "Race Pieces 8x250m"],
+   ["Over-Under 5x(2+3) 105/90", "W' Burn 6x90s @125%", "Recovery Flow 1", "Race Pieces 4x500m"],
+   ["1k Time Trial", "Depletion Blocks 3x4min", "Regeneration 20min", "2k Split Strategy: Fast Finish"],
+   ["Rate Surges 4x(3+1)", "Start Sequence Practice", "Regeneration 15min", "2k Race Simulation"]]),
+ ("Time-Crunched 30",
+  "Four weeks, three sessions of about 30 minutes: sweet spot for the engine, "
+  "HIIT with computed W' floors for the top end, recovery to absorb it. Maximum "
+  "adaptation per minute for busy weeks.",
+  3, ["HIIT", "SWEETSPOT", "SHORT"],
+  [["Sweet Spot 20min", "HIIT 10x30/30s", "Recovery Flow 1"],
+   ["Cube Ladder 16-22spm x4", "HIIT 16x20/10s", "Regeneration 20min"],
+   ["Sweet Spot 30min", "Sprint Repeats 6x15s", "Recovery Flow 2"],
+   ["Threshold 6x6min", "Tabata Classic", "Regeneration 20min"]]),
+]
+
+def plan_json(title, desc, diff, tags, weeks):
+    return json.dumps({
+        "Title": title, "Description": desc, "Difficulty": diff,
+        "MetaData": {"FileVersionNumber": 0,
+                     "Guid": str(uuid.uuid5(uuid.NAMESPACE_URL, "smartrowerpro-plan:" + title)),
+                     "Tags": tags},
+        "Weeks": [{"Name": f"Week_{i+1}",
+                   "Workouts": [{"TrainingFileGUID": wguid(w)} for w in wk]}
+                  for i, wk in enumerate(weeks)]}, indent=2)
+
 def main():
     safe = lambda s: re.sub(r"[^A-Za-z0-9]+", "", s.title())
     nx = nz = 0
@@ -335,6 +394,22 @@ def main():
             f.write(xsr(title, desc, diff, tags, segs)); nx += 1
         with open(os.path.join(dz, base + ".zwo"), "w", encoding="utf-8") as f:
             f.write(zwo(title, desc, tags, segs)); nz += 1
+    titles = {t for _, t, *_ in LIB}
+    for pt, pd, pdi, ptag, weeks in PLANS:
+        missing = [w for wk in weeks for w in wk if w not in titles]
+        assert not missing, f"plan '{pt}' references unknown workouts: {missing}"
+        d = os.path.join(OUT, "xsr_format", "Plans", re.sub(r"[^A-Za-z0-9]+", "_", pt))
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "n_" + safe(pt) + ".xsr"), "w", encoding="utf-8") as f:
+            f.write(plan_json(pt, pd, pdi, ptag, weeks))
+    with open(os.path.join(OUT, "PLANS.md"), "w", encoding="utf-8") as f:
+        f.write("# SmartRower Pro training plans" + NL)
+        for pt, pd, pdi, ptag, weeks in PLANS:
+            f.write(NL + f"## {pt} ({len(weeks)} weeks, difficulty {pdi})"
+                    + NL + NL + pd + NL)
+            for i, wk in enumerate(weeks):
+                f.write(NL + f"**Week {i+1}**: " + " - ".join(wk) + NL)
+    print(f"{len(PLANS)} plans written")
     total = lambda segs: sum(s for s, _, _ in segs)
     mins = sum(total(s) for *_, s in LIB) / 60
     print(f"{nx} .xsr + {nz} .zwo written to {OUT} "

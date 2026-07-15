@@ -1,0 +1,119 @@
+{
+  "Title": "2k Breakthrough - SmartRower Edition",
+  "Description": "Six weeks from benchmark to race: threshold and W'-engineered intervals whose depletion floors are computed with the Skiba model, race pieces on the 'race' ghost, and a proper taper into the 2k simulation. Four sessions a week.",
+  "Difficulty": 4,
+  "MetaData": {
+    "FileVersionNumber": 0,
+    "Guid": "115cdeed-4ac0-546d-ac32-8b185ff952b8",
+    "Tags": [
+      "RACE",
+      "2K",
+      "WPRIME",
+      "THRESHOLD"
+    ]
+  },
+  "Weeks": [
+    {
+      "Name": "Week_1",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "1f0701ec-5619-57f8-ac9e-a9b65f63c15c"
+        },
+        {
+          "TrainingFileGUID": "62d78575-730d-50df-beb6-df29fbf5e69c"
+        },
+        {
+          "TrainingFileGUID": "099d178a-3cb2-5800-83a7-8faea9041d9a"
+        },
+        {
+          "TrainingFileGUID": "56d26dd0-f8d4-5f1e-9a62-d0c3d697a7c9"
+        }
+      ]
+    },
+    {
+      "Name": "Week_2",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "f1259ea1-2999-57f4-a368-70042acc046e"
+        },
+        {
+          "TrainingFileGUID": "5e9b43a0-8917-5565-86ee-0843d7c46183"
+        },
+        {
+          "TrainingFileGUID": "1650c7ea-5f0a-50a0-aba9-20cda6e2b6fd"
+        },
+        {
+          "TrainingFileGUID": "56d26dd0-f8d4-5f1e-9a62-d0c3d697a7c9"
+        }
+      ]
+    },
+    {
+      "Name": "Week_3",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "13317973-efc7-5a18-a827-934434b3d71a"
+        },
+        {
+          "TrainingFileGUID": "9e7e171a-e525-56b7-82b9-a0fc04b6b064"
+        },
+        {
+          "TrainingFileGUID": "099d178a-3cb2-5800-83a7-8faea9041d9a"
+        },
+        {
+          "TrainingFileGUID": "2e68ce60-0907-5e22-a85b-80d341fcb208"
+        }
+      ]
+    },
+    {
+      "Name": "Week_4",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "8bde45a2-21b5-5e68-a36c-d5d7c16726b5"
+        },
+        {
+          "TrainingFileGUID": "43d5ec86-1a2d-5a17-96d2-424fd25b0607"
+        },
+        {
+          "TrainingFileGUID": "9c6be4ce-6b28-5bfe-b31e-9be946166e3d"
+        },
+        {
+          "TrainingFileGUID": "12337d4a-340f-5031-9785-7c5b2cd2e6b5"
+        }
+      ]
+    },
+    {
+      "Name": "Week_5",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "d2dafc10-7843-5ed5-bc7e-a27e6193984e"
+        },
+        {
+          "TrainingFileGUID": "61ab4007-3071-5454-bf94-296459d37a0b"
+        },
+        {
+          "TrainingFileGUID": "d681802c-97a3-5fd7-9a0c-080c95e69aa4"
+        },
+        {
+          "TrainingFileGUID": "51f36de4-67f5-5166-b734-4e1b9a46edb8"
+        }
+      ]
+    },
+    {
+      "Name": "Week_6",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "e3825633-948c-54e8-81ee-661f27a69874"
+        },
+        {
+          "TrainingFileGUID": "1784c873-9f11-515f-9025-ef0aa0ac421e"
+        },
+        {
+          "TrainingFileGUID": "3a653442-c8cc-50a2-9684-f732da0fbd78"
+        },
+        {
+          "TrainingFileGUID": "18a448ee-2576-5ee5-b2bc-963472c2e59d"
+        }
+      ]
+    }
+  ]
+}

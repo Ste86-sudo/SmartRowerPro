@@ -1,0 +1,64 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "5d6d821a-e8f2-5040-9342-78036ac44296",
+    "IsC2Verified": false,
+    "Tags": [
+      "RACE",
+      "PIECES"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Race Pieces 3x750m",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "3x750m at 2k pace +2%, full recovery. Quality over volume: every piece at 30-34 spm on the race ghost, identical splits.",
+    "Schedule": [
+      {
+        "Length": 600,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 160,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 320,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 160,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 320,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 160,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 320,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

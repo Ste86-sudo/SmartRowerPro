@@ -1,0 +1,118 @@
+{
+  "Title": "Aerobic Engine",
+  "Description": "Six weeks of progressive aerobic volume periodised on TRIMP: steady UT2/UT1, sweet spot and distance monuments, with the Pw:HR decoupling metric as the weekly pass/fail. Four sessions a week.",
+  "Difficulty": 2,
+  "MetaData": {
+    "FileVersionNumber": 0,
+    "Guid": "6ab4da50-bc3b-50f3-8db5-6ac78ab104b0",
+    "Tags": [
+      "ENDURANCE",
+      "AEROBIC",
+      "BASE"
+    ]
+  },
+  "Weeks": [
+    {
+      "Name": "Week_1",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "56d26dd0-f8d4-5f1e-9a62-d0c3d697a7c9"
+        },
+        {
+          "TrainingFileGUID": "324ce6e2-de0b-54a7-bc73-58036e50294f"
+        },
+        {
+          "TrainingFileGUID": "d681802c-97a3-5fd7-9a0c-080c95e69aa4"
+        },
+        {
+          "TrainingFileGUID": "3026a5b5-ee9d-555d-84cb-de21eb7cbbe9"
+        }
+      ]
+    },
+    {
+      "Name": "Week_2",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "29652c4b-1665-55ff-8436-4c2d407d469c"
+        },
+        {
+          "TrainingFileGUID": "f557917f-927d-50a1-92d2-b462da7642a5"
+        },
+        {
+          "TrainingFileGUID": "1650c7ea-5f0a-50a0-aba9-20cda6e2b6fd"
+        },
+        {
+          "TrainingFileGUID": "581953cb-949c-56c5-a04e-ad27b7ea2077"
+        }
+      ]
+    },
+    {
+      "Name": "Week_3",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "89dd131a-b4b7-5938-a719-5a3108f77955"
+        },
+        {
+          "TrainingFileGUID": "d0c58619-3755-59a4-9e64-58ee9fa44828"
+        },
+        {
+          "TrainingFileGUID": "099d178a-3cb2-5800-83a7-8faea9041d9a"
+        },
+        {
+          "TrainingFileGUID": "649f2e8c-21d9-5340-88c4-6606f6ac72e5"
+        }
+      ]
+    },
+    {
+      "Name": "Week_4",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "01f9dd01-8165-52db-8c67-b2ffaf9736fa"
+        },
+        {
+          "TrainingFileGUID": "cca095ab-9ff0-5504-8b28-55ec3a13a04d"
+        },
+        {
+          "TrainingFileGUID": "9c6be4ce-6b28-5bfe-b31e-9be946166e3d"
+        },
+        {
+          "TrainingFileGUID": "14081b82-a438-5eba-b834-cf16344e8d33"
+        }
+      ]
+    },
+    {
+      "Name": "Week_5",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "f92a58bc-b8a8-55f2-9d3a-0e825c49a2d1"
+        },
+        {
+          "TrainingFileGUID": "0b672227-c4fd-5ccf-a7d1-a0369f8eab58"
+        },
+        {
+          "TrainingFileGUID": "199b84ae-c7eb-5b08-b98a-cd22924ccc34"
+        },
+        {
+          "TrainingFileGUID": "396445fa-9665-5d94-b810-17d0420e14fe"
+        }
+      ]
+    },
+    {
+      "Name": "Week_6",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "d54ff92e-f767-5e2a-abc5-6175008a7260"
+        },
+        {
+          "TrainingFileGUID": "a50d7077-300e-553c-adde-d21af4b78637"
+        },
+        {
+          "TrainingFileGUID": "fd6c18b1-3334-512f-826a-f28dc654c6c7"
+        },
+        {
+          "TrainingFileGUID": "56d26dd0-f8d4-5f1e-9a62-d0c3d697a7c9"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "292f850b-ca8f-5953-b860-17141fe8250b",
+    "IsC2Verified": false,
+    "Tags": [
+      "THRESHOLD",
+      "OVER-UNDER"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Over-Under 3x(2+3) 112/85",
+    "UnitType": 1,
+    "Difficulty": 3,
+    "Description": "3 rounds of 2min @112% / 3min @85% FTP. Teaches lactate shuttling; predicted W' floor \u2248 43% (CP=FTP=200W, W'=12kJ).",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.12,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.85,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.12,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.85,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.12,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.85,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

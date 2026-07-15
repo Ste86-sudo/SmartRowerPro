@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Over-Under 4x(2+3) 108/92</name>
+  <description>4 rounds of 2min @108% / 3min @92% FTP. Teaches lactate shuttling; predicted W' floor ≈ 53% (CP=FTP=200W, W'=12kJ).</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="THRESHOLD"/>
+    <tag name="OVER-UNDER"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="120" Power="1.08" Cadence="26"/>
+    <SteadyState Duration="180" Power="0.92" Cadence="22"/>
+    <SteadyState Duration="120" Power="1.08" Cadence="26"/>
+    <SteadyState Duration="180" Power="0.92" Cadence="22"/>
+    <SteadyState Duration="120" Power="1.08" Cadence="26"/>
+    <SteadyState Duration="180" Power="0.92" Cadence="22"/>
+    <SteadyState Duration="120" Power="1.08" Cadence="26"/>
+    <SteadyState Duration="180" Power="0.92" Cadence="22"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

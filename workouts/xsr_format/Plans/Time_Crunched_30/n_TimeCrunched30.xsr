@@ -1,0 +1,72 @@
+{
+  "Title": "Time-Crunched 30",
+  "Description": "Four weeks, three sessions of about 30 minutes: sweet spot for the engine, HIIT with computed W' floors for the top end, recovery to absorb it. Maximum adaptation per minute for busy weeks.",
+  "Difficulty": 3,
+  "MetaData": {
+    "FileVersionNumber": 0,
+    "Guid": "3d37e176-b539-53d3-ab1d-e2bca78649b8",
+    "Tags": [
+      "HIIT",
+      "SWEETSPOT",
+      "SHORT"
+    ]
+  },
+  "Weeks": [
+    {
+      "Name": "Week_1",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "324ce6e2-de0b-54a7-bc73-58036e50294f"
+        },
+        {
+          "TrainingFileGUID": "8b07ae68-7b7b-51cf-8b2c-960713e702c4"
+        },
+        {
+          "TrainingFileGUID": "9c6be4ce-6b28-5bfe-b31e-9be946166e3d"
+        }
+      ]
+    },
+    {
+      "Name": "Week_2",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "5b384bf3-bfb4-5728-9166-af3cab0209ab"
+        },
+        {
+          "TrainingFileGUID": "ef1d5fc3-dea9-5ab7-bf5c-f2ccdbbb55ac"
+        },
+        {
+          "TrainingFileGUID": "d681802c-97a3-5fd7-9a0c-080c95e69aa4"
+        }
+      ]
+    },
+    {
+      "Name": "Week_3",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "d0c58619-3755-59a4-9e64-58ee9fa44828"
+        },
+        {
+          "TrainingFileGUID": "e5b23de9-230a-51e9-95d4-33a5410dd451"
+        },
+        {
+          "TrainingFileGUID": "1650c7ea-5f0a-50a0-aba9-20cda6e2b6fd"
+        }
+      ]
+    },
+    {
+      "Name": "Week_4",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "dfdc2325-9369-5e32-9284-df5ba56dec0a"
+        },
+        {
+          "TrainingFileGUID": "52f6c1c8-b55f-5807-ae49-356ddd54c730"
+        },
+        {
+          "TrainingFileGUID": "d681802c-97a3-5fd7-9a0c-080c95e69aa4"
+        }
+      ]
+    }
+  ]
+}

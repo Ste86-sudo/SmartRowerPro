@@ -1,0 +1,71 @@
+{
+  "Title": "Foundation - Learn the Stroke",
+  "Description": "Four weeks, three short sessions a week, to build the stroke before the engine: Beta 'technique' ghost, catch and sequence drills, easy aerobic volume. Graduate when the Coach tab stays quiet for ten strokes in a row.",
+  "Difficulty": 1,
+  "MetaData": {
+    "FileVersionNumber": 0,
+    "Guid": "4209179b-9253-58c3-b186-6c551cca626d",
+    "Tags": [
+      "TECHNIQUE",
+      "BEGINNER"
+    ]
+  },
+  "Weeks": [
+    {
+      "Name": "Week_1",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "ffb278f8-85c6-53ef-ab9b-5d87803c9085"
+        },
+        {
+          "TrainingFileGUID": "d681802c-97a3-5fd7-9a0c-080c95e69aa4"
+        },
+        {
+          "TrainingFileGUID": "c49578b7-482c-5e3e-a6df-e5f6b0c2c941"
+        }
+      ]
+    },
+    {
+      "Name": "Week_2",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "d96ae32f-26e9-5d44-a569-0a57ed00afcc"
+        },
+        {
+          "TrainingFileGUID": "49425f20-40d9-514e-b998-ee5f8b6c931f"
+        },
+        {
+          "TrainingFileGUID": "9c6be4ce-6b28-5bfe-b31e-9be946166e3d"
+        }
+      ]
+    },
+    {
+      "Name": "Week_3",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "0444a18d-b7a4-5cb0-bd3a-c0f56cbedd9a"
+        },
+        {
+          "TrainingFileGUID": "e20af87d-af64-50d9-b5f2-dba70015192b"
+        },
+        {
+          "TrainingFileGUID": "cfb498d2-77fd-54dd-80bd-0dd0a7e6ce8f"
+        }
+      ]
+    },
+    {
+      "Name": "Week_4",
+      "Workouts": [
+        {
+          "TrainingFileGUID": "f669c658-9169-553d-9e03-fbae2b379b58"
+        },
+        {
+          "TrainingFileGUID": "7a7ef6b9-9ed9-57ac-b19d-49fadc79b148"
+        },
+        {
+          "TrainingFileGUID": "099d178a-3cb2-5800-83a7-8faea9041d9a"
+        }
+      ]
+    }
+  ]
+}

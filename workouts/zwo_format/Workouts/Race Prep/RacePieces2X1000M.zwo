@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Race Pieces 2x1000m</name>
+  <description>2x1000m at 2k pace +2%, full recovery. Quality over volume: every piece at 30-34 spm on the race ghost, identical splits.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RACE"/>
+    <tag name="PIECES"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="600" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="210" Power="1.10" Cadence="32"/>
+    <SteadyState Duration="420" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="210" Power="1.10" Cadence="32"/>
+    <SteadyState Duration="420" Power="0.40" Cadence="18"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>
