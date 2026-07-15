@@ -162,7 +162,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
 <nav class="nav"><div class="navrow">
   <a class="brand" href="#"><svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 50 C21 50 23.5 14 30 14 C36.5 14 39 50 52 50" fill="none" stroke="#E0A458" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="5.5 5" transform="translate(4 2) scale(0.98)"/><path d="M9 50 C19 50 22 13 29 13 C36 13 40 50 54 50" fill="none" stroke="#22D3EE" stroke-width="5.4" stroke-linecap="round"/></svg>SmartRower Pro</a>
   <div class="navlinks">
-    <a href="#story">Story</a><a href="#electronics">Hardware</a><a href="#physics">Physics</a><a href="#coach">Coach</a><a href="#tryapp">Try the Web-app</a><a href="#resources">Resources</a>
+    <a href="#story">Story</a><a href="#electronics">Hardware</a><a href="#physics">Physics</a><a href="#coach">Coach</a><a href="#training">Training</a><a href="#tryapp">Try the Web-app</a><a href="#resources">Resources</a>
   </div>
 </div></nav>
 
@@ -281,6 +281,23 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
       <tr><td>RFD drift, CV, Pw:HR</td><td>per‑session trend</td><td>fatigue creeping into technique</td></tr>
     </table></div>
     <p style="margin-top:22px">The target shape itself is the <strong>Beta family</strong> <code>φ(u; p,q)</code> on normalised drive fraction — preset <em>Technique</em> (peak 33 %, Φ 0.56) for low rates, <em>Race</em> (peak 40 %, Φ 0.61) for 30+ spm. A Python analyzer replays every session offline with the same model, plus functional PCA: your stroke is compared to <em>your own</em> best modes, not to a population ideal.</p>
+  </div>
+</section>
+
+<section id="training">
+  <div class="wrap">
+    <span class="eyebrow">From physics to training</span>
+    <h2>The workouts are written by the same equations</h2>
+    <p>Most training libraries are folklore: someone's favourite intervals, copied forever. Here the pipeline runs the other way — every model this page describes was turned into a <em>generator</em>, and the generator wrote the training library: <strong>148 workouts and four multi‑week plans</strong>, in EXR and Zwift formats, loaded in the Web‑app below and downloadable from the repo.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Model we learned</th><th>What it predicts</th><th>Workout family it wrote</th></tr>
+      <tr><td>Cube law P ∝ R³/d² <a class="ref" href="#refs">[4]</a></td><td>the power cost of rating up at constant stroke shape</td><td><strong>Rate Ladders</strong> — every step's power target is computed from R³, so the ladder tests the stroke, not the maths</td></tr>
+      <tr><td>W′‑balance <a class="ref" href="#refs">[6][7]</a></td><td>how deep each interval drains the anaerobic battery, and how fast rest refills it</td><td><strong>W‑Prime Intervals &amp; HIIT</strong> — each session simulated segment by segment before being written; the description states its predicted W′ floor</td></tr>
+      <tr><td>Beta target curve &amp; literature bands <a class="ref" href="#refs">[1][2][3]</a></td><td>what a good stroke looks like at a given rate</td><td><strong>Technique &amp; Form</strong> — 18–26 spm on the “technique” ghost, catch and RSF drills the coach can actually grade</td></tr>
+      <tr><td>TRIMP &amp; Pw:HR decoupling <a class="ref" href="#refs">[8]</a></td><td>session load and aerobic base quality</td><td><strong>Endurance</strong> — steady UT2/UT1 volume with decoupling as the weekly pass/fail; plans periodised on TRIMP</td></tr>
+      <tr><td>Critical‑power framework <a class="ref" href="#refs">[7]</a></td><td>your personal CP and W′ from two time trials</td><td><strong>Race Prep</strong> — 1k and 5k tests feed the athlete card; 2k pieces ride the “race” ghost</td></tr>
+    </table></div>
+    <p style="margin-top:22px">And the loop closes on the machine: the coach that grades your strokes uses the same models that wrote the workout you are doing. <a href="https://github.com/Ste86-sudo/SmartRowerPro/tree/master/workouts">Browse the library →</a></p>
   </div>
 </section>
 
