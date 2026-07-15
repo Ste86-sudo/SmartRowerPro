@@ -1,5 +1,13 @@
 <title>SmartRower Pro — the air rower that learned to coach</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="A cheap air rower turned instrumented ergometer: 24-bit load cell, cord encoder, ToF laser and a physics-based digital coach with ghost curves. Open source, ESP32, fully offline.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SmartRower Pro — the air rower that learned to coach">
+<meta property="og:description" content="A cheap air rower turned instrumented ergometer with a physics-based digital coach and ghost-curve racing. Open source · ESP32 · offline.">
+<meta property="og:image" content="https://smartrowerpro.com/og-cover.jpg">
+<meta property="og:url" content="https://smartrowerpro.com/">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 /* Deliberately single-theme: the page is styled after the rower's own dark,
    offline instrument panel — the world the product actually lives in. */
@@ -68,7 +76,7 @@ canvas{width:100%;height:auto;display:block;border-radius:6px;background:var(--p
 /* ---------- nav ---------- */
 .nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 .navrow{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 24px;flex-wrap:wrap;max-width:1060px;margin:0 auto}
-.brand{font-family:var(--serif);font-size:17px;color:var(--paper)}
+.brand{font-family:var(--serif);font-size:17px;color:var(--paper);display:flex;align-items:center;gap:9px}
 .brand:hover{text-decoration:none;color:var(--trace)}
 .navlinks{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em}
 .navlinks a{color:var(--fog)}
@@ -136,7 +144,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
 </style>
 
 <nav class="nav"><div class="navrow">
-  <a class="brand" href="#">SmartRower Pro</a>
+  <a class="brand" href="#"><svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 50 C21 50 23.5 14 30 14 C36.5 14 39 50 52 50" fill="none" stroke="#E0A458" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="5.5 5" transform="translate(4 2) scale(0.98)"/><path d="M9 50 C19 50 22 13 29 13 C36 13 40 50 54 50" fill="none" stroke="#22D3EE" stroke-width="5.4" stroke-linecap="round"/></svg>SmartRower Pro</a>
   <div class="navlinks">
     <a href="#story">Story</a><a href="#electronics">Hardware</a><a href="#physics">Physics</a><a href="#coach">Coach</a><a href="#tryapp">Try the app</a><a href="#resources">Resources</a>
   </div>
