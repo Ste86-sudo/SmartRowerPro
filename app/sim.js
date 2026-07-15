@@ -82,3 +82,14 @@ class SimWS{
 SimWS.CONNECTING=0;SimWS.OPEN=1;SimWS.CLOSING=2;SimWS.CLOSED=3;
 window.WebSocket=SimWS;
 })();
+// Back-to-site pill, only when opened full-screen (not inside the site iframe)
+addEventListener('DOMContentLoaded', () => {
+  if (window.self !== window.top) return;
+  const b = document.createElement('a');
+  b.href = '../'; b.textContent = '‹ back to smartrowerpro.com';
+  b.style.cssText = 'position:fixed;bottom:14px;left:14px;z-index:9999;' +
+    'background:rgba(2,6,23,.88);color:#22d3ee;border:1px solid #334155;' +
+    'border-radius:999px;padding:8px 16px;font:12px ui-monospace,monospace;' +
+    'text-decoration:none;backdrop-filter:blur(4px)';
+  document.body.appendChild(b);
+});

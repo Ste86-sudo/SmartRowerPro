@@ -139,6 +139,22 @@ td{color:var(--fog)}td:first-child{color:var(--paper);font-weight:600}
 td code{color:var(--trace)}
 
 blockquote{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--paper);border-left:3px solid var(--ghost);padding-left:20px;margin:30px 0;max-width:56ch}
+/* ---------- mobile ---------- */
+@media(max-width:640px){
+  body{font-size:16px}
+  section{padding:52px 0}
+  header.hero{padding:36px 0 48px}
+  .wrap{padding:0 16px}
+  .navrow{padding:10px 16px;gap:8px}
+  .navlinks{gap:12px;font-size:11.5px}
+  .tiles,.tiles.t6{grid-template-columns:repeat(2,1fr)}
+  .legend{flex-wrap:wrap;gap:8px 14px}
+  .appframe{height:72vh;min-height:480px}
+  .demo{padding:12px}
+  .cue .txt{font-size:14.5px}
+  .dev-url{font-size:10.5px}
+  blockquote{font-size:1.05rem}
+}
 footer{padding:56px 0 72px;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
 footer .wrap{display:flex;flex-direction:column;gap:10px}
 </style>
@@ -146,7 +162,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
 <nav class="nav"><div class="navrow">
   <a class="brand" href="#"><svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 50 C21 50 23.5 14 30 14 C36.5 14 39 50 52 50" fill="none" stroke="#E0A458" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="5.5 5" transform="translate(4 2) scale(0.98)"/><path d="M9 50 C19 50 22 13 29 13 C36 13 40 50 54 50" fill="none" stroke="#22D3EE" stroke-width="5.4" stroke-linecap="round"/></svg>SmartRower Pro</a>
   <div class="navlinks">
-    <a href="#story">Story</a><a href="#electronics">Hardware</a><a href="#physics">Physics</a><a href="#coach">Coach</a><a href="#tryapp">Try the app</a><a href="#resources">Resources</a>
+    <a href="#story">Story</a><a href="#electronics">Hardware</a><a href="#physics">Physics</a><a href="#coach">Coach</a><a href="#tryapp">Try the Web-app</a><a href="#resources">Resources</a>
   </div>
 </div></nav>
 
@@ -163,7 +179,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     </div>
     <div class="demo" id="demo">
       <div class="demo-head">
-        <span class="eyebrow">Live demo — the onboard web app</span>
+        <span class="eyebrow">Live demo — the onboard Web-app</span>
         <div class="presets" role="group" aria-label="App tab">
           <button id="tabD" aria-pressed="true">DASHBOARD</button>
           <button id="tabC" aria-pressed="false">COACH</button>
@@ -271,13 +287,13 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
 <section id="tryapp">
   <div class="wrap">
     <span class="eyebrow">Hands on</span>
-    <h2>This is the actual onboard app</h2>
+    <h2>This is the actual onboard Web-app</h2>
     <p>Not a mockup: the frame below runs the very <code>web/index.html</code> the ESP32 serves on the rower, connected to a simulated machine instead of the real sensors. Try every mode — <strong>Dashboard</strong> with live force, cable and seat traces, the <strong>Coach</strong> tab with per‑stroke cues and catch factor, <strong>History</strong> with saved sessions and ghost replay, <strong>Setup</strong> with thresholds, ghost parameters and athlete profile. Every control speaks the same command protocol as the firmware.</p>
     <div class="device">
       <div class="dev-bar"><span class="dev-dot"></span><span class="dev-dot"></span><span class="dev-dot"></span><span class="dev-url">http://<b>192.168.4.1</b> — Wi‑Fi: <b>RP_AP</b> (the rower's own network, no internet needed)</span></div>
       <iframe class="appframe" src="app/" title="SmartRower Pro onboard web app (simulated data)" loading="lazy"></iframe>
     </div>
-    <p class="demo-note" style="margin-top:12px">This is what your phone shows when you sit on the machine — here fed by a simulated rower. Prefer a full window? <a href="app/">Open the app full-screen →</a> Sessions you save land in your browser's local storage, exactly as on the rower.</p>
+    <p class="demo-note" style="margin-top:12px">This is what your phone shows when you sit on the machine — here fed by a simulated rower. Prefer a full window? <a href="app/">Open the Web-app full-screen →</a> (a small pill takes you back here). Sessions you save land in your browser's local storage, exactly as on the rower.</p>
   </div>
 </section>
 
