@@ -73,7 +73,12 @@ canvas{width:100%;height:auto;display:block;border-radius:6px;background:var(--p
 .navlinks{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em}
 .navlinks a{color:var(--fog)}
 .navlinks a:hover{color:var(--trace);text-decoration:none}
-.appframe{width:100%;height:760px;border:1px solid var(--line);border-radius:10px;background:#020617;margin-top:26px}
+.device{max-width:960px;margin:30px auto 0;background:#0a1122;border:1px solid #26334e;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(34,211,238,.06);overflow:hidden}
+.dev-bar{display:flex;align-items:center;gap:7px;background:#0d1526;border-bottom:1px solid var(--line);padding:11px 16px}
+.dev-dot{width:10px;height:10px;border-radius:50%;background:#233150;flex:0 0 auto}
+.dev-url{font-family:var(--mono);font-size:11.5px;color:var(--fog);background:#020617;border:1px solid var(--line);border-radius:6px;padding:5px 14px;flex:1;margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dev-url b{color:var(--trace);font-weight:400}
+.appframe{width:100%;height:760px;border:none;display:block;background:#020617}
 .res-extract{font-family:var(--serif);font-style:italic;color:var(--paper);font-size:15px;margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
 .ref{font-family:var(--mono);font-size:.72em;vertical-align:super;color:var(--trace)}
 .refs{margin-top:18px;padding-left:22px;font-size:14px;color:var(--fog);max-width:75ch}
@@ -260,8 +265,11 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     <span class="eyebrow">Hands on</span>
     <h2>This is the actual onboard app</h2>
     <p>Not a mockup: the frame below runs the very <code>web/index.html</code> the ESP32 serves on the rower, connected to a simulated machine instead of the real sensors. Try every mode — <strong>Dashboard</strong> with live force, cable and seat traces, the <strong>Coach</strong> tab with per‑stroke cues and catch factor, <strong>History</strong> with saved sessions and ghost replay, <strong>Setup</strong> with thresholds, ghost parameters and athlete profile. Every control speaks the same command protocol as the firmware.</p>
-    <iframe class="appframe" src="app/" title="SmartRower Pro onboard web app (simulated data)" loading="lazy"></iframe>
-    <p class="demo-note" style="margin-top:12px">Prefer a full window? <a href="app/">Open the app full-screen →</a> Sessions you save land in your browser's local storage, exactly as on the rower. (In the chat preview this frame is unavailable — use the GitHub Pages site.)</p>
+    <div class="device">
+      <div class="dev-bar"><span class="dev-dot"></span><span class="dev-dot"></span><span class="dev-dot"></span><span class="dev-url">http://<b>192.168.4.1</b> — Wi‑Fi: <b>RP_AP</b> (the rower's own network, no internet needed)</span></div>
+      <iframe class="appframe" src="app/" title="SmartRower Pro onboard web app (simulated data)" loading="lazy"></iframe>
+    </div>
+    <p class="demo-note" style="margin-top:12px">This is what your phone shows when you sit on the machine — here fed by a simulated rower. Prefer a full window? <a href="app/">Open the app full-screen →</a> Sessions you save land in your browser's local storage, exactly as on the rower.</p>
   </div>
 </section>
 
@@ -288,7 +296,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
       <div class="card"><span class="eyebrow">White paper · Coaching model</span><h3>The virtual coach</h3><p>The Beta target family, Tier A (force only) vs Tier B (force + position), per‑stroke features, tolerance scoring, and why the RFD is a regression — not a two‑point difference — at 100 Hz.</p><p class="res-extract">“Return the cue of the FIRST group below threshold: sequence first, then loading, then shape — a coach gives one correction, not five.”</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/blob/master/docs/super_prompt_antigravity_SmartRowerPro.md">Read the spec →</a></p></div>
       <div class="card"><span class="eyebrow">Blueprint</span><h3>Instrumented‑erg coach, in general</h3><p>The hardware‑agnostic version of the model: athlete calibration from slow strokes, CSV schema, feature extraction, and cross‑language consistency tests between firmware and analyzer.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/blob/master/docs/antigravity_rowing_coach_prompt.md">Read the spec →</a></p></div>
       <div class="card"><span class="eyebrow">Tooling</span><h3>Session analyzer &amp; fPCA</h3><p>Post‑session Python analysis sharing the coach's scoring model, plus functional PCA: your personal modes of stroke variation instead of a population ideal — validated on synthetic sessions with injected faults.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/tree/master/tools/analyzer">Browse the analyzer →</a></p></div>
-      <div class="card"><span class="eyebrow">Training</span><h3>Workout library</h3><p>150+ structured workouts generated from the models on this page: intervals engineered on the W′‑balance equations, rate ladders built on the cube law, technique sessions at the Beta “technique” preset, threshold and race‑prep pieces. Exported in EXR (.xsr) and Zwift (.zwo) formats.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/tree/master/workouts">Browse the workouts →</a></p></div>
+      <div class="card"><span class="eyebrow">Training</span><h3>Workout library</h3><p>150+ structured workouts and four multi‑week training plans generated from the models on this page: intervals engineered on the W′‑balance equations, rate ladders built on the cube law, technique sessions at the Beta “technique” preset, threshold and race‑prep pieces — periodised from “Foundation” to “2k Breakthrough”. Exported in EXR (.xsr) and Zwift (.zwo) formats.</p><p style="margin-top:10px"><a href="https://github.com/Ste86-sudo/SmartRowerPro/tree/master/workouts">Browse the workouts →</a></p></div>
     </div>
 
     <h3 style="margin-top:44px" id="refs">Scientific references</h3>
