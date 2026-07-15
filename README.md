@@ -6,6 +6,7 @@
 ![Framework](https://img.shields.io/badge/framework-Arduino%20%2B%20PlatformIO-00979D?logo=platformio&logoColor=white)
 ![UI](https://img.shields.io/badge/web%20UI-offline%20first-2ea44f)
 ![Link](https://img.shields.io/badge/radio-ESP--NOW%20%2B%20BLE-blue)
+![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![Coach](https://img.shields.io/badge/coach-literature--based%20biomechanics-8A2BE2)
 
 A **V-Fit Tornado** (air resistance) turned into a smart rower: a 24-bit load cell on the handle, a quadrature encoder on the drive cord, a ToF laser on the seat rail, a BLE heart-rate strap. Two ESP32-S3 boards talking over ESP-NOW, a web UI served straight from the frame — **no cloud, no accounts, no internet**: sit down, open the browser, row.
@@ -223,4 +224,4 @@ The 1.0 firmware (C3+S3 and dual-S3 pre-rebuild) remains in the git history.
 
 ---
 
-*A garage build from Italy by [Ste86-sudo](https://github.com/Ste86-sudo). References: V. Kleshnev (Biorow); Holt et al. 2020; Warmenhoven et al. 2017-18; A. Dudhia, The Physics of Ergometers; Flash & Hogan 1985 (minimum jerk); Monod & Scherrer 1965 and Skiba et al. 2012 (CP/W′); Banister 1991 (TRIMP); Keytel et al. 2005. Full bibliography on [smartrowerpro.com](https://smartrowerpro.com/#refs).*
+*Licensed under **GPL-3.0** — free to build, study, modify and share (derivatives stay open). A garage build from Italy by [Ste86-sudo](https://github.com/Ste86-sudo). References: V. Kleshnev (Biorow); Holt et al. 2020; Warmenhoven et al. 2017-18; A. Dudhia, The Physics of Ergometers; Flash & Hogan 1985 (minimum jerk); Monod & Scherrer 1965 and Skiba et al. 2012 (CP/W′); Banister 1991 (TRIMP); Keytel et al. 2005. Full bibliography on [smartrowerpro.com](https://smartrowerpro.com/#refs).*
