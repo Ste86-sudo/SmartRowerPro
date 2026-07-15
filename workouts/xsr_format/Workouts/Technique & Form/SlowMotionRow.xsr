@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "e19ec921-6abf-41e4-add2-1190fc845d2b",
+    "IsC2Verified": false,
+    "Tags": [
+      "TECHNIQUE",
+      "RATIO"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Slow Motion Row",
+    "UnitType": 1,
+    "Difficulty": 1,
+    "Description": "24min at 16-18 spm, exaggerated 1:3 drive-to-recovery. The slowest row is the hardest to do well: every flaw shows at low rate.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1440,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 17
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

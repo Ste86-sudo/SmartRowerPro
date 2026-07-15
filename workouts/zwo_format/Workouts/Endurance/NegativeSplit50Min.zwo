@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Negative Split 50min</name>
+  <description>First half at 62% FTP, second at 72%: finishing faster than you start is the oldest race lesson. Keep the stroke shape identical across halves.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="ENDURANCE"/>
+    <tag name="PACING"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="1500" Power="0.62" Cadence="20"/>
+    <SteadyState Duration="1500" Power="0.72" Cadence="22"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

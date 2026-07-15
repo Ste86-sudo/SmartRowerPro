@@ -1,0 +1,79 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "7297dd62-14d4-4505-a77d-3b56db48a419",
+    "IsC2Verified": false,
+    "Tags": [
+      "THRESHOLD",
+      "RAMP"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "FTP Builder 2",
+    "UnitType": 1,
+    "Difficulty": 3,
+    "Description": "3x12min ramping 92\u2192105% FTP inside each rep. Finishing over threshold trains the lift a 2k demands.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.92,
+        "StrokesPerMin": 23
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 1.05,
+        "StrokesPerMin": 25
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.92,
+        "StrokesPerMin": 23
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 1.05,
+        "StrokesPerMin": 25
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.92,
+        "StrokesPerMin": 23
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 1.05,
+        "StrokesPerMin": 25
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

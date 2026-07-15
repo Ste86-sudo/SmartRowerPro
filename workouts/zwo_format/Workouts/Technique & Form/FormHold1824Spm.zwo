@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Form Hold 18-24spm</name>
+  <description>Alternate 4min @18 and 4min @24 spm, 4 rounds, holding the same curve shape: fullness and peak position must not drift with the rate.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="TECHNIQUE"/>
+    <tag name="FORM"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="240" Power="0.65" Cadence="18"/>
+    <SteadyState Duration="240" Power="0.72" Cadence="24"/>
+    <SteadyState Duration="240" Power="0.65" Cadence="18"/>
+    <SteadyState Duration="240" Power="0.72" Cadence="24"/>
+    <SteadyState Duration="240" Power="0.65" Cadence="18"/>
+    <SteadyState Duration="240" Power="0.72" Cadence="24"/>
+    <SteadyState Duration="240" Power="0.65" Cadence="18"/>
+    <SteadyState Duration="240" Power="0.72" Cadence="24"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

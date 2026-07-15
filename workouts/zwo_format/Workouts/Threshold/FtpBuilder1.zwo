@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>FTP Builder 1</name>
+  <description>3x12min ramping 95→102% FTP inside each rep. Finishing over threshold trains the lift a 2k demands.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="THRESHOLD"/>
+    <tag name="RAMP"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="360" Power="0.95" Cadence="23"/>
+    <SteadyState Duration="360" Power="1.02" Cadence="25"/>
+    <SteadyState Duration="180" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="360" Power="0.95" Cadence="23"/>
+    <SteadyState Duration="360" Power="1.02" Cadence="25"/>
+    <SteadyState Duration="180" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="360" Power="0.95" Cadence="23"/>
+    <SteadyState Duration="360" Power="1.02" Cadence="25"/>
+    <SteadyState Duration="180" Power="0.50" Cadence="18"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>UT2+ Steady 40min</name>
+  <description>40 minutes at 66% FTP (UT2+). Aerobic base: HR zone 2-3, decoupling under 5% — if HR drifts, the base isn't there yet.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="ENDURANCE"/>
+    <tag name="AEROBIC"/>
+    <tag name="UT2+"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="2400" Power="0.66" Cadence="20"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

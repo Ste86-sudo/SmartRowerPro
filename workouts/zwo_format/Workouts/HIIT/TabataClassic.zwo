@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Tabata Classic</name>
+  <description>8x20s all-out / 10s off — the original protocol. Four minutes that empty the W' battery almost completely.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="HIIT"/>
+    <tag name="TABATA"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="20" Power="1.70" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.70" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.70" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.70" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.70" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.70" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.70" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.70" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

@@ -1,0 +1,134 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "1a967ddd-d26b-4adf-8f54-52806584ea0c",
+    "IsC2Verified": false,
+    "Tags": [
+      "HIIT",
+      "ANAEROBIC"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "HIIT 10x35/25s",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "10 reps of 35s @136% FTP with 25s easy. Predicted W' floor \u2248 0%. Short, sharp, honest.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 35,
+        "FTPTarget": 1.36,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 25,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

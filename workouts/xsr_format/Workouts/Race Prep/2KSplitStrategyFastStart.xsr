@@ -1,0 +1,54 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "06493f7a-e2b3-408a-a46e-f37fe795273c",
+    "IsC2Verified": false,
+    "Tags": [
+      "RACE",
+      "PACING"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "2k Split Strategy: Fast Start",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "Broken 2k as 4x500m: first 500 at 110% of race power. Rehearse the plan, then race the plan.",
+    "Schedule": [
+      {
+        "Length": 600,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.02,
+        "StrokesPerMin": 31
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.02,
+        "StrokesPerMin": 31
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.0,
+        "StrokesPerMin": 33
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

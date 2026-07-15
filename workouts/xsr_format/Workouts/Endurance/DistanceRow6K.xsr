@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "1eae4f10-9d0c-4858-ad9e-2f003323fc6c",
+    "IsC2Verified": false,
+    "Tags": [
+      "ENDURANCE",
+      "DISTANCE"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Distance Row 6k",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "6,000 metres continuous at 65% FTP, 19-21 spm. Distance monuments build the aerobic base \u2014 and the History tab's trend line.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1680,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

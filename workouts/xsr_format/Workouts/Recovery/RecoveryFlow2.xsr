@@ -1,0 +1,74 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "06518332-0d52-44f8-be77-1828f33e8607",
+    "IsC2Verified": false,
+    "Tags": [
+      "RECOVERY",
+      "FLOW"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Recovery Flow 2",
+    "UnitType": 1,
+    "Difficulty": 0,
+    "Description": "25min at 18 spm alternating 4min rowing / 1min free paddle. Blood flow without load \u2014 the day after a W' session.",
+    "Schedule": [
+      {
+        "Length": 240,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Sequence Drill 2</name>
+  <description>3x8min @21 spm. Legs-trunk-arms in order: the seat trace must lead the handle. RSF target 0.90 in the first 20% of the drive.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="TECHNIQUE"/>
+    <tag name="SEQUENCE"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="480" Power="0.66" Cadence="21"/>
+    <FreeRide Duration="90" FlatRoad="1"/>
+    <SteadyState Duration="480" Power="0.66" Cadence="21"/>
+    <FreeRide Duration="90" FlatRoad="1"/>
+    <SteadyState Duration="480" Power="0.66" Cadence="21"/>
+    <FreeRide Duration="90" FlatRoad="1"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

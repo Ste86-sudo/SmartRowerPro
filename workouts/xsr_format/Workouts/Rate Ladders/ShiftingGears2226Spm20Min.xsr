@@ -1,0 +1,84 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "ff073131-4703-4d21-9569-deaf769f248f",
+    "IsC2Verified": false,
+    "Tags": [
+      "RATE",
+      "SHIFTS"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Shifting Gears 22/26spm 20min",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "20min alternating 2min @22 and 2min @26 spm. Gear changes on the water are won by whoever keeps the curve identical.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.62,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.02,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.62,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.02,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.62,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.02,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.62,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.02,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.62,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.02,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

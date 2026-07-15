@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>1k Time Trial</name>
+  <description>All-out 1000m, open rate. Benchmark for CP/W' estimation: log it, the athlete card uses it.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RACE"/>
+    <tag name="TT"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="600" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="210" Power="1.15" Cadence="33"/>
+    <FreeRide Duration="480" FlatRoad="1"/>
+  </workout>
+</workout_file>

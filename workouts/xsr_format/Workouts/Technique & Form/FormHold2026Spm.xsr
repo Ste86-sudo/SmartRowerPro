@@ -1,0 +1,74 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "eb192da9-090e-4b81-bf05-b20c4ceffd7d",
+    "IsC2Verified": false,
+    "Tags": [
+      "TECHNIQUE",
+      "FORM"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Form Hold 20-26spm",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "Alternate 4min @20 and 4min @26 spm, 4 rounds, holding the same curve shape: fullness and peak position must not drift with the rate.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.72,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.72,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.72,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.72,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

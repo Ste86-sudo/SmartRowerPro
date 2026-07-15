@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Sprint Repeats 6x15s</name>
+  <description>6x15s maximal sprints, 105s recovery: pure power, full recharge. Peak-force card should hit its best numbers of the week here.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="SPRINT"/>
+    <tag name="POWER"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="15" Power="1.80" Cadence="36"/>
+    <SteadyState Duration="105" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="15" Power="1.80" Cadence="36"/>
+    <SteadyState Duration="105" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="15" Power="1.80" Cadence="36"/>
+    <SteadyState Duration="105" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="15" Power="1.80" Cadence="36"/>
+    <SteadyState Duration="105" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="15" Power="1.80" Cadence="36"/>
+    <SteadyState Duration="105" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="15" Power="1.80" Cadence="36"/>
+    <SteadyState Duration="105" Power="0.40" Cadence="16"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

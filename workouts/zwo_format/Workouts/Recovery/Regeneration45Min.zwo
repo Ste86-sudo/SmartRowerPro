@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Regeneration 45min</name>
+  <description>45 easy minutes at 50-55% FTP, 17-18 spm, HR zone 1. Recovery is training: TRIMP stays low, technique stays honest.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RECOVERY"/>
+    <tag name="ZONE1"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="2700" Power="0.52" Cadence="18"/>
+  </workout>
+</workout_file>

@@ -1,0 +1,40 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "837a8b3e-aa81-4261-8552-2d8b29446eb7",
+    "IsC2Verified": false,
+    "Tags": [
+      "ENDURANCE",
+      "AEROBIC",
+      "UT2+"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "UT2+ Steady 50min",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "50 minutes at 66% FTP (UT2+). Aerobic base: HR zone 2-3, decoupling under 5% \u2014 if HR drifts, the base isn't there yet.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 3000,
+        "FTPTarget": 0.66,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

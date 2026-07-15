@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Cube Ladder 18-24spm</name>
+  <description>Rate ladder 18-20-22-24 spm holding the SAME stroke: power targets follow the cube law P∝R³ — at constant drive length, rating up alone nearly doubles the watts. Do not let the shape change.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RATE"/>
+    <tag name="CUBELAW"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="180" Power="0.60" Cadence="18"/>
+    <SteadyState Duration="180" Power="0.82" Cadence="20"/>
+    <SteadyState Duration="180" Power="1.10" Cadence="22"/>
+    <SteadyState Duration="180" Power="1.42" Cadence="24"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

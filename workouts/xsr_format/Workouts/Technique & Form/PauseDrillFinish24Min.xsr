@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "0a04865d-fecd-4b09-8b59-89c63f7cfbcd",
+    "IsC2Verified": false,
+    "Tags": [
+      "TECHNIQUE",
+      "PAUSE"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Pause Drill Finish 24min",
+    "UnitType": 1,
+    "Difficulty": 1,
+    "Description": "24min at 18 spm with a 1s pause at the finish: the pause exposes balance and posture errors that continuous rowing hides.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1440,
+        "FTPTarget": 0.58,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

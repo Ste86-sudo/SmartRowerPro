@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "bac1970e-6ab3-442c-9694-72f9aedf6ab1",
+    "IsC2Verified": false,
+    "Tags": [
+      "RACE",
+      "2K"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "2k Race Simulation",
+    "UnitType": 1,
+    "Difficulty": 5,
+    "Description": "The full distance at target pace, 30-34 spm, 'race' preset ghost (peak 40%, fullness 0.61). Fly-and-die is a choice, not an accident: even splits, sprint the last 250m.",
+    "Schedule": [
+      {
+        "Length": 600,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 420,
+        "FTPTarget": 1.05,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 480,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

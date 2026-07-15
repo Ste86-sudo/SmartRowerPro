@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Threshold 3x12min</name>
+  <description>3x12min at 96-100% FTP, 3min easy between. Classic FTP builder: the last rep should feel honest, not heroic.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="THRESHOLD"/>
+    <tag name="FTP"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="720" Power="0.98" Cadence="24"/>
+    <SteadyState Duration="180" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="720" Power="0.98" Cadence="24"/>
+    <SteadyState Duration="180" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="720" Power="0.98" Cadence="24"/>
+    <SteadyState Duration="180" Power="0.50" Cadence="18"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

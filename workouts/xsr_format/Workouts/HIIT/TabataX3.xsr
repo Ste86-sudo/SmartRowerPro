@@ -1,0 +1,289 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "32d8fdfa-be5c-44ef-9e69-2a28e0e861cb",
+    "IsC2Verified": false,
+    "Tags": [
+      "HIIT",
+      "TABATA"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Tabata x3",
+    "UnitType": 1,
+    "Difficulty": 5,
+    "Description": "3 Tabata blocks (8x20/10) with 4min full recovery between: the W' recharge between sets is what makes set 2 possible at all.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 240,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 240,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.65,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 240,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

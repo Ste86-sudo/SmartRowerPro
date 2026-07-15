@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Shifting Gears 22/26spm 20min</name>
+  <description>20min alternating 2min @22 and 2min @26 spm. Gear changes on the water are won by whoever keeps the curve identical.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RATE"/>
+    <tag name="SHIFTS"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="120" Power="0.62" Cadence="22"/>
+    <SteadyState Duration="120" Power="1.02" Cadence="26"/>
+    <SteadyState Duration="120" Power="0.62" Cadence="22"/>
+    <SteadyState Duration="120" Power="1.02" Cadence="26"/>
+    <SteadyState Duration="120" Power="0.62" Cadence="22"/>
+    <SteadyState Duration="120" Power="1.02" Cadence="26"/>
+    <SteadyState Duration="120" Power="0.62" Cadence="22"/>
+    <SteadyState Duration="120" Power="1.02" Cadence="26"/>
+    <SteadyState Duration="120" Power="0.62" Cadence="22"/>
+    <SteadyState Duration="120" Power="1.02" Cadence="26"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

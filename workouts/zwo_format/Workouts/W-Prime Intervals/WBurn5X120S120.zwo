@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>W' Burn 5x120s @120%</name>
+  <description>5x120s at 120% FTP, 180s recovery. Engineered on the W'-balance model: predicted floor ≈ 0% of a 12kJ W' at CP=FTP=200W. Watch the battery card — abort a rep if it hits red early.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="WPRIME"/>
+    <tag name="INTERVALS"/>
+    <tag name="ANAEROBIC"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="120" Power="1.20" Cadence="28"/>
+    <SteadyState Duration="180" Power="0.45" Cadence="18"/>
+    <SteadyState Duration="120" Power="1.20" Cadence="28"/>
+    <SteadyState Duration="180" Power="0.45" Cadence="18"/>
+    <SteadyState Duration="120" Power="1.20" Cadence="28"/>
+    <SteadyState Duration="180" Power="0.45" Cadence="18"/>
+    <SteadyState Duration="120" Power="1.20" Cadence="28"/>
+    <SteadyState Duration="180" Power="0.45" Cadence="18"/>
+    <SteadyState Duration="120" Power="1.20" Cadence="28"/>
+    <SteadyState Duration="180" Power="0.45" Cadence="18"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

@@ -1,0 +1,49 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "fa1d9def-f3f8-45bd-97c1-849fec077040",
+    "IsC2Verified": false,
+    "Tags": [
+      "WPRIME",
+      "CP"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Twin Peaks 5min",
+    "UnitType": 1,
+    "Difficulty": 3,
+    "Description": "2x5min just above CP at 105% FTP. Slow-drip W' depletion (floor \u2248 61%): learn what 'just above' feels like.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 300,
+        "FTPTarget": 1.05,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 300,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": 1.05,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

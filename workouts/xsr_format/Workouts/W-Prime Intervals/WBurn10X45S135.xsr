@@ -1,0 +1,135 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "197cecfb-c5bb-4bb9-ae4e-af67da9bd96c",
+    "IsC2Verified": false,
+    "Tags": [
+      "WPRIME",
+      "INTERVALS",
+      "ANAEROBIC"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "W' Burn 10x45s @135%",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "10x45s at 135% FTP, 90s recovery. Engineered on the W'-balance model: predicted floor \u2248 0% of a 12kJ W' at CP=FTP=200W. Watch the battery card \u2014 abort a rep if it hits red early.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 45,
+        "FTPTarget": 1.35,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

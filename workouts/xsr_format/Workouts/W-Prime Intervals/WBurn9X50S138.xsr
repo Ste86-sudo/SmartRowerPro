@@ -1,0 +1,125 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "cb820303-a23f-4f8c-8f5d-b2c6d4329383",
+    "IsC2Verified": false,
+    "Tags": [
+      "WPRIME",
+      "INTERVALS",
+      "ANAEROBIC"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "W' Burn 9x50s @138%",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "9x50s at 138% FTP, 100s recovery. Engineered on the W'-balance model: predicted floor \u2248 0% of a 12kJ W' at CP=FTP=200W. Watch the battery card \u2014 abort a rep if it hits red early.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 50,
+        "FTPTarget": 1.38,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 100,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

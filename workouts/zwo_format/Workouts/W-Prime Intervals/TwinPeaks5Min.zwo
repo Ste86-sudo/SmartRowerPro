@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Twin Peaks 5min</name>
+  <description>2x5min just above CP at 105% FTP. Slow-drip W' depletion (floor ≈ 61%): learn what 'just above' feels like.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="WPRIME"/>
+    <tag name="CP"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="300" Power="1.05" Cadence="26"/>
+    <SteadyState Duration="300" Power="0.45" Cadence="18"/>
+    <SteadyState Duration="300" Power="1.05" Cadence="26"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

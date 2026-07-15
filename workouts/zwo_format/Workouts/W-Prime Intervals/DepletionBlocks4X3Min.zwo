@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Depletion Blocks 4x3min</name>
+  <description>4x3min at 110% FTP with half-time recovery: long, shallow W' drains (predicted floor ≈ 0%). VO2max territory.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="WPRIME"/>
+    <tag name="VO2MAX"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="200" Power="1.10" Cadence="26"/>
+    <SteadyState Duration="100" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="200" Power="1.10" Cadence="26"/>
+    <SteadyState Duration="100" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="200" Power="1.10" Cadence="26"/>
+    <SteadyState Duration="100" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="200" Power="1.10" Cadence="26"/>
+    <SteadyState Duration="100" Power="0.50" Cadence="18"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

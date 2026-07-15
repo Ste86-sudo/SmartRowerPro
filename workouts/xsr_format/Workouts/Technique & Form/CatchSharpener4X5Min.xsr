@@ -1,0 +1,74 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "4bd545ea-0df3-4e33-8720-cabfe80d46fd",
+    "IsC2Verified": false,
+    "Tags": [
+      "TECHNIQUE",
+      "CATCH"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Catch Sharpener 4x5min",
+    "UnitType": 1,
+    "Difficulty": 1,
+    "Description": "4x5min at 20 spm focusing on the catch factor: seat reverses 15-35 ms before the handle (Kleshnev). 1min free between reps to reset.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 300,
+        "FTPTarget": 0.68,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 300,
+        "FTPTarget": 0.68,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 300,
+        "FTPTarget": 0.68,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 300,
+        "FTPTarget": 0.68,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 60,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

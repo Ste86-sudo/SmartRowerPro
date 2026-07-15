@@ -1,0 +1,94 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "b0e797b8-a796-4506-84fd-a83fbb506cd9",
+    "IsC2Verified": false,
+    "Tags": [
+      "THRESHOLD",
+      "FTP"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Threshold 6x6min",
+    "UnitType": 1,
+    "Difficulty": 3,
+    "Description": "6x6min at 96-100% FTP, 2min easy between. Classic FTP builder: the last rep should feel honest, not heroic.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 360,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

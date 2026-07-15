@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "ec5c5d29-bc69-42ad-9b52-5e191f18646d",
+    "IsC2Verified": false,
+    "Tags": [
+      "TECHNIQUE",
+      "GHOST"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Ghost Mirror 30min",
+    "UnitType": 1,
+    "Difficulty": 1,
+    "Description": "30min at 20 spm rowing ON the ghost: force, seat and arm curves overlaid. Score >80 on shape RMSE for 10 strokes in a row before raising the rate.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1800,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

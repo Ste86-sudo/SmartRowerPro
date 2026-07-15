@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>The Staircase Down</name>
+  <description>60s @160%, 2min @130%, 5min @108% FTP with 4min recoveries: three drains of decreasing depth (predicted floor ≈ 0%). The recharge between reps IS the workout.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="WPRIME"/>
+    <tag name="MIXED"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="60" Power="1.60" Cadence="30"/>
+    <SteadyState Duration="240" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="120" Power="1.30" Cadence="28"/>
+    <SteadyState Duration="240" Power="0.50" Cadence="18"/>
+    <SteadyState Duration="300" Power="1.08" Cadence="26"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

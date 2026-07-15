@@ -1,0 +1,40 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "870a6391-d704-49c3-a6f1-b10ea5ea069f",
+    "IsC2Verified": false,
+    "Tags": [
+      "RACE",
+      "5K",
+      "TEST"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "5k Tempo Test",
+    "UnitType": 1,
+    "Difficulty": 3,
+    "Description": "5000m at controlled 85-88% FTP, 24-26 spm. The aerobic anchor of race training \u2014 and the other data point your CP estimate needs.",
+    "Schedule": [
+      {
+        "Length": 600,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1200,
+        "FTPTarget": 0.87,
+        "StrokesPerMin": 25
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

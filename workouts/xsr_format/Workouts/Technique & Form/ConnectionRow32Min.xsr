@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "095a0eb8-6573-4a43-b944-f7503c2838e6",
+    "IsC2Verified": false,
+    "Tags": [
+      "TECHNIQUE",
+      "CONNECTION"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Connection Row 32min",
+    "UnitType": 1,
+    "Difficulty": 1,
+    "Description": "32min at 19 spm, maximum attention to the first 20% of the drive: hang on the handle, RSF at 0.90, no early back opening.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1920,
+        "FTPTarget": 0.62,
+        "StrokesPerMin": 19
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

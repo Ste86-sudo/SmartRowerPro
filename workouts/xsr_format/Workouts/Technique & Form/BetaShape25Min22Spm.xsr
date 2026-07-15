@@ -1,0 +1,40 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "40ff88d2-aba7-467d-994c-8bb7b044eb2c",
+    "IsC2Verified": false,
+    "Tags": [
+      "TECHNIQUE",
+      "FORM",
+      "GHOST"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Beta Shape 25min @22spm",
+    "UnitType": 1,
+    "Difficulty": 1,
+    "Description": "Steady 25 minutes at 22 spm in the 'technique' preset band: chase the Beta(2,3) ghost \u2014 peak at 33% of the drive, fullness 0.56. Watch the Coach tab: one cue per stroke, sequence before shape.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1500,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

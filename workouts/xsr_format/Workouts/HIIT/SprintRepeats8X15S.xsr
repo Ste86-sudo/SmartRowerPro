@@ -1,0 +1,114 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "cd18a0b8-5e51-4e78-a885-45cc08f1ab62",
+    "IsC2Verified": false,
+    "Tags": [
+      "SPRINT",
+      "POWER"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Sprint Repeats 8x15s",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "8x15s maximal sprints, 105s recovery: pure power, full recharge. Peak-force card should hit its best numbers of the week here.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 15,
+        "FTPTarget": 1.8,
+        "StrokesPerMin": 36
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 15,
+        "FTPTarget": 1.8,
+        "StrokesPerMin": 36
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 15,
+        "FTPTarget": 1.8,
+        "StrokesPerMin": 36
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 15,
+        "FTPTarget": 1.8,
+        "StrokesPerMin": 36
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 15,
+        "FTPTarget": 1.8,
+        "StrokesPerMin": 36
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 15,
+        "FTPTarget": 1.8,
+        "StrokesPerMin": 36
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 15,
+        "FTPTarget": 1.8,
+        "StrokesPerMin": 36
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 15,
+        "FTPTarget": 1.8,
+        "StrokesPerMin": 36
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

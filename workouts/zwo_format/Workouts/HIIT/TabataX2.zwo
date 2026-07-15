@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Tabata x2</name>
+  <description>2 Tabata blocks (8x20/10) with 4min full recovery between: the W' recharge between sets is what makes set 2 possible at all.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="HIIT"/>
+    <tag name="TABATA"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <FreeRide Duration="240" FlatRoad="1"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <SteadyState Duration="20" Power="1.65" Cadence="34"/>
+    <SteadyState Duration="10" Power="0.30"/>
+    <FreeRide Duration="240" FlatRoad="1"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

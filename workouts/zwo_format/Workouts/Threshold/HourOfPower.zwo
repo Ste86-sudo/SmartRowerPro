@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Hour of Power</name>
+  <description>60min at 85% FTP, 22 spm, no breaks. A mental monument as much as a physical one — TRIMP will tell you the truth tomorrow.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="THRESHOLD"/>
+    <tag name="LONG"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="3600" Power="0.85" Cadence="22"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

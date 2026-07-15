@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Catch Sharpener 4x5min</name>
+  <description>4x5min at 20 spm focusing on the catch factor: seat reverses 15-35 ms before the handle (Kleshnev). 1min free between reps to reset.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="TECHNIQUE"/>
+    <tag name="CATCH"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="300" Power="0.68" Cadence="20"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+    <SteadyState Duration="300" Power="0.68" Cadence="20"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+    <SteadyState Duration="300" Power="0.68" Cadence="20"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+    <SteadyState Duration="300" Power="0.68" Cadence="20"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

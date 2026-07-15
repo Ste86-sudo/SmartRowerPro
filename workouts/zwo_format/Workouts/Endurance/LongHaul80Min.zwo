@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Long Haul 80min</name>
+  <description>The weekly monument: 80 minutes at 60% FTP, 18-20 spm. Fuel before, hydrate during, and let the decoupling metric grade your aerobic engine.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="ENDURANCE"/>
+    <tag name="LONG"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="4800" Power="0.60" Cadence="19"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

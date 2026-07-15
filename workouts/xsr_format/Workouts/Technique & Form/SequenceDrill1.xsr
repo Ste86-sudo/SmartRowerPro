@@ -1,0 +1,64 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "6b5e17c8-9fff-4a12-89ff-a3a888dc793e",
+    "IsC2Verified": false,
+    "Tags": [
+      "TECHNIQUE",
+      "SEQUENCE"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Sequence Drill 1",
+    "UnitType": 1,
+    "Difficulty": 1,
+    "Description": "3x8min @19 spm. Legs-trunk-arms in order: the seat trace must lead the handle. RSF target 0.90 in the first 20% of the drive.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 480,
+        "FTPTarget": 0.66,
+        "StrokesPerMin": 19
+      },
+      {
+        "Length": 90,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 480,
+        "FTPTarget": 0.66,
+        "StrokesPerMin": 19
+      },
+      {
+        "Length": 90,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 480,
+        "FTPTarget": 0.66,
+        "StrokesPerMin": 19
+      },
+      {
+        "Length": 90,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

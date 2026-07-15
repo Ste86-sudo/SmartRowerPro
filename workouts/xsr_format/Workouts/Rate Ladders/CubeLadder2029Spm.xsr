@@ -1,0 +1,54 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "f530d132-145e-4489-9a2b-68c17db9334c",
+    "IsC2Verified": false,
+    "Tags": [
+      "RATE",
+      "CUBELAW"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Cube Ladder 20-29spm",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "Rate ladder 20-23-26-29 spm holding the SAME stroke: power targets follow the cube law P\u221dR\u00b3 \u2014 at constant drive length, rating up alone nearly doubles the watts. Do not let the shape change.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.91,
+        "StrokesPerMin": 23
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 1.32,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 1.6,
+        "StrokesPerMin": 29
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Distance Row 12k</name>
+  <description>12,000 metres continuous at 65% FTP, 19-21 spm. Distance monuments build the aerobic base — and the History tab's trend line.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="ENDURANCE"/>
+    <tag name="DISTANCE"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="3360" Power="0.65" Cadence="20"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

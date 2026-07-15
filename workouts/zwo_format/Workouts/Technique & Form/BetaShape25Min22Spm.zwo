@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Beta Shape 25min @22spm</name>
+  <description>Steady 25 minutes at 22 spm in the 'technique' preset band: chase the Beta(2,3) ghost — peak at 33% of the drive, fullness 0.56. Watch the Coach tab: one cue per stroke, sequence before shape.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="TECHNIQUE"/>
+    <tag name="FORM"/>
+    <tag name="GHOST"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="1500" Power="0.65" Cadence="22"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

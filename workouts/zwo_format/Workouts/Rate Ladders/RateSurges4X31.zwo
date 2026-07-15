@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Rate Surges 4x(3+1)</name>
+  <description>4 rounds: 3min @20 spm then 1min @28 spm at cube-law power. Surge without shortening: drive length is the thing being tested.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RATE"/>
+    <tag name="SURGE"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="180" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="60" Power="1.60" Cadence="28"/>
+    <SteadyState Duration="180" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="60" Power="1.60" Cadence="28"/>
+    <SteadyState Duration="180" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="60" Power="1.60" Cadence="28"/>
+    <SteadyState Duration="180" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="60" Power="1.60" Cadence="28"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

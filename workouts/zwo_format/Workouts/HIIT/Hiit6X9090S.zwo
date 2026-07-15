@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>HIIT 6x90/90s</name>
+  <description>6 reps of 90s @122% FTP with 90s easy. Predicted W' floor ≈ 0%. Short, sharp, honest.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="HIIT"/>
+    <tag name="ANAEROBIC"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="90" Power="1.22" Cadence="30"/>
+    <SteadyState Duration="90" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="90" Power="1.22" Cadence="30"/>
+    <SteadyState Duration="90" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="90" Power="1.22" Cadence="30"/>
+    <SteadyState Duration="90" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="90" Power="1.22" Cadence="30"/>
+    <SteadyState Duration="90" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="90" Power="1.22" Cadence="30"/>
+    <SteadyState Duration="90" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="90" Power="1.22" Cadence="30"/>
+    <SteadyState Duration="90" Power="0.40" Cadence="16"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

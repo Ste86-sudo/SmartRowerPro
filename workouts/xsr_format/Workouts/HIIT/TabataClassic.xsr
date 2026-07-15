@@ -1,0 +1,114 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "eeacced6-cec0-4a33-975d-a30586e6b31a",
+    "IsC2Verified": false,
+    "Tags": [
+      "HIIT",
+      "TABATA"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Tabata Classic",
+    "UnitType": 1,
+    "Difficulty": 5,
+    "Description": "8x20s all-out / 10s off \u2014 the original protocol. Four minutes that empty the W' battery almost completely.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.7,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.7,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.7,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.7,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.7,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.7,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.7,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 20,
+        "FTPTarget": 1.7,
+        "StrokesPerMin": 34
+      },
+      {
+        "Length": 10,
+        "FTPTarget": 0.3,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

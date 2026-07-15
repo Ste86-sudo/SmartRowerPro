@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>5k Tempo Test</name>
+  <description>5000m at controlled 85-88% FTP, 24-26 spm. The aerobic anchor of race training — and the other data point your CP estimate needs.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RACE"/>
+    <tag name="5K"/>
+    <tag name="TEST"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="600" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="1200" Power="0.87" Cadence="25"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

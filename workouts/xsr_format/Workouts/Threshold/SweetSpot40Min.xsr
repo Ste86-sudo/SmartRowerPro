@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "82026d3a-aed4-4a39-a255-50802d26b76b",
+    "IsC2Verified": false,
+    "Tags": [
+      "THRESHOLD",
+      "SWEETSPOT"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Sweet Spot 40min",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "40min at 88-92% FTP, 22-24 spm: maximum adaptation per unit of fatigue. The workhorse between hard days.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 2400,
+        "FTPTarget": 0.9,
+        "StrokesPerMin": 23
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

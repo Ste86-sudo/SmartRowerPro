@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Start Sequence Practice</name>
+  <description>10 racing starts: 5 strokes max, 3/4-1/2-3/4-full-full slide, then 40s paddle. The first five strokes decide your rhythm for the next 200.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RACE"/>
+    <tag name="STARTS"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="600" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <SteadyState Duration="15" Power="1.50" Cadence="38"/>
+    <SteadyState Duration="45" Power="0.40" Cadence="18"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

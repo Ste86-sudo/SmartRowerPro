@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>HIIT 8x50/25s</name>
+  <description>8 reps of 50s @132% FTP with 25s easy. Predicted W' floor ≈ 0%. Short, sharp, honest.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="HIIT"/>
+    <tag name="ANAEROBIC"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="50" Power="1.32" Cadence="30"/>
+    <SteadyState Duration="25" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="50" Power="1.32" Cadence="30"/>
+    <SteadyState Duration="25" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="50" Power="1.32" Cadence="30"/>
+    <SteadyState Duration="25" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="50" Power="1.32" Cadence="30"/>
+    <SteadyState Duration="25" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="50" Power="1.32" Cadence="30"/>
+    <SteadyState Duration="25" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="50" Power="1.32" Cadence="30"/>
+    <SteadyState Duration="25" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="50" Power="1.32" Cadence="30"/>
+    <SteadyState Duration="25" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="50" Power="1.32" Cadence="30"/>
+    <SteadyState Duration="25" Power="0.40" Cadence="16"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

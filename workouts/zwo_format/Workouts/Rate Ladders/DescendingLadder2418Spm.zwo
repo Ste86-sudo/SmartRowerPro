@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Descending Ladder 24-18spm</name>
+  <description>Down the ladder 24-22-20-18 spm: keep the per-stroke power as the rate falls — the stroke must get LONGER, not softer.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RATE"/>
+    <tag name="CUBELAW"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="180" Power="1.42" Cadence="24"/>
+    <SteadyState Duration="180" Power="1.10" Cadence="22"/>
+    <SteadyState Duration="180" Power="0.82" Cadence="20"/>
+    <SteadyState Duration="180" Power="0.60" Cadence="18"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

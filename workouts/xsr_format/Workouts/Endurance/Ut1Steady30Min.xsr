@@ -1,0 +1,40 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "722e31b4-4480-4241-8eb2-8342a0322dfb",
+    "IsC2Verified": false,
+    "Tags": [
+      "ENDURANCE",
+      "AEROBIC",
+      "UT1"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "UT1 Steady 30min",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "30 minutes at 70% FTP (UT1). Aerobic base: HR zone 2-3, decoupling under 5% \u2014 if HR drifts, the base isn't there yet.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1800,
+        "FTPTarget": 0.7,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>HIIT 12x45/15s</name>
+  <description>12 reps of 45s @126% FTP with 15s easy. Predicted W' floor ≈ 0%. Short, sharp, honest.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="HIIT"/>
+    <tag name="ANAEROBIC"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="45" Power="1.26" Cadence="30"/>
+    <SteadyState Duration="15" Power="0.40" Cadence="16"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

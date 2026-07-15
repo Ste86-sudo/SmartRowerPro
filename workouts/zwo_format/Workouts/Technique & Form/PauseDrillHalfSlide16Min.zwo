@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Pause Drill Half-Slide 16min</name>
+  <description>16min at 18 spm with a 1s pause at the half-slide: the pause exposes balance and posture errors that continuous rowing hides.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="TECHNIQUE"/>
+    <tag name="PAUSE"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="960" Power="0.58" Cadence="18"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

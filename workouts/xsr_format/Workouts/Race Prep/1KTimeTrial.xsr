@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "5b447f70-c6b1-4753-b67a-0e2869f37563",
+    "IsC2Verified": false,
+    "Tags": [
+      "RACE",
+      "TT"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "1k Time Trial",
+    "UnitType": 1,
+    "Difficulty": 5,
+    "Description": "All-out 1000m, open rate. Benchmark for CP/W' estimation: log it, the athlete card uses it.",
+    "Schedule": [
+      {
+        "Length": 600,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 210,
+        "FTPTarget": 1.15,
+        "StrokesPerMin": 33
+      },
+      {
+        "Length": 480,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

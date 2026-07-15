@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "f50d5553-688f-444b-aaac-62a33e665725",
+    "IsC2Verified": false,
+    "Tags": [
+      "THRESHOLD",
+      "LONG"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Hour of Power",
+    "UnitType": 1,
+    "Difficulty": 3,
+    "Description": "60min at 85% FTP, 22 spm, no breaks. A mental monument as much as a physical one \u2014 TRIMP will tell you the truth tomorrow.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 3600,
+        "FTPTarget": 0.85,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

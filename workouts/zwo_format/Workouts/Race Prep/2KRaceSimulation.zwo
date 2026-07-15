@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>2k Race Simulation</name>
+  <description>The full distance at target pace, 30-34 spm, 'race' preset ghost (peak 40%, fullness 0.61). Fly-and-die is a choice, not an accident: even splits, sprint the last 250m.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RACE"/>
+    <tag name="2K"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="600" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="420" Power="1.05" Cadence="32"/>
+    <FreeRide Duration="480" FlatRoad="1"/>
+  </workout>
+</workout_file>

@@ -1,0 +1,44 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "b595649f-a2a9-4d32-801f-53bbb38a7c39",
+    "IsC2Verified": false,
+    "Tags": [
+      "ENDURANCE",
+      "PACING"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Negative Split 60min",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "First half at 62% FTP, second at 72%: finishing faster than you start is the oldest race lesson. Keep the stroke shape identical across halves.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1800,
+        "FTPTarget": 0.62,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 1800,
+        "FTPTarget": 0.72,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

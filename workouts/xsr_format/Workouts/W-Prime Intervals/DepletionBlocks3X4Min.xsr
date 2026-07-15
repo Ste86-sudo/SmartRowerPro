@@ -1,0 +1,64 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "0b4f0e0d-f357-4dc6-b54b-99b6b742ad68",
+    "IsC2Verified": false,
+    "Tags": [
+      "WPRIME",
+      "VO2MAX"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Depletion Blocks 3x4min",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "3x4min at 110% FTP with half-time recovery: long, shallow W' drains (predicted floor \u2248 3%). VO2max territory.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 26
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

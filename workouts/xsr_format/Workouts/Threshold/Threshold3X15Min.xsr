@@ -1,0 +1,64 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "78c880bf-2fd1-4bed-8c6c-2c3f14ee4868",
+    "IsC2Verified": false,
+    "Tags": [
+      "THRESHOLD",
+      "FTP"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Threshold 3x15min",
+    "UnitType": 1,
+    "Difficulty": 3,
+    "Description": "3x15min at 96-100% FTP, 4min easy between. Classic FTP builder: the last rep should feel honest, not heroic.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 900,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 900,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 900,
+        "FTPTarget": 0.98,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 240,
+        "FTPTarget": 0.5,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

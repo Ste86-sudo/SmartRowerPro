@@ -1,0 +1,95 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "93e33ca1-1f66-4295-847d-78648f2b3b96",
+    "IsC2Verified": false,
+    "Tags": [
+      "WPRIME",
+      "INTERVALS",
+      "ANAEROBIC"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "W' Burn 6x75s @128%",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "6x75s at 128% FTP, 120s recovery. Engineered on the W'-balance model: predicted floor \u2248 0% of a 12kJ W' at CP=FTP=200W. Watch the battery card \u2014 abort a rep if it hits red early.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 75,
+        "FTPTarget": 1.28,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 75,
+        "FTPTarget": 1.28,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 75,
+        "FTPTarget": 1.28,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 75,
+        "FTPTarget": 1.28,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 75,
+        "FTPTarget": 1.28,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 75,
+        "FTPTarget": 1.28,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

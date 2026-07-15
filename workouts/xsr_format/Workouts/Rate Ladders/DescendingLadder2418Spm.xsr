@@ -1,0 +1,54 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "1d7e08f0-0b67-452e-9d38-01376f67e5e5",
+    "IsC2Verified": false,
+    "Tags": [
+      "RATE",
+      "CUBELAW"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Descending Ladder 24-18spm",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "Down the ladder 24-22-20-18 spm: keep the per-stroke power as the rate falls \u2014 the stroke must get LONGER, not softer.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 1.42,
+        "StrokesPerMin": 24
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.82,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

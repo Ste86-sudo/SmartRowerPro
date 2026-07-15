@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Ghost Mirror 30min</name>
+  <description>30min at 20 spm rowing ON the ghost: force, seat and arm curves overlaid. Score >80 on shape RMSE for 10 strokes in a row before raising the rate.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="TECHNIQUE"/>
+    <tag name="GHOST"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="1800" Power="0.65" Cadence="20"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

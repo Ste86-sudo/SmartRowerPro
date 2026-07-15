@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>HIIT 16x20/10s</name>
+  <description>16 reps of 20s @155% FTP with 10s easy. Predicted W' floor ≈ 0%. Short, sharp, honest.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="HIIT"/>
+    <tag name="ANAEROBIC"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="480" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <SteadyState Duration="20" Power="1.55" Cadence="30"/>
+    <SteadyState Duration="10" Power="0.40" Cadence="16"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

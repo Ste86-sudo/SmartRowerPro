@@ -1,0 +1,109 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "9a197ac2-84f8-4fb7-b671-5510e9c21032",
+    "IsC2Verified": false,
+    "Tags": [
+      "ENDURANCE",
+      "WAVES"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Aerobic Waves 3x10min",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "3x10min alternating 65/75% FTP in 2:30 blocks. Wave endurance: steady TRIMP accumulation without threshold stress.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.75,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.75,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.75,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.75,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.75,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.65,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 150,
+        "FTPTarget": 0.75,
+        "StrokesPerMin": 22
+      },
+      {
+        "Length": 120,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

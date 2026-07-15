@@ -1,0 +1,39 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "908f7663-69e1-4d88-be75-59debd921be3",
+    "IsC2Verified": false,
+    "Tags": [
+      "ENDURANCE",
+      "LONG"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Long Haul 80min",
+    "UnitType": 1,
+    "Difficulty": 2,
+    "Description": "The weekly monument: 80 minutes at 60% FTP, 18-20 spm. Fuel before, hydrate during, and let the decoupling metric grade your aerobic engine.",
+    "Schedule": [
+      {
+        "Length": 360,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 4800,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 19
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

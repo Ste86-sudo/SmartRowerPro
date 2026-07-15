@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Aerobic Waves 3x10min</name>
+  <description>3x10min alternating 65/75% FTP in 2:30 blocks. Wave endurance: steady TRIMP accumulation without threshold stress.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="ENDURANCE"/>
+    <tag name="WAVES"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="360" Power="0.60" Cadence="20"/>
+    <SteadyState Duration="150" Power="0.65" Cadence="20"/>
+    <SteadyState Duration="150" Power="0.75" Cadence="22"/>
+    <SteadyState Duration="150" Power="0.65" Cadence="20"/>
+    <SteadyState Duration="150" Power="0.75" Cadence="22"/>
+    <FreeRide Duration="120" FlatRoad="1"/>
+    <SteadyState Duration="150" Power="0.65" Cadence="20"/>
+    <SteadyState Duration="150" Power="0.75" Cadence="22"/>
+    <SteadyState Duration="150" Power="0.65" Cadence="20"/>
+    <SteadyState Duration="150" Power="0.75" Cadence="22"/>
+    <FreeRide Duration="120" FlatRoad="1"/>
+    <SteadyState Duration="150" Power="0.65" Cadence="20"/>
+    <SteadyState Duration="150" Power="0.75" Cadence="22"/>
+    <SteadyState Duration="150" Power="0.65" Cadence="20"/>
+    <SteadyState Duration="150" Power="0.75" Cadence="22"/>
+    <FreeRide Duration="120" FlatRoad="1"/>
+    <FreeRide Duration="300" FlatRoad="1"/>
+  </workout>
+</workout_file>

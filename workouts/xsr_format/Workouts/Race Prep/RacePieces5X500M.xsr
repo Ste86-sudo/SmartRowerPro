@@ -1,0 +1,84 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "a18b591e-94df-480d-969f-b5e8eabd7a12",
+    "IsC2Verified": false,
+    "Tags": [
+      "RACE",
+      "PIECES"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Race Pieces 5x500m",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "5x500m at 2k pace +2%, full recovery. Quality over volume: every piece at 30-34 spm on the race ghost, identical splits.",
+    "Schedule": [
+      {
+        "Length": 600,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 210,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 210,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 210,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 210,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 105,
+        "FTPTarget": 1.1,
+        "StrokesPerMin": 32
+      },
+      {
+        "Length": 210,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

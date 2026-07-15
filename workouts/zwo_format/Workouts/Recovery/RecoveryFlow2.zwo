@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<workout_file>
+  <author>SmartRower Pro</author>
+  <name>Recovery Flow 2</name>
+  <description>25min at 18 spm alternating 4min rowing / 1min free paddle. Blood flow without load — the day after a W' session.</description>
+  <sportType>rowing</sportType>
+  <tags>
+    <tag name="RECOVERY"/>
+    <tag name="FLOW"/>
+  </tags>
+  <workout>
+    <SteadyState Duration="240" Power="0.50" Cadence="18"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+    <SteadyState Duration="240" Power="0.50" Cadence="18"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+    <SteadyState Duration="240" Power="0.50" Cadence="18"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+    <SteadyState Duration="240" Power="0.50" Cadence="18"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+    <SteadyState Duration="240" Power="0.50" Cadence="18"/>
+    <FreeRide Duration="60" FlatRoad="1"/>
+  </workout>
+</workout_file>

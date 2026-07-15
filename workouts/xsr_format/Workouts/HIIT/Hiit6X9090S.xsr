@@ -1,0 +1,94 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "9553aa22-3afb-49ec-9a8f-0ec736484848",
+    "IsC2Verified": false,
+    "Tags": [
+      "HIIT",
+      "ANAEROBIC"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "HIIT 6x90/90s",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "6 reps of 90s @122% FTP with 90s easy. Predicted W' floor \u2248 0%. Short, sharp, honest.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 1.22,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 1.22,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 1.22,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 1.22,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 1.22,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 1.22,
+        "StrokesPerMin": 30
+      },
+      {
+        "Length": 90,
+        "FTPTarget": 0.4,
+        "StrokesPerMin": 16
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

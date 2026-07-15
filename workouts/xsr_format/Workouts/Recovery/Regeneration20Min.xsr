@@ -1,0 +1,29 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "c3e99f93-e9aa-49bb-ae8d-ba84aa51d9f2",
+    "IsC2Verified": false,
+    "Tags": [
+      "RECOVERY",
+      "ZONE1"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "Regeneration 20min",
+    "UnitType": 1,
+    "Difficulty": 0,
+    "Description": "20 easy minutes at 50-55% FTP, 17-18 spm, HR zone 1. Recovery is training: TRIMP stays low, technique stays honest.",
+    "Schedule": [
+      {
+        "Length": 1200,
+        "FTPTarget": 0.52,
+        "StrokesPerMin": 18
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}

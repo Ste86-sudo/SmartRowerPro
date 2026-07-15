@@ -1,0 +1,85 @@
+{
+  "MetaData": {
+    "FileVersionNumber": 2,
+    "Guid": "e399f42e-a795-4a6b-9490-9c5aef20fbc6",
+    "IsC2Verified": false,
+    "Tags": [
+      "WPRIME",
+      "INTERVALS",
+      "ANAEROBIC"
+    ]
+  },
+  "TrainingData": {
+    "Category": "",
+    "Title": "W' Burn 5x120s @120%",
+    "UnitType": 1,
+    "Difficulty": 4,
+    "Description": "5x120s at 120% FTP, 180s recovery. Engineered on the W'-balance model: predicted floor \u2248 0% of a 12kJ W' at CP=FTP=200W. Watch the battery card \u2014 abort a rep if it hits red early.",
+    "Schedule": [
+      {
+        "Length": 480,
+        "FTPTarget": 0.6,
+        "StrokesPerMin": 20
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.2,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.2,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.2,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.2,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 120,
+        "FTPTarget": 1.2,
+        "StrokesPerMin": 28
+      },
+      {
+        "Length": 180,
+        "FTPTarget": 0.45,
+        "StrokesPerMin": 18
+      },
+      {
+        "Length": 300,
+        "FTPTarget": -1.0,
+        "StrokesPerMin": 0
+      }
+    ],
+    "Events": []
+  },
+  "EditorData": {
+    "EventLinks": []
+  }
+}
